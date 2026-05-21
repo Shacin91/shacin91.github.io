@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications | Shacin Saha</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Layout Styles */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            background-color: #ffffff; 
+            color: #333;
+            line-height: 1.6;
+            padding-top: 70px; /* Space for fixed nav bar */
+        }
+        
+        /* Navigation Bar */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .logo-area { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-area img { width: 35px; height: 35px; border-radius: 50%; object-fit: cover; }
+        .logo-area h1 { font-size: 1.2rem; color: #222; }
+        nav ul { display: flex; list-style: none; gap: 15px; }
+        nav ul li a { text-decoration: none; color: #555; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+        nav ul li a:hover { color: #1a6b8c; }
+        nav ul li a.active { color: #1a6b8c; font-weight: bold; }
+
+        /* Section Title Strip */
+        .section-strip {
+            background-color: #1a6b8c;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 40px;
+        }
+
+        /* Publications Content Container */
+        .publications-wrapper { padding: 0 20px; background-color: #ffffff; }
+        .publications-container { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px; }
+        
+        /* Individual Paper Row Entry */
+        .pub-item { 
+            display: flex; 
+            align-items: flex-start; 
+            gap: 20px; 
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            background-color: #fff;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .pub-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-color: #1a6b8c;
+        }
+
+        /* Number Badge */
+        .pub-number {
+            background-color: #f0f4f8;
+            color: #1a6b8c;
+            font-weight: bold;
+            font-size: 1.1rem;
+            min-width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 1px solid #dcdcdc;
+        }
+
+        /* Paper Details text */
+        .pub-details { flex: 1; font-size: 1rem; color: #424242; text-align: justify; }
+        .pub-details em { color: #111; font-style: italic; }
+        .pub-details strong { color: #000; font-weight: 700; }
+        
+        /* DOI/Links Section styling */
+        .pub-links { margin-top: 8px; font-size: 0.9rem; }
+        .pub-links a { color: #1a6b8c; text-decoration: none; font-weight: 500; }
+        .pub-links a:hover { text-decoration: underline; }
+
+        /* Status Badges */
+        .status-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 4px;
+            margin-left: 5px;
+            text-transform: uppercase;
+        }
+        .status-review { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
+
+        /* Minimal Footer layout */
+        footer {
+            margin-top: 80px;
+            padding: 30px 20px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            color: #666;
+            font-size: 0.95rem;
+            background-color: #fafafa;
+        }
+
+        /* Mobile Layout responsiveness */
+        @media (max-width: 768px) {
+            header { position: relative; flex-direction: column; gap: 10px; }
+            body { padding-top: 0; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+            .pub-item { flex-direction: column; gap: 12px; }
+            .pub-number { min-width: 30px; height: 30px; font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo-area">
+            <img src="profile-pic.jpg" alt="Shacin Saha">
+            <h1>Shacin Saha</h1>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="experience.html">Work Experiences</a></li>
+                <li><a href="skills.html">Technical Skills</a></li>
+                <li><a href="#">Portfolios</a></li>
+                <li><a href="#">Achievements</a></li>
+                <li><a href="#">Volunteering Activities</a></li>
+                <li><a href="publications.html" class="active">Publications</a></li>
+                <li><a href="#">Education</a></li>
+                <li><a href="#">Contacts</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="section-strip">My Publications</div>
+    
+    <div class="publications-wrapper">
+        <div class
