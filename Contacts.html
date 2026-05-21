@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts | Shacin Saha</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Layout Styles */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            background-color: #ffffff; 
+            color: #333;
+            line-height: 1.6;
+            padding-top: 70px; /* Space for fixed nav bar */
+        }
+        
+        /* Navigation Bar */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .logo-area { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-area img { width: 35px; height: 35px; border-radius: 50%; object-fit: cover; }
+        .logo-area h1 { font-size: 1.2rem; color: #222; }
+        nav ul { display: flex; list-style: none; gap: 15px; }
+        nav ul li a { text-decoration: none; color: #555; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+        nav ul li a:hover { color: #1a6b8c; }
+        nav ul li a.active { color: #1a6b8c; font-weight: bold; }
+
+        /* Section Title Strip */
+        .section-strip {
+            background-color: #1a6b8c;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 40px;
+        }
+
+        /* Two-Column Contact Layout */
+        .contact-wrapper { padding: 0 20px; background-color: #ffffff; }
+        .contact-container { 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            display: grid; 
+            grid-template-columns: 1fr 1.2fr; 
+            gap: 50px; 
+        }
+
+        /* Left Column: Details Cards */
+        .contact-info { display: flex; flex-direction: column; gap: 20px; }
+        .info-card {
+            padding: 25px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            background-color: #fafafa;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        .info-card i {
+            font-size: 1.5rem;
+            color: #1a6b8c;
+            background: #eef5f8;
+            padding: 12px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .info-card-content h3 { font-size: 1.15rem; color: #222; margin-bottom: 5px; }
+        .info-card-content p { font-size: 0.95rem; color: #555; }
+        .info-card-content a { color: #1a6b8c; text-decoration: none; }
+        .info-card-content a:hover { text-decoration: underline; }
+
+        /* Social Icon Cluster */
+        .social-row { display: flex; gap: 15px; margin-top: 10px; }
+        .social-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #1a6b8c;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: background 0.2s;
+            font-size: 1.1rem;
+        }
+        .social-circle:hover { background-color: #114b63; }
+
+        /* Right Column: Contact/Feedback Form */
+        .contact-form-container {
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 30px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+        .form-title { font-size: 1.4rem; color: #1a6b8c; font-weight: 600; margin-bottom: 20px; }
+        
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-size: 0.9rem; font-weight: 600; color: #444; margin-bottom: 6px; }
+        .form-control {
+            width: 100%;
+            padding: 10px 12px;
+            font-size: 0.95rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+            transition: border-color 0.2s;
+        }
+        .form-control:focus { outline: none; border-color: #1a6b8c; }
+        textarea.form-control { resize: vertical; min-height: 120px; }
+
+        .submit-btn {
+            background-color: #1a6b8c;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .submit-btn:hover { background-color: #114b63; }
+
+        /* Minimal Footer Layout */
+        footer {
+            margin-top: 80px;
+            padding: 30px 20px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            color: #666;
+            font-size: 0.95rem;
+            background-color: #fafafa;
+        }
+
+        /* Mobile Layout Responsiveness */
+        @media (max-width: 768px) {
+            header { position: relative; flex-direction: column; gap: 10px; }
+            body { padding-top: 0; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+            .contact-container { grid-template-columns: 1fr; gap: 30px; }
+            .info-card { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo-area">
+            <img src="profile-pic.jpg" alt="Shacin Saha">
+            <h1>Shacin Saha</h1>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="experience.html">Work Experiences</a></li>
+                <li><a href="skills.html">Technical Skills</a></li>
+                <li><a href="#">Portfolios</a></li>
+                <li><a href="#">Achievements</a></li>
+                <li><a href="#">Volunteering Activities</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="contacts.html" class="active">Contacts</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="section-strip">Contacts</div>
+    
+    <div class="contact-wrapper">
+        <div class="contact-container">
+
+            <div class="contact-info">
+                
+                <div class="info-card">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div class="info-card-content">
+                        <h3>Email Address</h3>
+                        <p><a href="mailto:shacinchandrasaha.dgmuob@gmail.com">shacinchandrasaha.dgmuob@gmail.com</a></p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div class="info-card-content">
+                        <h3>Current Mailing Address</h3>
+                        <p>Department of Geology and Mining</p>
+                        <p>University of Barishal</p>
+                        <p>Barishal-8200, Bangladesh</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <i class="fa-solid fa-share-nodes"></i>
+                    <div class="info-card-content">
+                        <h3>Research & Social Networking</h3>
+                        <div class="social-row">
+                            <a href="#" target="_blank" class="social-circle" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" target="_blank" class="social-circle" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#" target="_blank" class="social-circle" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
+                            <a href="#" target="_blank" class="social-circle" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="contact-form-container">
+                <h2 class="form-title">Send a Message or Feedback</h2>
+                
+                <form action="https://formspree.io/f/your_formspree_id" method="POST">
+                    
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" name="name" id="name" class="form-control" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Your Email Address</label>
+                        <input type="email" name="_replyto" id="email" class="form-control" placeholder="name@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" name="subject" id="subject" class="form-control" placeholder="What is this regarding?" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea name="message" id="message" class="form-control" placeholder="Write your feedback or query here..." required></textarea>
+                    </div>
+
+                    <input type="text" name="_honey" style="display:none"> <button type="submit" class="submit-btn">
+                        <i class="fa-solid fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; Shacin Saha 2026</p>
+    </footer>
+
+</body>
+</html>
