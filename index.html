@@ -3,158 +3,379 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shacin91 - Portfolio</title>
+    <title>Shacin Saha | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
+            background-color: #ffffff;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            line-height: 1.6;
         }
 
+        /* Navigation Bar */
         header {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 2rem 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        nav {
+        .logo-area {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 10px;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #667eea;
+        .logo-area img {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            object-fit: cover;
         }
 
-        .nav-links {
+        .logo-area h1 {
+            font-size: 1.2rem;
+            color: #222;
+        }
+
+        nav ul {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 15px;
         }
 
-        .nav-links a {
+        nav ul li a {
             text-decoration: none;
-            color: #333;
+            color: #555;
+            font-size: 0.9rem;
+            font-weight: 500;
             transition: color 0.3s;
         }
 
-        .nav-links a:hover {
-            color: #667eea;
+        nav ul li a:hover {
+            color: #1a6b8c;
         }
 
+        /* Hero Banner Section */
         .hero {
+            position: relative;
+            height: 75vh;
+            background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)), url('hero-bg.jpg') no-repeat center center/cover;
+            /* Replace 'hero-bg.jpg' with your landscape image containing you and the university background */
             display: flex;
             align-items: center;
-            justify-content: center;
-            min-height: calc(100vh - 80px);
-            text-align: center;
-            color: white;
+            padding: 0 8%;
         }
 
-        .hero-content h1 {
+        .hero-text {
+            max-width: 600px;
+            color: #111;
+            margin-left: auto; /* Pushes text to the right side if you stand on the left */
+            padding-right: 5%;
+        }
+
+        .hero-text h2 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 5px;
+        }
+
+        .hero-text h3 {
             font-size: 3.5rem;
-            margin-bottom: 1rem;
-            animation: slideInDown 0.8s ease-out;
+            font-weight: 700;
+            line-height: 1.1;
+            color: #111;
+            text-shadow: 0px 0px 8px rgba(255,255,255,0.8);
         }
 
-        .hero-content p {
+        .hero-text p {
+            font-size: 2rem;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        /* Social Icons Area */
+        .social-container {
+            display: flex;
+            justify-content: flex-start;
+            gap: 20px;
+            padding: 20px 8%;
+            background: #fff;
+        }
+
+        .social-container a {
+            font-size: 1.8rem;
+            transition: transform 0.2s;
+        }
+
+        .social-container .fa-facebook { color: #3b5998; }
+        .social-container .fa-linkedin { color: #0077b5; }
+        .social-container .fa-whatsapp { color: #25d366; }
+        .social-container .fa-envelope { color: #db4437; }
+
+        .social-container a:hover {
+            transform: scale(1.1);
+        }
+
+        /* Section Title Strip */
+        .section-strip {
+            background-color: #1a6b8c;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
             font-size: 1.5rem;
-            margin-bottom: 2rem;
-            animation: slideInUp 0.8s ease-out 0.2s backwards;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: white;
-            color: #667eea;
+        /* About Me Content Section */
+        .about-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .profile-img-circle {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: 3px solid #222;
+            object-fit: cover;
+            margin-bottom: 30px;
+        }
+
+        .about-text {
+            text-align: left;
+            max-width: 850px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+            color: #222;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+        }
+
+        .about-text ul {
+            list-style-type: square;
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .about-text li {
+            margin-bottom: 10px;
+        }
+
+        /* CV Button */
+        .btn-container {
+            text-align: center;
+            margin: 30px 0 40px 0;
+        }
+
+        .cv-btn {
+            background-color: #1a6b8c;
+            color: white;
+            padding: 12px 60px;
             text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: transform 0.3s, box-shadow 0.3s;
-            animation: slideInUp 0.8s ease-out 0.4s backwards;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: 2px;
+            display: inline-block;
+            transition: background 0.3s;
         }
 
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        .cv-btn:hover {
+            background-color: #14526d;
         }
 
-        @keyframes slideInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* Award/Group Image Display */
+        .group-photo-container {
+            max-width: 850px;
+            margin: 0 auto 50px auto;
+            padding: 0 20px;
         }
 
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .group-photo {
+            width: 100%;
+            height: auto;
+            display: block;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
+        /* Footer Info & Map Grid */
+        .footer-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            border-top: 1px solid #ddd;
+        }
+
+        .links-list h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #111;
+        }
+
+        .links-list ul {
+            list-style: none;
+        }
+
+        .links-list ul li {
+            margin-bottom: 12px;
+        }
+
+        .links-list ul li a {
+            text-decoration: none;
+            color: #1a6b8c;
+            font-weight: 500;
+            font-size: 1.05rem;
+        }
+
+        .links-list ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .links-list ul ul {
+            margin-left: 20px;
+            margin-top: 5px;
+            list-style: decimal;
+        }
+
+        .links-list ul ul li {
+            margin-bottom: 5px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 280px;
+            border: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Responsive styling for smaller devices */
         @media (max-width: 768px) {
-            .nav-links {
-                gap: 1rem;
-            }
-
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .hero-content p {
-                font-size: 1rem;
-            }
+            header { flex-direction: column; gap: 10px; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+            .hero { height: 50vh; background-position: left center; }
+            .hero-text h3 { font-size: 2.2rem; }
+            .footer-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
+
     <header>
-        <nav class="container">
-            <div class="logo">Shacin91</div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+        <div class="logo-area">
+            <img src="profile-pic.jpg" alt="Shacin Saha"> <h1>Shacin Saha</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Work Experiences</a></li>
+                <li><a href="#">Technical Skills</a></li>
+                <li><a href="#">Portfolios</a></li>
+                <li><a href="#">Achievements</a></li>
+                <li><a href="#">Volunteering Activities</a></li>
+                <li><a href="#">Publications</a></li>
+                <li><a href="#">Education</a></li>
+                <li><a href="#">Contacts</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="hero">
-        <div class="hero-content">
-            <h1>Welcome to My Portfolio</h1>
-            <p>Explore my projects and learn more about me</p>
-            <a href="#projects" class="cta-button">View My Work</a>
+        <div class="hero-text">
+            <h2>I am</h2>
+            <h3>Shacin Saha</h3>
+            <p>From University of Barishal</p>
         </div>
     </section>
+
+    <div class="social-container">
+        <a href="https://facebook.com/yourprofile" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://wa.me/yournumber" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="mailto:youremail@gmail.com"><i class="fas fa-envelope"></i></a>
+    </div>
+
+    <div class="section-strip">
+        About Me
+    </div>
+
+    <section class="about-section">
+        <img src="profile-pic.jpg" alt="Shacin Saha" class="profile-img-circle"> <div class="about-text">
+            <p><strong>Welcome to my website!</strong></p>
+            
+            <p>I'm <strong>Shacin Chandra Saha</strong>, a recent graduate in <em>Geology and Mining</em> from the <strong>University of Barishal</strong>, currently aspiring to pursue higher education abroad in a <strong>Geospatial Science</strong> or <strong>Earth Observation</strong> related program.</p>
+            
+            <p>My academic journey has combined the study of Earth's physical systems—including <strong>Hydrology, Geohazards, Seismology, Mining Geology, GIS</strong>, and <strong>remote sensing</strong>—with practical, hands-on experience. Over four academic years, I participated in geological fieldwork campaigns across various regions of Bangladesh, where we collected geological data, plotted them spatially, and submitted detailed reports based on field interpretation.</p>
+            
+            <p>Alongside my studies, I actively contributed to several research projects on:</p>
+            <ul>
+                <li><strong>Flood hazard zone mapping</strong> using Multi-Criteria Decision Analysis (MCDA)</li>
+                <li><strong>River morphology</strong> and <strong>coastal erosion monitoring</strong></li>
+                <li><strong>Shoreline dynamics assessment</strong></li>
+                <li><strong>Cyclone vulnerability assessment</strong> using FAHP and GIS</li>
+                <li><strong>Urban heat island and land surface temperature analysis</strong></li>
+            </ul>
+            
+            <p>These experiences have strengthened my expertise in <strong>ArcGIS Pro, Google Earth Engine, Python</strong>, and <strong>R</strong>, particularly in spatial data analysis, mapping, and geospatial modeling.</p>
+            
+            <p>I have served as a <strong>Trainer</strong> in the "GIS and Remote Sensing Basic Course" organized by the <strong>Barishal University Science Club</strong> in collaboration with <strong>GeoAvengers</strong>, where I taught nearly 100 students through live sessions, assignments, and assessments. Additionally, I worked as a <strong>Teaching Assistant</strong> in the <em>"GIS and Remote Sensing: Basic to Advanced Course"</em> funded by the <strong>ICT Division of Bangladesh</strong>, under the supervision of <strong>Professor Md. Abdullah Salman</strong>, providing instructional and academic support.</p>
+            
+            <p>Beyond academics, I've actively volunteered in national-level science and geospatial events, gaining leadership and teamwork experience through my involvement with the <strong>Barishal University Science Club</strong> and <strong>YouthMappers</strong>.</p>
+            
+            <p>Thank you for visiting—I hope this space gives you insight into my passion for geospatial and environmental research.</p>
+        </div>
+    </section>
+
+    <div class="btn-container">
+        <a href="my-cv.pdf" class="cv-btn" target="_blank">My CV</a> </div>
+
+    <div class="group-photo-container">
+        <img src="prize-ceremony.jpg" alt="Prize Giving Ceremony 2024" class="group-photo"> </div>
+
+    <section class="footer-grid">
+        <div class="links-list">
+            <h3>See Also:</h3>
+            <ul>
+                <li><a href="#">Work Experience</a></li>
+                <li><a href="#">Technical Skills</a></li>
+                <li><a href="#">Portfolios</a></li>
+                <ul>
+                    <li><a href="#">Desktop GIS</a></li>
+                    <li><a href="#">Google Earth Engine (Cloud-Based GIS)</a></li>
+                    <li><a href="#">Python</a></li>
+                </ul>
+                <br>
+                <li><a href="#">Achievements</a></li>
+                <li><a href="#">Volunteering Activities</a></li>
+                <li><a href="#">Publications</a></li>
+                <li><a href="#">Education</a></li>
+                <li><a href="#">Contacts</a></li>
+            </ul>
+        </div>
+        
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.122824368944!2d90.36011937603632!3d22.6305607301648!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755364e320f7723%3A0x6739660309995166!2sUniversity%20of%20Barishal!5e0!3m2!1sen!2sbd!4v1716300000000!5m2!1sen!2sbd" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
 </body>
 </html>
