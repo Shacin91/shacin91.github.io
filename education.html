@@ -50,7 +50,7 @@
             margin-bottom: 40px;
         }
 
-        /* Level Banner (e.g., Undergraduate Level) */
+        /* Level Banner */
         .level-banner {
             max-width: 1100px;
             margin: 0 auto;
@@ -68,21 +68,28 @@
         /* Education Layout Container */
         .edu-wrapper { padding: 0 20px; background-color: #ffffff; }
         .edu-container { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 60px; }
-        .edu-row { display: flex; flex-direction: row; align-items: center; gap: 50px; margin-bottom: 40px; }
+        .edu-row { display: flex; flex-direction: row; align-items: flex-start; gap: 50px; margin-bottom: 60px; }
         
         /* Alternating layout for rows */
         .edu-row:nth-child(even) { flex-direction: row-reverse; }
 
         /* Left/Right Column: Image Area */
         .edu-media { flex: 0 0 45%; max-width: 480px; }
-        .edu-image { width: 100%; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); display: block; object-fit: cover; height: 260px; }
+        .edu-image { width: 100%; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); display: block; object-fit: cover; height: 300px; }
         
         /* Right/Left Column: Text Content Area */
         .edu-content { flex: 1; }
-        .edu-title { font-size: 2rem; font-weight: bold; color: #1a6b8c; margin-bottom: 10px; }
+        .edu-title { font-size: 2rem; font-weight: bold; color: #1a6b8c; margin-bottom: 5px; }
         .edu-subtitle { font-size: 1.1rem; color: #555; font-weight: 600; margin-bottom: 15px; }
+        
+        .edu-meta-group { margin-bottom: 20px; }
         .edu-meta { font-size: 0.95rem; color: #666; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; }
         .edu-meta i { color: #1a6b8c; width: 16px; }
+        
+        .edu-description { font-size: 0.98rem; color: #424242; text-align: justify; }
+        .edu-description p { margin-bottom: 12px; }
+        .edu-description ul { margin-left: 20px; margin-bottom: 12px; list-style-type: disc; }
+        .edu-description li { margin-bottom: 4px; }
 
         /* Minimal Footer layout */
         footer {
@@ -102,9 +109,10 @@
             nav ul { flex-wrap: wrap; justify-content: center; }
             .edu-row, .edu-row:nth-child(even) { flex-direction: column; gap: 25px; text-align: center; }
             .edu-media { max-width: 100%; width: 100%; }
-            .edu-image { height: 200px; }
+            .edu-image { height: 220px; }
             .edu-title { font-size: 1.7rem; }
             .edu-meta { justify-content: center; }
+            .edu-description ul { text-align: left; }
         }
     </style>
 </head>
@@ -144,11 +152,19 @@
                     <div class="edu-content">
                         <h1 class="edu-title">University of Barishal</h1>
                         <p class="edu-subtitle">Bachelor of Science (B.Sc. Hons.) in Geology and Mining</p>
-                        <div class="edu-meta">
-                            <i class="fa-solid fa-graduation-cap"></i> Recent Graduate
+                        
+                        <div class="edu-meta-group">
+                            <div class="edu-meta"><i class="fa-solid fa-graduation-cap"></i> Recent Graduate</div>
+                            <div class="edu-meta"><i class="fa-solid fa-location-dot"></i> Barishal, Bangladesh</div>
                         </div>
-                        <div class="edu-meta">
-                            <i class="fa-solid fa-location-dot"></i> Barishal, Bangladesh
+
+                        <div class="edu-description">
+                            <p>The Department of Geology and Mining at the University of Barishal focuses heavily on hands-on application and fundamental Earth sciences, providing an intensive curriculum bridging classical field observations with dynamic laboratory methods.</p>
+                            <p>During my tenure, I developed a strong foundation across structural geology, hydrogeochemistry, and disaster management science. My academic growth was profoundly driven by extensive field mappings and active collaborations on faculty-led research initiatives.</p>
+                            <ul>
+                                <li><strong>Key Fieldwork Journeys:</strong> Executed structural engineering and stratigraphic map cuts across the Sitakund Anticline (Chittagong) and the Kaptai-Rangamati Road Section.</li>
+                                <li><strong>Research Focus:</strong> Integrated GIS and Remote Sensing platforms to target environmental hazards, deltaic geomorphology, and coastal water salinity challenges.</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -163,11 +179,15 @@
                     <div class="edu-content">
                         <h1 class="edu-title">Lakshmipur Government College</h1>
                         <p class="edu-subtitle">Higher Secondary Certificate (HSC)</p>
-                        <div class="edu-meta">
-                            <i class="fa-solid fa-book"></i> Science Group
+                        
+                        <div class="edu-meta-group">
+                            <div class="edu-meta"><i class="fa-solid fa-book"></i> Science Group</div>
+                            <div class="edu-meta"><i class="fa-solid fa-location-dot"></i> Lakshmipur, Bangladesh</div>
                         </div>
-                        <div class="edu-meta">
-                            <i class="fa-solid fa-location-dot"></i> Lakshmipur, Bangladesh
+
+                        <div class="edu-description">
+                            <p>Lakshmipur Government College is one of the oldest and most well-regarded higher education centers in the region, established to foster rigorous academic standards in the southeastern coastal belt of Bangladesh.</p>
+                            <p>Enrolled in the highly competitive Science group, this curriculum built the analytical competencies necessary for advanced data evaluation and engineering disciplines. Studies comprehensively concentrated on mathematical problem solving, physics principles, and analytical chemistry, sparking my initial passion for applying physical and chemical parameters to complex spatial natural systems.</p>
                         </div>
                     </div>
                 </div>
@@ -182,11 +202,15 @@
                     <div class="edu-content">
                         <h1 class="edu-title">Hossainpur High School</h1>
                         <p class="edu-subtitle">Secondary School Certificate (SSC)</p>
-                        <div class="edu-meta">
-                            <i class="fa-solid fa-book"></i> Science Group
+                        
+                        <div class="edu-meta-group">
+                            <div class="edu-meta"><i class="fa-solid fa-book"></i> Science Group</div>
+                            <div class="edu-meta"><i class="fa-solid fa-location-dot"></i> Lakshmipur, Bangladesh</div>
                         </div>
-                        <div class="edu-meta">
-                            <i class="fa-solid fa-location-dot"></i> Lakshmipur, Bangladesh
+
+                        <div class="edu-description">
+                            <p>Hossainpur High School provides a critical foundational gateway for young minds in the district, centering its academic culture on structural science tracks, teamwork, and strong foundational mathematics.</p>
+                            <p>Completing my secondary board certifications within the Science group allowed me to master core physical sciences early on. This fundamental preparation established the baseline scientific principles, deductive reasoning methods, and logic workflows that later proved vital during advanced computation models and geospatial analytics projects.</p>
                         </div>
                     </div>
                 </div>
