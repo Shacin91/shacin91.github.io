@@ -119,13 +119,13 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="experience.html">Work Experiences</a></li>
-                <li><a href="skills.html">Technical Skills</a></li>
+                <li><a href="technical_skills.html">Technical Skills</a></li>
                 <li><a href="#">Portfolios</a></li>
                 <li><a href="#">Achievements</a></li>
                 <li><a href="#">Volunteering Activities</a></li>
                 <li><a href="publications.html">Publications</a></li>
                 <li><a href="education.html" class="active">Education</a></li>
-                <li><a href="#">Contacts</a></li>
+                <li><a href="contacts">Contacts</a></li>
             </ul>
         </nav>
     </header>
