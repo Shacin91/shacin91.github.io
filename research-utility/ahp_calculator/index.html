@@ -2,47 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AHP Research Calculator</title>
+    <title>AHP Research Utility</title>
+    <!-- Load Plotly for Graphs -->
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
     <style>
-        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
-        .matrix-input { width: 50px; }
-        .status { margin-top: 10px; font-weight: bold; }
+        body { font-family: 'Segoe UI', sans-serif; padding: 20px; max-width: 800px; margin: auto; }
+        .matrix-input { width: 60px; padding: 5px; }
+        table { border-collapse: collapse; margin: 20px 0; }
+        td { padding: 5px; }
+        .consistent { color: green; font-weight: bold; }
+        .inconsistent { color: red; font-weight: bold; }
+        #chart { width: 100%; height: 400px; margin-top: 30px; }
     </style>
 </head>
 <body>
-    <h1>AHP Research Calculator</h1>
-    <div id="ui-container">
-        <label>Number of Criteria: </label>
-        <input type="number" id="numCriteria" value="3" min="2" max="10">
-        <button onclick="generateMatrix()">Generate Matrix</button>
-    </div>
+    <h1>AHP Calculation Tool</h1>
+    <label>Criteria Count: </label>
+    <input type="number" id="n" value="3" min="2" max="10">
+    <button onclick="createMatrix()">Generate Matrix</button>
 
-    <div id="matrix-container"></div>
-    <div id="results" class="status"></div>
+    <div id="matrixArea"></div>
+    <div id="status" class="status"></div>
+    <div id="chart"></div>
 
-    <script>
-        function generateMatrix() {
-            const n = document.getElementById('numCriteria').value;
-            let html = '<table>';
-            for (let i = 0; i < n; i++) {
-                html += '<tr>';
-                for (let j = 0; j < n; j++) {
-                    html += `<td><input type="number" class="matrix-input" id="cell-${i}-${j}" value="${i === j ? 1 : 1}"></td>`;
-                }
-                html += '</tr>';
-            }
-            html += '</table><button onclick="calculateAHP()">Calculate Weights</button>';
-            document.getElementById('matrix-container').innerHTML = html;
-        }
-
-        function calculateAHP() {
-            // Logic: 
-            // 1. Extract values from inputs
-            // 2. Normalize columns (Geometric Mean or Eigenvector method)
-            // 3. Calculate CR = CI / RI (RI for n=3 is 0.58)
-            // 4. Update the 'results' div with the CR value and color
-            document.getElementById('results').innerHTML = "Calculating...";
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
