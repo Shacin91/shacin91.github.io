@@ -1,1 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AHP Research Calculator</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .matrix-input { width: 50px; }
+        .status { margin-top: 10px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>AHP Research Calculator</h1>
+    <div id="ui-container">
+        <label>Number of Criteria: </label>
+        <input type="number" id="numCriteria" value="3" min="2" max="10">
+        <button onclick="generateMatrix()">Generate Matrix</button>
+    </div>
 
+    <div id="matrix-container"></div>
+    <div id="results" class="status"></div>
+
+    <script>
+        function generateMatrix() {
+            const n = document.getElementById('numCriteria').value;
+            let html = '<table>';
+            for (let i = 0; i < n; i++) {
+                html += '<tr>';
+                for (let j = 0; j < n; j++) {
+                    html += `<td><input type="number" class="matrix-input" id="cell-${i}-${j}" value="${i === j ? 1 : 1}"></td>`;
+                }
+                html += '</tr>';
+            }
+            html += '</table><button onclick="calculateAHP()">Calculate Weights</button>';
+            document.getElementById('matrix-container').innerHTML = html;
+        }
+
+        function calculateAHP() {
+            // Logic: 
+            // 1. Extract values from inputs
+            // 2. Normalize columns (Geometric Mean or Eigenvector method)
+            // 3. Calculate CR = CI / RI (RI for n=3 is 0.58)
+            // 4. Update the 'results' div with the CR value and color
+            document.getElementById('results').innerHTML = "Calculating...";
+        }
+    </script>
+</body>
+</html>
