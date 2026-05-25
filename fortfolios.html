@@ -1,1 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolios | Shacin Saha</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Layout Styles */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            background-color: #ffffff; 
+            color: #333;
+            line-height: 1.6;
+            padding-top: 70px; /* Space for fixed nav bar */
+        }
+        
+        /* Navigation Bar */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .logo-area { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-area img { width: 35px; height: 35px; border-radius: 50%; object-fit: cover; }
+        .logo-area h1 { font-size: 1.2rem; color: #222; }
+        nav ul { display: flex; list-style: none; gap: 15px; }
+        nav ul li a { text-decoration: none; color: #555; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+        nav ul li a:hover { color: #1a6b8c; }
+        nav ul li a.active { color: #1a6b8c; font-weight: bold; }
 
+        /* Section Title Strip */
+        .section-strip {
+            background-color: #1a6b8c;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Filter Menu Section */
+        .filter-menu { 
+            margin-bottom: 40px; 
+            text-align: center; 
+            position: sticky;
+            top: 65px; 
+            background: #ffffff; 
+            padding: 15px 0;
+            z-index: 100;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .filter-btn { 
+            padding: 8px 18px; 
+            margin: 5px; 
+            cursor: pointer; 
+            border: 1px solid #dadce0; 
+            background: #ffffff; 
+            color: #1a6b8c; 
+            border-radius: 4px; 
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+        .filter-btn:hover { background: #f1f3f4; border-color: #1a6b8c; }
+        .filter-btn.active { background: #1a6b8c; color: white; border-color: #1a6b8c; }
+
+        /* Portfolio Wrapper List */
+        .portfolio-wrapper { padding: 20px; background-color: #ffffff; }
+        .portfolio-container { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
+        
+        /* Portfolio Row Structure */
+        .port-row { 
+            display: flex; 
+            flex-direction: row; 
+            align-items: stretch; 
+            gap: 35px; 
+            padding: 25px; 
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            background-color: #ffffff;
+            transition: box-shadow 0.2s, border-color 0.2s;
+        }
+        .port-row:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-color: #1a6b8c;
+        }
+        
+        /* Left Column: Banner Area */
+        .port-media { flex: 0 0 35%; max-width: 380px; display: flex; align-items: center; }
+        .port-banner { width: 100%; height: 200px; border-radius: 4px; display: block; object-fit: cover; border: 1px solid #e0e0e0; }
+        
+        /* Right Column: Content Area */
+        .port-content { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+        .port-title { font-size: 1.5rem; font-weight: bold; color: #1a6b8c; line-height: 1.3; margin-bottom: 12px; }
+        .port-text { font-size: 0.95rem; color: #424242; margin-bottom: 20px; text-align: justify; }
+        
+        /* Explore Link Button styling */
+        .explore-link {
+            align-self: flex-start;
+            color: #1a6b8c;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+        .explore-link:hover { color: #114b63; text-decoration: underline; }
+
+        /* Minimal Footer layout */
+        footer {
+            margin-top: 80px;
+            padding: 30px 20px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            color: #666;
+            font-size: 0.95rem;
+            background-color: #fafafa;
+        }
+
+        /* Mobile Responsive adjustments */
+        @media (max-width: 768px) {
+            header { position: relative; flex-direction: column; gap: 10px; }
+            body { padding-top: 0; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+            .filter-menu { top: 0; }
+            .port-row { flex-direction: column; gap: 20px; padding: 15px; }
+            .port-media { flex: 1 1 100%; max-width: 100%; }
+            .port-banner { height: 180px; }
+            .port-title { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo-area">
+            <img src="profile-pic.jpg" alt="Shacin Saha">
+            <h1>Shacin Saha</h1>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="experience.html">Work Experiences</a></li>
+                <li><a href="skills.html">Technical Skills</a></li>
+                <li><a href="portfolio.html" class="active">Portfolios</a></li>
+                <li><a href="#">Achievements</a></li>
+                <li><a href="#">Volunteering Activities</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="contacts.html">Contacts</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="section-strip">Portfolios</div>
+    
+    <div class="filter-menu">
+        <button class="filter-btn active" onclick="filterPortfolio('all', event)">All Projects</button>
+        <button class="filter-btn" onclick="filterPortfolio('gee', event)">Google Earth Engine</button>
+        <button class="filter-btn" onclick="filterPortfolio('arcgis', event)">ArcGIS Pro</button>
+        <button class="filter-btn" onclick="filterPortfolio('python', event)">Python</button>
+    </div>
+
+    <div class="portfolio-wrapper">
+        <div id="portfolio-container" class="portfolio-container">
+            
+            <div class="port-row gee">
+                <div class="port-media">
+                    <img src="project-gee-water.jpg" alt="Water Quality Monitoring Banner" class="port-banner">
+                </div>
+                <div class="port-content">
+                    <h2 class="port-title">Automated River Water Quality Mapping Engine</h2>
+                    <p class="port-text">A cloud-based remote sensing pipeline developed to continuously extract surface water reflectance indices. This engine handles high-throughput Sentinel-2 imagery directly in the cloud to track pollution parameters across changing seasons, bypassing heavy local storage challenges.</p>
+                    <a href="portfolio-gee-water.html" class="explore-link">Explore this work <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="port-row arcgis python">
+                <div class="port-media">
+                    <img src="project-arcgis-uhi.jpg" alt="Urban Heat Island Analytics Banner" class="port-banner">
+                </div>
+                <div class="port-content">
+                    <h2 class="port-title">Spatiotemporal Thermal Trend and Biophysical Driver Analysis</h2>
+                    <p class="port-text">An advanced spatial analytics modeling setup using automated geoprocessing toolboxes. It integrates Surface Urban Heat Island (SUHI) intensities alongside dynamic biophysical metrics to evaluate microclimate variations across localized urban boundaries over multi-decadal intervals.</p>
+                    <a href="portfolio-arcgis-uhi.html" class="explore-link">Explore this work <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="port-row python">
+                <div class="port-media">
+                    <img src="project-python-ml.jpg" alt="Machine Learning Pollution Banner" class="port-banner">
+                </div>
+                <div class="port-content">
+                    <h2 class="port-title">Predictive Machine Learning Models for Hydrogeochemical Pollutants</h2>
+                    <p class="port-text">A standalone Python optimization script engineered to process complex field-sampled hydrogeochemical inputs. The model establishes a training routine linking in-situ ground truth data with predictive environmental indicators, providing clean digital-twin spatial distributions.</p>
+                    <a href="portfolio-python-pollution.html" class="explore-link">Explore this work <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; Shacin Saha 2026</p>
+    </footer>
+
+    <script>
+        const container = document.getElementById("portfolio-container");
+        const allProjects = Array.from(container.getElementsByClassName("port-row"));
+
+        function filterPortfolio(category, event) {
+            // Manage Active Class States on Buttons
+            const buttons = document.getElementsByClassName("filter-btn");
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove("active");
+            }
+            if (event) {
+                event.currentTarget.classList.add("active");
+            }
+
+            // Animate or toggle grid displays smoothly
+            allProjects.forEach(project => {
+                if (category === "all" || project.classList.contains(category)) {
+                    project.style.display = "flex";
+                } else {
+                    project.style.display = "none";
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
