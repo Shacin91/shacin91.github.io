@@ -1,1 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements | Shacin Saha</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Layout Styles */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            background-color: #ffffff; 
+            color: #333;
+            line-height: 1.6;
+            padding-top: 70px; /* Space for fixed nav bar */
+        }
+        
+        /* Navigation Bar */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .logo-area { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-area img { width: 35px; height: 35px; border-radius: 50%; object-fit: cover; }
+        .logo-area h1 { font-size: 1.2rem; color: #222; }
+        nav ul { display: flex; list-style: none; gap: 15px; }
+        nav ul li a { text-decoration: none; color: #555; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+        nav ul li a:hover { color: #1a6b8c; }
+        nav ul li a.active { color: #1a6b8c; font-weight: bold; }
 
+        /* Section Title Strip */
+        .section-strip {
+            background-color: #1a6b8c;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 40px;
+        }
+
+        /* Achievements Content Container */
+        .achievements-wrapper { padding: 0 20px; background-color: #ffffff; }
+        .achievements-container { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 25px; }
+        
+        /* Individual Achievement Entry Card */
+        .achieve-card { 
+            display: flex; 
+            align-items: flex-start; 
+            gap: 20px; 
+            padding: 25px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            background-color: #fff;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+        .achieve-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-color: #1a6b8c;
+        }
+
+        /* Icon Wrapper styling */
+        .achieve-icon {
+            background-color: #eef5f8;
+            color: #1a6b8c;
+            font-size: 1.5rem;
+            min-width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 1px solid #d1e2eb;
+        }
+
+        /* Achievement Text Details */
+        .achieve-details { flex: 1; }
+        .achieve-title { font-size: 1.25rem; font-weight: bold; color: #1a6b8c; margin-bottom: 5px; }
+        .achieve-org { font-size: 1rem; font-weight: 600; color: #555; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+        .achieve-date { font-size: 0.9rem; color: #777; font-weight: normal; }
+        .achieve-text { font-size: 0.98rem; color: #424242; text-align: justify; }
+
+        /* Minimal Footer Layout */
+        footer {
+            margin-top: 80px;
+            padding: 30px 20px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            color: #666;
+            font-size: 0.95rem;
+            background-color: #fafafa;
+        }
+
+        /* Mobile Layout Responsiveness */
+        @media (max-width: 768px) {
+            header { position: relative; flex-direction: column; gap: 10px; }
+            body { padding-top: 0; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+            .achieve-card { flex-direction: column; gap: 15px; padding: 20px; }
+            .achieve-org { flex-direction: column; align-items: flex-start; gap: 5px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo-area">
+            <img src="profile-pic.jpg" alt="Shacin Saha">
+            <h1>Shacin Saha</h1>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="experience.html">Work Experiences</a></li>
+                <li><a href="skills.html">Technical Skills</a></li>
+                <li><a href="portfolio.html">Portfolios</a></li>
+                <li><a href="achievements.html" class="active">Achievements</a></li>
+                <li><a href="#">Volunteering Activities</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="contacts.html">Contacts</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="section-strip">Achievements & Honors</div>
+    
+    <div class="achievements-wrapper">
+        <div class="achievements-container">
+
+            <div class="achieve-card">
+                <div class="achieve-icon">
+                    <i class="fa-solid fa-award"></i>
+                </div>
+                <div class="achieve-details">
+                    <h2 class="achieve-title">PIFI International Summer School Scholarship</h2>
+                    <div class="achieve-org">
+                        <span>Chinese Academy of Sciences (CAS)</span>
+                        <span class="achieve-date">April 2026</span>
+                    </div>
+                    <p class="achieve-text">Selected for the prestigious President's International Fellowship Initiative (PIFI) Summer School program. This highly competitive award provides fully funded research exposure to advanced ecological, remote sensing, and environmental frameworks spearheaded by leading scientific laboratories in Asia.</p>
+                </div>
+            </div>
+
+            <div class="achieve-card">
+                <div class="achieve-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div class="achieve-details">
+                    <h2 class="achieve-title">ICCR Scholarship Finalist Selection</h2>
+                    <div class="achieve-org">
+                        <span>Indian Council for Cultural Relations (ICCR)</span>
+                        <span class="achieve-date">April 2026</span>
+                    </div>
+                    <p class="achieve-text">Nominated and advanced through the rigorous government-sponsored selection process for higher research tracks across premium technology and geoscience institutes in India, recognizing sustained academic brilliance and prospective potential in data-driven environmental management fields.</p>
+                </div>
+            </div>
+
+            <div class="achieve-card">
+                <div class="achieve-icon">
+                    <i class="fa-solid fa-newspaper"></i>
+                </div>
+                <div class="achieve-details">
+                    <h2 class="achieve-title">Early Career International Publication Milestone</h2>
+                    <div class="achieve-org">
+                        <span>International Peer-Reviewed Journals</span>
+                        <span class="achieve-date">2025 - 2026</span>
+                    </div>
+                    <p class="achieve-text">Successfully co-authored and published multiple high-impact research papers indexed in international platforms (including <em>Quaternary Science Advances</em> and the <em>International Journal of River Basin Management</em>) before entering formal post-graduate degrees, showcasing excellence in collaborative geoscience data modeling and remote sensing analytics.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; Shacin Saha 2026</p>
+    </footer>
+
+</body>
+</html>
