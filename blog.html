@@ -145,7 +145,7 @@
             color: #64748b;
             margin-bottom: 20px;
             display: -webkit-box;
-            -webkit-line-clamp: 3; /* Clips description text at 3 lines elegantly */
+            -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
@@ -160,10 +160,59 @@
             align-items: center;
             gap: 5px;
             transition: color 0.2s;
+            margin-bottom: 15px;
         }
 
         .read-more-btn:hover {
             color: #14526d;
+        }
+
+        /* 📊 NEW: Interaction Row Placement at the absolute bottom */
+        .blog-interaction-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #f1f5f9;
+            margin-top: auto;
+        }
+
+        .interaction-left {
+            display: flex;
+            gap: 15px;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.2s, transform 0.1s;
+        }
+
+        .action-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Active colored tracking classes */
+        .action-btn.like-btn:hover, .action-btn.like-btn.active {
+            color: #ef4444; /* Heart turns red */
+        }
+
+        .action-btn.unlike-btn:hover, .action-btn.unlike-btn.active {
+            color: #475569; /* Thumbs down turns slate gray */
+        }
+
+        .views-counter {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
         /* Mobile Responsive adjustments */
@@ -188,7 +237,7 @@
 
     <header>
         <div class="logo-area">
-            <img src="images/profile_circular2.png" alt="Shacin Saha"> <h1>Shacin Saha</h1>
+            <img src="images/profile_circular1.png" alt="Shacin Saha"> <h1>Shacin Saha</h1>
         </div>
         <nav>
             <ul>
@@ -210,28 +259,55 @@
         Research & Insights Blog
     </div>
 
-    <!-- Blog Items Container Grid -->
     <main class="blog-container">
 
-        <!-- Blog Card 1 -->
-        <article class="blog-card">
+        <article class="blog-card" data-blog-id="migration-modeling">
             <img src="images/bu10.jpg" alt="Migration Analysis" class="blog-card-img">
             <div class="blog-card-content">
                 <span class="blog-tag">Climate Change</span>
                 <h2 class="blog-card-title">Modeling Climate-Induced Migration Patterns Using R</h2>
                 <p class="blog-card-description">An analysis of demographic dataset trends tracking environmental displacement metrics. Here we break down how scripting language loops organize complex migration data variables cleanly.</p>
-                <a href="blog-migration-analysis.html" class="read-more-btn">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                
+                <a href="blog-migration-analysis.html" class="read-more-btn" onclick="incrementReadCount('migration-modeling')">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                
+                <div class="blog-interaction-bar">
+                    <div class="interaction-left">
+                        <button class="action-btn like-btn" onclick="toggleLike('migration-modeling')">
+                            <i class="fas fa-heart"></i> <span class="like-count">12</span>
+                        </button>
+                        <button class="action-btn unlike-btn" onclick="toggleUnlike('migration-modeling')">
+                            <i class="fas fa-thumbs-down"></i> <span class="unlike-count">0</span>
+                        </button>
+                    </div>
+                    <div class="views-counter">
+                        <i class="far fa-eye"></i> <span class="read-count">142</span> reads
+                    </div>
+                </div>
             </div>
         </article>
 
-        <!-- Blog Card 2 (Template Placeholder for your next post) -->
-        <article class="blog-card">
+        <article class="blog-card" data-blog-id="gee-intro">
             <img src="images/home_bannar1.jpg" alt="Geospatial Modeling" class="blog-card-img">
             <div class="blog-card-content">
                 <span class="blog-tag">Remote Sensing</span>
                 <h2 class="blog-card-title">Introduction to Google Earth Engine Scripting</h2>
                 <p class="blog-card-description">A complete beginner's walkthrough to managing cloud-based multi-spectral satellite imagery and printing continuous regional pollutant indices without killing your machine.</p>
-                <a href="blog-gee-intro.html" class="read-more-btn">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                
+                <a href="blog-gee-intro.html" class="read-more-btn" onclick="incrementReadCount('gee-intro')">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                
+                <div class="blog-interaction-bar">
+                    <div class="interaction-left">
+                        <button class="action-btn like-btn" onclick="toggleLike('gee-intro')">
+                            <i class="fas fa-heart"></i> <span class="like-count">8</span>
+                        </button>
+                        <button class="action-btn unlike-btn" onclick="toggleUnlike('gee-intro')">
+                            <i class="fas fa-thumbs-down"></i> <span class="unlike-count">0</span>
+                        </button>
+                    </div>
+                    <div class="views-counter">
+                        <i class="far fa-eye"></i> <span class="read-count">95</span> reads
+                    </div>
+                </div>
             </div>
         </article>
 
@@ -241,5 +317,92 @@
         <p>&copy; Shacin Saha 2026</p>
     </footer>
 
+    <script>
+        // Initialize counts on page load based on localStorage states
+        document.addEventListener("DOMContentLoaded", () => {
+            const cards = document.querySelectorAll('.blog-card');
+            cards.forEach(card => {
+                const id = card.getAttribute('data-blog-id');
+                
+                // Fetch saved states or pull baseline HTML values if empty
+                let likes = parseInt(localStorage.getItem(`likes_${id}`)) || parseInt(card.querySelector('.like-count').innerText);
+                let unlikes = parseInt(localStorage.getItem(`unlikes_${id}`)) || parseInt(card.querySelector('.unlike-count').innerText);
+                let reads = parseInt(localStorage.getItem(`reads_${id}`)) || parseInt(card.querySelector('.read-count').innerText);
+                
+                // Write counts to UI
+                card.querySelector('.like-count').innerText = likes;
+                card.querySelector('.unlike-count').innerText = unlikes;
+                card.querySelector('.read-count').innerText = reads;
+                
+                // Toggle active colors if user previously interacted
+                if(localStorage.getItem(`user_liked_${id}`) === 'true') {
+                    card.querySelector('.like-btn').classList.add('active');
+                }
+                if(localStorage.getItem(`user_unliked_${id}`) === 'true') {
+                    card.querySelector('.unlike-btn').classList.add('active');
+                }
+            });
+        });
+
+        // Like Button Functionality
+        function toggleLike(id) {
+            const card = document.querySelector(`[data-blog-id="${id}"]`);
+            const likeBtn = card.querySelector('.like-btn');
+            const likeText = card.querySelector('.like-count');
+            let currentLikes = parseInt(likeText.innerText);
+
+            if (localStorage.getItem(`user_liked_${id}`) === 'true') {
+                // User is un-liking
+                currentLikes--;
+                localStorage.setItem(`user_liked_${id}`, 'false');
+                likeBtn.classList.remove('active');
+            } else {
+                // User is liking
+                currentLikes++;
+                localStorage.setItem(`user_liked_${id}`, 'true');
+                likeBtn.classList.add('active');
+                
+                // Undo unlike if it was active
+                if(localStorage.getItem(`user_unliked_${id}`) === 'true') {
+                    toggleUnlike(id);
+                }
+            }
+            likeText.innerText = currentLikes;
+            localStorage.setItem(`likes_${id}`, currentLikes);
+        }
+
+        // Unlike Button Functionality
+        function toggleUnlike(id) {
+            const card = document.querySelector(`[data-blog-id="${id}"]`);
+            const unlikeBtn = card.querySelector('.unlike-btn');
+            const unlikeText = card.querySelector('.unlike-count');
+            let currentUnlikes = parseInt(unlikeText.innerText);
+
+            if (localStorage.getItem(`user_unliked_${id}`) === 'true') {
+                currentUnlikes--;
+                localStorage.setItem(`user_unliked_${id}`, 'false');
+                unlikeBtn.classList.remove('active');
+            } else {
+                currentUnlikes++;
+                localStorage.setItem(`user_unliked_${id}`, 'true');
+                unlikeBtn.classList.add('active');
+
+                // Undo like if it was active
+                if(localStorage.getItem(`user_liked_${id}`) === 'true') {
+                    toggleLike(id);
+                }
+            }
+            unlikeText.innerText = currentUnlikes;
+            localStorage.setItem(`unlikes_${id}`, currentUnlikes);
+        }
+
+        // Increment reads when clicking "Read Full Article"
+        function incrementReadCount(id) {
+            const card = document.querySelector(`[data-blog-id="${id}"]`);
+            let currentReads = parseInt(card.querySelector('.read-count').innerText);
+            currentReads++;
+            localStorage.setItem(`reads_${id}`, currentReads);
+        }
+    </script>
 </body>
 </html>
