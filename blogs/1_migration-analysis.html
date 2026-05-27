@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modeling Climate Migration | Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        /* Header Match */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-area { display: flex; align-items: center; gap: 10px; }
+        .logo-area img { width: 35px; height: 35px; border-radius: 50%; object-fit: cover; }
+        .logo-area h1 { font-size: 1.2rem; color: #222; }
+        nav ul { display: flex; list-style: none; gap: 15px; }
+        nav ul li a { text-decoration: none; color: #555; font-size: 0.9rem; font-weight: 500; }
+        nav ul li a:hover { color: #1a6b8c; }
+
+        /* Article Wrapper Layout */
+        .article-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #1a6b8c;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .back-link:hover { color: #14526d; }
+
+        .article-header h1 {
+            font-size: 2.3rem;
+            color: #1e293b;
+            line-height: 1.3;
+            margin-bottom: 15px;
+        }
+
+        .article-meta {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 15px;
+        }
+
+        .article-main-img {
+            width: 100%;
+            max-height: 450px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 35px;
+        }
+
+        .article-body p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            color: #334155;
+            text-align: justify;
+        }
+
+        .article-body h3 {
+            font-size: 1.5rem;
+            color: #0f172a;
+            margin: 35px 0 15px 0;
+        }
+
+        .article-body blockquote {
+            border-left: 4px solid #1a6b8c;
+            background-color: #f8fafc;
+            padding: 15px 20px;
+            margin: 30px 0;
+            font-style: italic;
+            color: #475569;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 10px; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+            .article-header h1 { font-size: 1.8rem; }
+        }
+
+        footer {
+            margin-top: 80px;
+            padding: 30px 20px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            color: #666;
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <img src="images/profile_circular1.png" alt="Shacin Saha"> <h1>Shacin Saha</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="experience.html">Work Experiences</a></li>
+                <li><a href="technical_skills.html">Technical Skills</a></li>
+                <li><a href="portfolio.html">Portfolios</a></li>
+                <li><a href="achievements.html">Achievements</a></li>
+                <li><a href="volunteering.html">Volunteering Activities</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="blog.html" style="color: #1a6b8c; font-weight: bold;">Blog</a></li>
+                <li><a href="contacts.html">Contacts</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="article-container">
+        <a href="blog.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+        
+        <header class="article-header">
+            <h1>Modeling Climate-Induced Migration Patterns Using R</h1>
+            <div class="article-meta">
+                <span><i class="far fa-calendar-alt"></i> May 28, 2026</span> &nbsp;|&nbsp; 
+                <span><i class="far fa-folder"></i> Quantitative Research</span>
+            </div>
+        </header>
+
+        <img src="images/bu10.jpg" alt="University Research Collaboration" class="article-main-img">
+
+        <div class="article-body">
+            <p>Environmental fluctuations continue to act as key triggers for shifting population dynamics across lower-lying regional deltas. Processing and isolating the signal of climate pressure points out of generic cross-sectional migration registry databases requires rigid algorithmic pipelines.</p>
+
+            <blockquote>
+                "Isolating pure spatial variables from systemic socio-economic background signals remains a major task when working with unstructured tracking arrays."
+            </blockquote>
+
+            <h3>Data Structure Structuring Inside R Environment</h3>
+            <p>By leveraging custom loop scripting structures within statistical environments, we can cleanse anomalies and structure matrix tables cleanly. This computational method allows for granular trend assessment, rendering continuous distributions of movement vector patterns directly mapping to environmental variations.</p>
+            
+            <p>Through this methodology, large environmental and demographic arrays map out cleanly, enabling researchers to better project high-vulnerability relocation hubs across vulnerable riverine geographies.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; Shacin Saha 2026</p>
+    </footer>
+
+</body>
+</html>
