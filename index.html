@@ -225,18 +225,88 @@
             background-color: #14526d;
         }
 
-        /* Award/Group Image Display */
-        .group-photo-container {
+           
+        /* Dynamic Carousel Container */
+        .carousel-container {
             max-width: 850px;
+            position: relative;
             margin: 0 auto 50px auto;
-            padding: 0 20px;
-        }
-
-        .group-photo {
-            width: 100%;
-            height: auto;
-            display: block;
+            overflow: hidden;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .carousel-slide-wrapper {
+            position: relative;
+            width: 100%;
+            height: 480px; /* Adjust height based on your favorite photo ratio */
+            background-color: #000;
+        }
+        
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            z-index: 1;
+        }
+        
+        .carousel-slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+        
+        /* Captions Overlay */
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+            color: #fff;
+            padding: 15px 20px 35px 20px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-align: center;
+            z-index: 3;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .carousel-slide.active + .carousel-caption {
+            opacity: 1;
+        }
+        
+        /* Dots Indicator Navigation */
+        .carousel-dots {
+            text-align: center;
+            padding: 15px 0;
+            background: #fff;
+        }
+        
+        .dot {
+            cursor: pointer;
+            height: 12px;
+            width: 12px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+        
+        .dot.active, .dot:hover {
+            background-color: #1a6b8c;
+            transform: scale(1.2);
+        }
+        
+        /* Responsive adjust for smaller screens */
+        @media (max-width: 768px) {
+            .carousel-slide-wrapper { height: 300px; }
+            .carousel-caption { font-size: 0.95rem; padding-bottom: 30px; }
         }
 
         /* Footer Info & Map Grid */
@@ -375,12 +445,70 @@
         <a href="my_cv.pdf" class="cv-btn" target="_blank">My CV</a> 
     </div>
 
-    <div class="group-photo-container">
-        <img src="images/bu1.jpg" alt="Prize Giving Ceremony 2024" class="group-photo">
-        <img src="images/bu2.jpg" alt="Prize Giving Ceremony 2025" class="group-photo">
-        <img src="images/bu3.1" alt="Prize Giving Ceremony 2026" class="group-photo">
-        <img src="images/bu3.2" alt="Prize Giving Ceremony 2027" class="group-photo">
+    <div class="carousel-container">
+    <div class="carousel-slide-wrapper">
+        <img src="images/CH1.jpg" alt="Imagen Venture Youth Challenge" class="carousel-slide active">
+        <div class="carousel-caption">Receiving an honorarium and Certificate of appreciation as a GIS and Remote Sensing Instructor (Barishal Division)</div>
+
+        <img src="images/CH2.jpg" alt="Volunteer Award" class="carousel-slide">
+        <div class="carousel-caption">Group photo with the GIS Instruction Team and academic program coordinators.</div>
+
+        <img src="images/CH3.jpg" alt="Best Participants Award" class="carousel-slide">
+        <div class="carousel-caption">Team photo at the Imagen Venture Youth Challenge 2023</div>
+
+        <img src="images/CH4.JPG" alt="Zoom the Earth" class="carousel-slide">
+        <div class="carousel-caption">Delivering a thanksgiving speech on stage on behalf of the winning team</div>
+
+        <img src="images/CH5.jpg" alt="Geo Show" class="carousel-slide">
+        <div class="carousel-caption">Participating in the specialized Mentorship Training Programme organized by UNICEF</div>
+        
+        <img src="images/CH6.jpg" alt="Geo Show" class="carousel-slide">
+        <div class="carousel-caption">Barishal University Science Club (BUSC) executive and organizing team 2023</div>
+
+        <img src="images/CH7.jpg" alt="Geo Show" class="carousel-slide">
+        <div class="carousel-caption">Conducting a hands-on GIS and RS Problem-Solving laboratory session</div>
+
+        <img src="images/CH8.jpg" alt="Geo Show" class="carousel-slide">
+        <div class="carousel-caption"></div>
+        
+        <img src="images/CH8.1jpg" alt="Geo Show" class="carousel-slide">
+        <div class="carousel-caption">Certificate Giving Ceremony of GIS and RS Training course</div>
+
+        <img src="images/CH9.jpg" alt="Geo Show" class="carousel-slide">
+        <div class="carousel-caption"></div>
+
+        <img src="images/CH10.1.jpg" alt="Geo Show" class="carousel-slide">
+        <div class="carousel-caption">With project researchers from the University of Colorado Boulder on climate-induced migration data modeling using R</div>
+
+        <img src="images/CH10.jpg" alt="Geo Show" class="carousel-slide">
+        <div class="carousel-caption"></div>
+
+        
+        <img src="images/CH11.jpg" alt="Geo Show" class="carousel-slide">
+        <div class="carousel-caption">A memorable moment alongside honorable professors of our department</div>
+
+        <img src="images/CH12.jpg" alt="Geo Show" class="carousel-slide">
+        <div class="carousel-caption">The GeoAvengers team</div>
+
+        <img src="images/CH13.jpg" alt="Geo Show" class="carousel-slide">
+        <div class="carousel-caption">Barishal University Science Club (BUSC) executive and organizing team 2024</div>
+
+        <img src="images/CH14.jpg" alt="Geo Show" class="carousel-slide">
+        <div class="carousel-caption">With the program trainersat the Generation Unlimited Imagen Venture workshop</div>
+
+        <img src="images/CH15.jpg" alt="Geo Show" class="carousel-slide">
+        <div class="carousel-caption">Volunteering at Geo Show Event - 2023</div>
     </div>
+
+    <div class="carousel-dots">
+        <span class="dot active" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+    </div>
+    </div>
+    
 
     <section class="footer-grid">
         <div class="map-container">
@@ -391,5 +519,47 @@
     <footer>
         <p>&copy; Shacin Saha 2026</p>
     </footer>
+
+
+    <script>
+        let slideIndex = 0;
+        let slideTimer;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const captions = document.querySelectorAll('.carousel-caption');
+        const dots = document.querySelectorAll('.dot');
+
+        // Main function to update visibility states
+        function showSlides(index) {
+            if (index >= slides.length) { slideIndex = 0; }
+            else if (index < 0) { slideIndex = slides.length - 1; }
+            else { slideIndex = index; }
+
+            // Clear active tags on assets
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            // Set new active state
+            slides[slideIndex].classList.add('active');
+            dots[slideIndex].classList.add('active');
+        }
+
+        // Automatic transition logic loop
+        function startTimer() {
+            clearInterval(slideTimer);
+            slideTimer = setInterval(() => {
+                slideIndex++;
+                showSlides(slideIndex);
+            }, 4000); // Transitions automatically every 4000ms (4 seconds)
+        }
+
+        // Manual override navigation dot controls
+        function currentSlide(index) {
+            showSlides(index);
+            startTimer(); // Restarting interval timer prevents immediate jumping
+        }
+
+        // Initialize script loop execution
+        startTimer();
+    </script>
 </body>
 </html>
