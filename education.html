@@ -73,9 +73,43 @@
         /* Alternating layout for rows */
         .edu-row:nth-child(even) { flex-direction: row-reverse; }
 
-        /* Left/Right Column: Image Area */
-        .edu-media { flex: 0 0 45%; max-width: 480px; }
-        .edu-image { width: 100%; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); display: block; object-fit: cover; height: 300px; }
+        /* Left/Right Column: Carousel Container Area */
+        .edu-media { 
+            flex: 0 0 45%; 
+            max-width: 480px; 
+            width: 100%;
+        }
+
+        /* Carousel Slideshow Wrapper */
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            /* Soft razor-thin outline for your technical graphics layout */
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        /* Carousel Images Configuration */
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out; /* Smooth transition effect */
+            z-index: 1;
+        }
+
+        /* Active slide visibility state */
+        .carousel-slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
         
         /* Right/Left Column: Text Content Area */
         .edu-content { flex: 1; }
@@ -109,7 +143,7 @@
             nav ul { flex-wrap: wrap; justify-content: center; }
             .edu-row, .edu-row:nth-child(even) { flex-direction: column; gap: 25px; text-align: center; }
             .edu-media { max-width: 100%; width: 100%; }
-            .edu-image { height: 220px; }
+            .carousel-wrapper { height: 220px; }
             .edu-title { font-size: 1.7rem; }
             .edu-meta { justify-content: center; }
             .edu-description ul { text-align: left; }
@@ -147,7 +181,24 @@
                 <div class="level-banner">Undergraduate Level</div>
                 <div class="edu-row">
                     <div class="edu-media">
-                        <img src="university-of-barishal.jpg" alt="University of Barishal Campus" class="edu-image">
+                        <div class="carousel-wrapper" data-interval="4000">
+                            <img src="images/bu1.jpg" alt="University of Barishal Campus" class="carousel-slide active">
+                            <img src="images/bu2.jpg" alt="University of Barishal Campus" class="carousel-slide">
+                            <img src="images/2.1.jpg" alt="University of Barishal Campus" class="carousel-slide">
+                            <img src="images/bu3.jpg" alt="University of Barishal Campus" class="carousel-slide">
+                            <img src="images/bu3.1.jpg" alt="University of Barishal Campus" class="carousel-slide">
+                            <img src="images/bu3.2.jpg" alt="University of Barishal Campus" class="carousel-slide">
+                            <img src="images/bu4.jpg" alt="University of Barishal Campus" class="carousel-slide">
+                            <img src="images/bu5.jpg" alt="University of Barishal Campus" class="carousel-slide">
+                            <img src="images/bu5.5.jpg" alt="University of Barishal Campus" class="carousel-slide">
+                            <img src="images/bu6.jpg" alt="University of Barishal Campus" class="carousel-slide">
+                            <img src="images/bu7.jpg" alt="University of Barishal Campus" class="carousel-slide">
+                            <img src="images/bu8.jpg" alt="University of Barishal Campus" class="carousel-slide">
+                            <img src="images/bu9.jpg" alt="University of Barishal Campus" class="carousel-slide">
+                            <img src="images/bu10.jpg" alt="University of Barishal Campus" class="carousel-slide">
+                            <img src="images/11.jpg" alt="University of Barishal Campus" class="carousel-slide">
+                            
+                        </div>
                     </div>
                     <div class="edu-content">
                         <h1 class="edu-title">University of Barishal</h1>
@@ -174,7 +225,10 @@
                 <div class="level-banner">Higher Secondary Level</div>
                 <div class="edu-row">
                     <div class="edu-media">
-                        <img src="lakshmipur-college.jpg" alt="Lakshmipur Government College" class="edu-image">
+                        <div class="carousel-wrapper" data-interval="4500">
+                            <img src="lakshmipur-college.jpg" alt="Lakshmipur Government College 1" class="carousel-slide active">
+                            <img src="lakshmipur-college-2.jpg" alt="Lakshmipur Government College 2" class="carousel-slide">
+                        </div>
                     </div>
                     <div class="edu-content">
                         <h1 class="edu-title">Lakshmipur Government College</h1>
@@ -197,7 +251,10 @@
                 <div class="level-banner">Secondary Level</div>
                 <div class="edu-row">
                     <div class="edu-media">
-                        <img src="hossainpur-school.jpg" alt="Hossainpur High School" class="edu-image">
+                        <div class="carousel-wrapper" data-interval="5000">
+                            <img src="hossainpur-school.jpg" alt="Hossainpur High School 1" class="carousel-slide active">
+                            <img src="hossainpur-school-2.jpg" alt="Hossainpur High School 2" class="carousel-slide">
+                        </div>
                     </div>
                     <div class="edu-content">
                         <h1 class="edu-title">Hossainpur High School</h1>
@@ -222,6 +279,32 @@
     <footer>
         <p>&copy; Shacin Saha 2026</p>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const carousels = document.querySelectorAll('.carousel-wrapper');
+            
+            carousels.forEach(carousel => {
+                const slides = carousel.querySelectorAll('.carousel-slide');
+                const intervalTime = parseInt(carousel.getAttribute('data-interval')) || 4000;
+                let currentIdx = 0;
+
+                // Exit early if the wrapper doesn't have multiple images
+                if (slides.length <= 1) return;
+
+                setInterval(() => {
+                    // Remove current focus active tags
+                    slides[currentIdx].classList.remove('active');
+                    
+                    // Progress to the sequential index array item loop
+                    currentIdx = (currentIdx + 1) % slides.length;
+                    
+                    // Apply display layout visibility rules
+                    slides[currentIdx].classList.add('active');
+                }, intervalTime);
+            });
+        });
+    </script>
 
 </body>
 </html>
