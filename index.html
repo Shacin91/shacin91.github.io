@@ -279,6 +279,16 @@
             .hero-text p { font-size: 1.5rem; margin-top: 10px; }
             .footer-grid { grid-template-columns: 1fr; }
         }
+        .profile-img-oval {
+    width: 220px;
+    height: 280px; /* Increased height to create a clean vertical oval shape */
+    border-radius: 50% / 40%; /* Custom percentage creates a smooth oval curve */
+    border: 3px solid #222;
+    object-fit: cover;
+    object-position: center top; /* Keeps focus on your face so the top of your head isn't cut */
+    margin-bottom: 30px;
+    display: inline-block;
+        }
         
         /* Minimal Footer layout */
         footer {
@@ -296,7 +306,7 @@
 
     <header>
         <div class="logo-area">
-            <img src="images/profile_circular1.png" alt="Shacin Saha"> <h1>Shacin Saha</h1>
+            <img src="images/profile_circular2.png" alt="Shacin Saha"> <h1>Shacin Saha</h1>
         </div>
         <nav>
             <ul>
@@ -334,7 +344,7 @@
     </div>
   
     <section class="about-section">
-        <img src="images/profile_circular1.png" alt="Shacin Saha" class="profile-img-circle"> 
+        <img src="images/profile_circular1.png" alt="Shacin Saha" class="profile-img-oval""> 
         <div class="about-text">
             <p><strong>Welcome to my website!</strong></p>
             
