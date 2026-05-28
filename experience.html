@@ -80,9 +80,33 @@
         .experience-container { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 50px; }
         .exp-row { display: flex; flex-direction: row; align-items: flex-start; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid #e0e0e0; }
         
-        /* Left Column: Image Area */
+        /* 📸 Feature 1 Redesign: Multi-Image Showcase Matrix Banner Layout */
         .exp-media { flex: 0 0 40%; max-width: 440px; }
-        .exp-image { width: 100%; height: auto; border-radius: 4px; display: block; border: 1px solid #e0e0e0; }
+        .exp-collage {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 8px;
+            width: 100%;
+        }
+        .collage-main {
+            width: 100%;
+            height: 236px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+        }
+        .collage-thumbs {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .collage-thumb {
+            width: 100%;
+            height: 114px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+        }
         
         /* Right Column: Text Content Area */
         .exp-content { flex: 1; position: relative; padding-top: 5px; }
@@ -102,16 +126,104 @@
         .links-section a { color: #1a6b8c; text-decoration: none; }
         .links-section a:hover { text-decoration: underline; }
 
-        /* Footer Info & Map Grid */
-        .footer-grid { max-width: 1000px; margin: 60px auto 0 auto; padding: 40px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; border-top: 1px solid #ddd; }
-        .links-list h3 { font-size: 1.3rem; margin-bottom: 15px; color: #111; }
-        .links-list ul { list-style: none; }
-        .links-list ul li { margin-bottom: 12px; }
-        .links-list ul li a { text-decoration: none; color: #1a6b8c; font-weight: 500; font-size: 1.05rem; }
-        .links-list ul li a:hover { text-decoration: underline; }
-        .links-list ul ul { margin-left: 20px; margin-top: 5px; list-style: decimal; }
-        .links-list ul ul li { margin-bottom: 5px; }
-        .map-container iframe { width: 100%; height: 280px; border: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        /* 🎠 Feature 2: High Performance Interactive Image Carousel */
+        .carousel-section {
+            max-width: 1100px;
+            margin: 60px auto 0 auto;
+            padding: 0 20px;
+        }
+        .carousel-title {
+            font-size: 1.5rem;
+            color: #1a6b8c;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid #1a6b8c;
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+        .carousel-viewport {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        .carousel-track {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            color: #fff;
+            padding: 25px 20px;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        .carousel-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.85);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a6b8c;
+            font-size: 1.2rem;
+            z-index: 10;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            transition: background 0.2s, color 0.2s;
+        }
+        .carousel-nav-btn:hover {
+            background: #1a6b8c;
+            color: #fff;
+        }
+        .carousel-prev { left: 15px; }
+        .carousel-next { right: 15px; }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #cbd5e1;
+            cursor: pointer;
+            border: none;
+            transition: background 0.2s;
+        }
+        .carousel-dot.active {
+            background: #1a6b8c;
+            width: 24px;
+            border-radius: 10px;
+        }
 
         /* Mobile Responsive adjustments */
         @media (max-width: 768px) {
@@ -121,13 +233,19 @@
             .filter-menu { top: 0; }
             .exp-row { flex-direction: column; gap: 20px; }
             .exp-media { flex: 1 1 100%; max-width: 100%; }
+            .exp-collage { grid-template-columns: 1fr; }
+            .collage-thumbs { flex-direction: row; }
+            .collage-main { height: 200px; }
+            .collage-thumb { height: 90px; }
             .exp-title { padding-right: 0; font-size: 1.4rem; }
             .exp-date { position: static; display: inline-block; margin-bottom: 15px; }
-            .footer-grid { grid-template-columns: 1fr; }
+            .carousel-viewport { height: 260px; }
+            .carousel-caption { font-size: 0.95rem; padding: 15px; }
         }
+
         /* Minimal Footer layout */
         footer {
-            margin-top: 80px;
+            margin-top: 60px;
             padding: 30px 20px;
             border-top: 1px solid #e0e0e0;
             text-align: center;
@@ -173,9 +291,16 @@
     <div class="experience-wrapper">
         <div id="experience-container" class="experience-container">
             
+            <!-- Experience Row 1 -->
             <div class="exp-row instructor" data-timestamp="202410">
                 <div class="exp-media">
-                    <img src="images/GIS_course_bannar.jpg" alt="GIS Basic Course Flyer" class="exp-image">
+                    <div class="exp-collage">
+                        <img src="images/GIS_course_bannar.jpg" alt="GIS Course Banner" class="collage-main">
+                        <div class="collage-thumbs">
+                            <img src="https://via.placeholder.com/150x114?text=Class+Session" alt="Live Class Session" class="collage-thumb">
+                            <img src="https://via.placeholder.com/150x114?text=Lab+Work" alt="Practical Assessment" class="collage-thumb">
+                        </div>
+                    </div>
                 </div>
                 <div class="exp-content">
                     <div class="exp-date">Oct, 2024</div>
@@ -194,9 +319,16 @@
                 </div>
             </div>
 
+            <!-- Experience Row 2 -->
             <div class="exp-row assistant" data-timestamp="202401">
                 <div class="exp-media">
-                    <img src="images/CH8.jpg" alt="Teaching Assistant Session" class="exp-image">
+                    <div class="exp-collage">
+                        <img src="images/CH8.jpg" alt="Teaching Assistant Session" class="collage-main">
+                        <div class="collage-thumbs">
+                            <img src="https://via.placeholder.com/150x114?text=Remote+Lab" alt="Lab Session" class="collage-thumb">
+                            <img src="https://via.placeholder.com/150x114?text=Evaluation" alt="Grading Track" class="collage-thumb">
+                        </div>
+                    </div>
                 </div>
                 <div class="exp-content">
                     <div class="exp-date">Jan, 2024</div>
@@ -213,9 +345,16 @@
                 </div>
             </div>
 
+            <!-- Experience Row 3 -->
             <div class="exp-row survey" data-timestamp="202311">
                 <div class="exp-media">
-                    <img src="https://via.placeholder.com/440x280" alt="Barguna Field Survey" class="exp-image">
+                    <div class="exp-collage">
+                        <img src="https://via.placeholder.com/440x280?text=Household+Surveys" alt="Barguna Field Survey" class="collage-main">
+                        <div class="collage-thumbs">
+                            <img src="https://via.placeholder.com/150x114?text=Salinity+Test" alt="Water Assessment" class="collage-thumb">
+                            <img src="https://via.placeholder.com/150x114?text=Team+Map" alt="Survey Mapping" class="collage-thumb">
+                        </div>
+                    </div>
                 </div>
                 <div class="exp-content">
                     <div class="exp-date">Nov, 2023</div>
@@ -227,11 +366,16 @@
                 </div>
             </div>
 
-           
-
+            <!-- Experience Row 4 -->
             <div class="exp-row research" data-timestamp="202303">
                 <div class="exp-media">
-                    <img src="https://via.placeholder.com/440x280" alt="Drought Assessment Certificate" class="exp-image">
+                    <div class="exp-collage">
+                        <img src="https://via.placeholder.com/440x280?text=Barind+Tract+Vegetation" alt="Drought Assessment" class="collage-main">
+                        <div class="collage-thumbs">
+                            <img src="https://via.placeholder.com/150x114?text=NDVI+Index" alt="NDVI Metric Data" class="collage-thumb">
+                            <img src="https://via.placeholder.com/150x114?text=VHI+Model" alt="Vegetation Health Map" class="collage-thumb">
+                        </div>
+                    </div>
                 </div>
                 <div class="exp-content">
                     <div class="exp-date">Mar, 2023</div>
@@ -241,9 +385,16 @@
                 </div>
             </div>
 
+            <!-- Experience Row 5 -->
             <div class="exp-row research" data-timestamp="202302">
                 <div class="exp-media">
-                    <img src="https://via.placeholder.com/440x280" alt="Cyclone Assessment Certificate" class="exp-image">
+                    <div class="exp-collage">
+                        <img src="https://via.placeholder.com/440x280?text=Cyclone+Vulnerability+Map" alt="Cyclone Assessment" class="collage-main">
+                        <div class="collage-thumbs">
+                            <img src="https://via.placeholder.com/150x114?text=ArcGIS+Clean" alt="ArcGIS Processing" class="collage-thumb">
+                            <img src="https://via.placeholder.com/150x114?text=Data+Sheets" alt="Excel Processing" class="collage-thumb">
+                        </div>
+                    </div>
                 </div>
                 <div class="exp-content">
                     <div class="exp-date">Mar, 2022 - Apr, 2023</div>
@@ -252,9 +403,16 @@
                 </div>
             </div>
 
+            <!-- Experience Row 6 -->
             <div class="exp-row fieldwork" data-timestamp="202301">
                 <div class="exp-media">
-                    <img src="https://via.placeholder.com/440x280" alt="Groundwater Sampling Fieldwork" class="exp-image">
+                    <div class="exp-collage">
+                        <img src="https://via.placeholder.com/440x280?text=Water+Well+Sampling" alt="Groundwater Sampling" class="collage-main">
+                        <div class="collage-thumbs">
+                            <img src="https://via.placeholder.com/150x114?text=Deep+Tubewell" alt="Tubewell Sampling Site" class="collage-thumb">
+                            <img src="https://via.placeholder.com/150x114?text=Lab+Titration" alt="Salinity Lab Tests" class="collage-thumb">
+                        </div>
+                    </div>
                 </div>
                 <div class="exp-content">
                     <div class="exp-date">Jan, 2023</div>
@@ -263,9 +421,16 @@
                 </div>
             </div>
 
+            <!-- Experience Row 7 -->
             <div class="exp-row fieldwork" data-timestamp="202300">
                 <div class="exp-media">
-                    <img src="https://via.placeholder.com/440x280" alt="Kaptai Field Work Group" class="exp-image">
+                    <div class="exp-collage">
+                        <img src="https://via.placeholder.com/440x280?text=Kaptai+Stratigraphy" alt="Kaptai Field Work Group" class="collage-main">
+                        <div class="collage-thumbs">
+                            <img src="https://via.placeholder.com/150x114?text=Road+Cut" alt="Road Cut Section" class="collage-thumb">
+                            <img src="https://via.placeholder.com/150x114?text=Faculty" alt="Field Mentors" class="collage-thumb">
+                        </div>
+                    </div>
                 </div>
                 <div class="exp-content">
                     <div class="exp-date">Jan 27 - Feb 1, 2023</div>
@@ -277,9 +442,16 @@
                 </div>
             </div>
 
+            <!-- Experience Row 8 -->
             <div class="exp-row research" data-timestamp="202212">
                 <div class="exp-media">
-                    <img src="https://via.placeholder.com/440x280" alt="Sugandha River Map Study" class="exp-image">
+                    <div class="exp-collage">
+                        <img src="https://via.placeholder.com/440x280?text=Sugandha+River+Study" alt="Sugandha River Map Study" class="collage-main">
+                        <div class="collage-thumbs">
+                            <img src="https://via.placeholder.com/150x114?text=Geomorphic" alt="Geomorphic Analysis" class="collage-thumb">
+                            <img src="https://via.placeholder.com/150x114?text=Socio-Eco" alt="Socio-Economic Data" class="collage-thumb">
+                        </div>
+                    </div>
                 </div>
                 <div class="exp-content">
                     <div class="exp-date">Dec, 2022</div>
@@ -288,9 +460,16 @@
                 </div>
             </div>
 
+            <!-- Experience Row 9 -->
             <div class="exp-row fieldwork" data-timestamp="202203">
                 <div class="exp-media">
-                    <img src="https://via.placeholder.com/440x280" alt="Sitakund Anticline Ridge" class="exp-image">
+                    <div class="exp-collage">
+                        <img src="https://via.placeholder.com/440x280?text=Sitakund+Anticline" alt="Sitakund Anticline Ridge" class="collage-main">
+                        <div class="collage-thumbs">
+                            <img src="https://via.placeholder.com/150x114?text=Chittagong+Dip" alt="Structural Measurement" class="collage-thumb">
+                            <img src="https://via.placeholder.com/150x114?text=Outcrop" alt="Outcrop Outlines" class="collage-thumb">
+                        </div>
+                    </div>
                 </div>
                 <div class="exp-content">
                     <div class="exp-date">7 Days, 2022</div>
@@ -305,12 +484,46 @@
         </div>
     </div>
 
-    
+    <!-- 🎠 Feature 2: Synced Home Page Layout Slider Carousel Component -->
+    <section class="carousel-section">
+        <h2 class="carousel-title">Fieldwork & Gallery Highlights</h2>
+        <div class="carousel-viewport" onmouseenter="pauseCarousel()" onmouseleave="resumeCarousel()">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-slide">
+                    <img src="images/home_bannar1.jpg" alt="Field Collection Core Setup">
+                    <div class="carousel-caption">Fieldwork Equipment & Geospatial Mapping Calibration Setup</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/bu10.jpg" alt="Academic Collaboration Forum">
+                    <div class="carousel-caption">Research Panel Analysis and Academic Presentation Sessions</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/GIS_course_bannar.jpg" alt="GIS Workshop Class">
+                    <div class="carousel-caption">Instructional Training for Basic GIS and Remote Sensing Pipelines</div>
+                </div>
+            </div>
+            
+            <button class="carousel-nav-btn carousel-prev" onclick="moveCarousel(-1)"><i class="fas fa-chevron-left"></i></button>
+            <button class="carousel-nav-btn carousel-next" onclick="moveCarousel(1)"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        
+        <div class="carousel-dots" id="carouselDots">
+            <button class="carousel-dot active" onclick="jumpToSlide(0)"></button>
+            <button class="carousel-dot" onclick="jumpToSlide(1)"></button>
+            <button class="carousel-dot" onclick="jumpToSlide(2)"></button>
+        </div>
+    </section>
 
+    <footer>
+        <p>&copy; Shacin Saha 2026</p>
+    </footer>
+
+    <!-- Interactive Filter & Slider Logical Operations Scripts -->
     <script>
         const container = document.getElementById("experience-container");
         const allRows = Array.from(container.getElementsByClassName("exp-row"));
 
+        // 🏷️ Filter Processing Pipeline
         function filterExperience(category, event) {
             var buttons = document.getElementsByClassName("filter-btn");
             
@@ -341,13 +554,43 @@
             });
         }
 
+        // 🎠 Slider Control Engine
+        let currentSlideIndex = 0;
+        const track = document.getElementById('carouselTrack');
+        const dots = document.getElementById('carouselDots').children;
+        const totalSlides = track.children.length;
+        let automaticSliderTimer = setInterval(() => moveCarousel(1), 4000);
+
+        function updateCarouselDisplay() {
+            track.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove('active');
+            }
+            dots[currentSlideIndex].classList.add('active');
+        }
+
+        function moveCarousel(direction) {
+            currentSlideIndex = (currentSlideIndex + direction + totalSlides) % totalSlides;
+            updateCarouselDisplay();
+        }
+
+        function jumpToSlide(index) {
+            currentSlideIndex = index;
+            updateCarouselDisplay();
+        }
+
+        function pauseCarousel() {
+            clearInterval(automaticSliderTimer);
+        }
+
+        function resumeCarousel() {
+            automaticSliderTimer = setInterval(() => moveCarousel(1), 4000);
+        }
+
         // Run automatically when page opens to order items chronological by default
         window.onload = function() {
             filterExperience('all', null);
         };
     </script>
-    <footer>
-        <p>&copy; Shacin Saha 2026</p>
-    </footer>
 </body>
 </html>
