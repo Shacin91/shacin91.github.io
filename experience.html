@@ -80,37 +80,39 @@
         .experience-container { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 50px; }
         .exp-row { display: flex; flex-direction: row; align-items: flex-start; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid #e0e0e0; }
         
-        /* 📸 Feature 1 Redesign: Multi-Image Showcase Matrix Banner Layout */
-        .exp-media { flex: 0 0 40%; max-width: 440px; }
-        .exp-collage {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 8px;
+        /* 🎠 Left Column: Embedded Row Carousels (Education Page Style) */
+        .exp-media { 
+            flex: 0 0 42%; 
+            max-width: 460px; 
             width: 100%;
         }
-        .collage-main {
+        .carousel-wrapper {
+            position: relative;
             width: 100%;
-            height: 236px;
-            object-fit: cover;
+            height: 280px;
+            overflow: hidden;
             border-radius: 4px;
-            border: 1px solid #e0e0e0;
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0,0,0,0.08);
         }
-        .collage-thumbs {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .collage-thumb {
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 114px;
+            height: 100%;
             object-fit: cover;
-            border-radius: 4px;
-            border: 1px solid #e0e0e0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            z-index: 1;
+        }
+        .carousel-slide.active {
+            opacity: 1;
+            z-index: 2;
         }
         
         /* Right Column: Text Content Area */
         .exp-content { flex: 1; position: relative; padding-top: 5px; }
-        .exp-title { font-size: 1.6rem; font-weight: bold; color: #1a6b8c; line-height: 1.3; margin-bottom: 20px; padding-right: 180px; }
+        .exp-title { font-size: 1.5rem; font-weight: bold; color: #1a6b8c; line-height: 1.3; margin-bottom: 15px; padding-right: 180px; }
         .exp-text { font-size: 0.95rem; color: #424242; margin-bottom: 15px; text-align: justify; }
         
         /* Upper Right Corner Date Badge */
@@ -126,14 +128,14 @@
         .links-section a { color: #1a6b8c; text-decoration: none; }
         .links-section a:hover { text-decoration: underline; }
 
-        /* 🎠 Feature 2: High Performance Interactive Image Carousel */
-        .carousel-section {
+        /* 🎠 Bottom Footer Image Carousel Block */
+        .gallery-carousel-section {
             max-width: 1100px;
             margin: 60px auto 0 auto;
             padding: 0 20px;
         }
-        .carousel-title {
-            font-size: 1.5rem;
+        .gallery-carousel-title {
+            font-size: 1.4rem;
             color: #1a6b8c;
             font-weight: bold;
             margin-bottom: 20px;
@@ -143,7 +145,7 @@
             padding-bottom: 8px;
             display: inline-block;
         }
-        .carousel-viewport {
+        .gallery-viewport {
             position: relative;
             width: 100%;
             height: 400px;
@@ -151,23 +153,23 @@
             border-radius: 6px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
-        .carousel-track {
+        .gallery-track {
             display: flex;
             width: 100%;
             height: 100%;
             transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
-        .carousel-slide {
+        .gallery-slide {
             min-width: 100%;
             height: 100%;
             position: relative;
         }
-        .carousel-slide img {
+        .gallery-slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        .carousel-caption {
+        .gallery-caption {
             position: absolute;
             bottom: 0;
             left: 0;
@@ -178,7 +180,7 @@
             font-size: 1.1rem;
             font-weight: 500;
         }
-        .carousel-nav-btn {
+        .gallery-nav-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
@@ -197,20 +199,17 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.15);
             transition: background 0.2s, color 0.2s;
         }
-        .carousel-nav-btn:hover {
-            background: #1a6b8c;
-            color: #fff;
-        }
-        .carousel-prev { left: 15px; }
-        .carousel-next { right: 15px; }
+        .gallery-nav-btn:hover { background: #1a6b8c; color: #fff; }
+        .gallery-prev { left: 15px; }
+        .gallery-next { right: 15px; }
 
-        .carousel-dots {
+        .gallery-dots {
             display: flex;
             justify-content: center;
             gap: 8px;
             margin-top: 15px;
         }
-        .carousel-dot {
+        .gallery-dot {
             width: 10px;
             height: 10px;
             border-radius: 50%;
@@ -219,10 +218,10 @@
             border: none;
             transition: background 0.2s;
         }
-        .carousel-dot.active {
-            background: #1a6b8c;
+        .gallery-dot.active {
             width: 24px;
             border-radius: 10px;
+            background: #1a6b8c;
         }
 
         /* Mobile Responsive adjustments */
@@ -231,19 +230,15 @@
             body { padding-top: 0; }
             nav ul { flex-wrap: wrap; justify-content: center; }
             .filter-menu { top: 0; }
-            .exp-row { flex-direction: column; gap: 20px; }
-            .exp-media { flex: 1 1 100%; max-width: 100%; }
-            .exp-collage { grid-template-columns: 1fr; }
-            .collage-thumbs { flex-direction: row; }
-            .collage-main { height: 200px; }
-            .collage-thumb { height: 90px; }
+            .exp-row { flex-direction: column; gap: 25px; }
+            .exp-media { max-width: 100%; }
+            .carousel-wrapper { height: 220px; }
             .exp-title { padding-right: 0; font-size: 1.4rem; }
             .exp-date { position: static; display: inline-block; margin-bottom: 15px; }
-            .carousel-viewport { height: 260px; }
-            .carousel-caption { font-size: 0.95rem; padding: 15px; }
+            .gallery-viewport { height: 260px; }
+            .gallery-caption { font-size: 0.95rem; padding: 15px; }
         }
 
-        /* Minimal Footer layout */
         footer {
             margin-top: 60px;
             padding: 30px 20px;
@@ -294,12 +289,10 @@
             <!-- Experience Row 1 -->
             <div class="exp-row instructor" data-timestamp="202410">
                 <div class="exp-media">
-                    <div class="exp-collage">
-                        <img src="images/GIS_course_bannar.jpg" alt="GIS Course Banner" class="collage-main">
-                        <div class="collage-thumbs">
-                            <img src="https://via.placeholder.com/150x114?text=Class+Session" alt="Live Class Session" class="collage-thumb">
-                            <img src="https://via.placeholder.com/150x114?text=Lab+Work" alt="Practical Assessment" class="collage-thumb">
-                        </div>
+                    <div class="carousel-wrapper" data-interval="4000">
+                        <img src="images/GIS_course_bannar.jpg" alt="GIS Course Banner" class="carousel-slide active">
+                        <img src="https://via.placeholder.com/460x280?text=Live+Class+Session" alt="Live Class Session" class="carousel-slide">
+                        <img src="https://via.placeholder.com/460x280?text=Practical+Lab+Assessment" alt="Practical Assessment" class="carousel-slide">
                     </div>
                 </div>
                 <div class="exp-content">
@@ -322,12 +315,10 @@
             <!-- Experience Row 2 -->
             <div class="exp-row assistant" data-timestamp="202401">
                 <div class="exp-media">
-                    <div class="exp-collage">
-                        <img src="images/CH8.jpg" alt="Teaching Assistant Session" class="collage-main">
-                        <div class="collage-thumbs">
-                            <img src="https://via.placeholder.com/150x114?text=Remote+Lab" alt="Lab Session" class="collage-thumb">
-                            <img src="https://via.placeholder.com/150x114?text=Evaluation" alt="Grading Track" class="collage-thumb">
-                        </div>
+                    <div class="carousel-wrapper" data-interval="4200">
+                        <img src="images/CH8.jpg" alt="Teaching Assistant Session" class="carousel-slide active">
+                        <img src="https://via.placeholder.com/460x280?text=Remote+Lab+Workshops" alt="Lab Session" class="carousel-slide">
+                        <img src="https://via.placeholder.com/460x280?text=Assignment+Evaluation" alt="Grading Track" class="carousel-slide">
                     </div>
                 </div>
                 <div class="exp-content">
@@ -348,12 +339,10 @@
             <!-- Experience Row 3 -->
             <div class="exp-row survey" data-timestamp="202311">
                 <div class="exp-media">
-                    <div class="exp-collage">
-                        <img src="https://via.placeholder.com/440x280?text=Household+Surveys" alt="Barguna Field Survey" class="collage-main">
-                        <div class="collage-thumbs">
-                            <img src="https://via.placeholder.com/150x114?text=Salinity+Test" alt="Water Assessment" class="collage-thumb">
-                            <img src="https://via.placeholder.com/150x114?text=Team+Map" alt="Survey Mapping" class="collage-thumb">
-                        </div>
+                    <div class="carousel-wrapper" data-interval="4500">
+                        <img src="https://via.placeholder.com/460x280?text=Barguna+Household+Surveys" alt="Barguna Field Survey" class="carousel-slide active">
+                        <img src="https://via.placeholder.com/460x280?text=Water+Salinity+Field+Testing" alt="Water Assessment" class="carousel-slide">
+                        <img src="https://via.placeholder.com/460x280?text=Volunteer+Survey+Mapping" alt="Survey Mapping" class="carousel-slide">
                     </div>
                 </div>
                 <div class="exp-content">
@@ -369,12 +358,10 @@
             <!-- Experience Row 4 -->
             <div class="exp-row research" data-timestamp="202303">
                 <div class="exp-media">
-                    <div class="exp-collage">
-                        <img src="https://via.placeholder.com/440x280?text=Barind+Tract+Vegetation" alt="Drought Assessment" class="collage-main">
-                        <div class="collage-thumbs">
-                            <img src="https://via.placeholder.com/150x114?text=NDVI+Index" alt="NDVI Metric Data" class="collage-thumb">
-                            <img src="https://via.placeholder.com/150x114?text=VHI+Model" alt="Vegetation Health Map" class="collage-thumb">
-                        </div>
+                    <div class="carousel-wrapper" data-interval="4300">
+                        <img src="https://via.placeholder.com/460x280?text=Barind+Tract+Agricultural+Drought" alt="Drought Assessment" class="carousel-slide active">
+                        <img src="https://via.placeholder.com/460x280?text=NDVI+Drought+Index+Matrix" alt="NDVI Metric Data" class="carousel-slide">
+                        <img src="https://via.placeholder.com/460x280?text=Vegetation+Health+Index+Mapping" alt="Vegetation Health Map" class="carousel-slide">
                     </div>
                 </div>
                 <div class="exp-content">
@@ -388,12 +375,10 @@
             <!-- Experience Row 5 -->
             <div class="exp-row research" data-timestamp="202302">
                 <div class="exp-media">
-                    <div class="exp-collage">
-                        <img src="https://via.placeholder.com/440x280?text=Cyclone+Vulnerability+Map" alt="Cyclone Assessment" class="collage-main">
-                        <div class="collage-thumbs">
-                            <img src="https://via.placeholder.com/150x114?text=ArcGIS+Clean" alt="ArcGIS Processing" class="collage-thumb">
-                            <img src="https://via.placeholder.com/150x114?text=Data+Sheets" alt="Excel Processing" class="collage-thumb">
-                        </div>
+                    <div class="carousel-wrapper" data-interval="4600">
+                        <img src="https://via.placeholder.com/460x280?text=Cyclone+Vulnerability+Risk+Map" alt="Cyclone Assessment" class="carousel-slide active">
+                        <img src="https://via.placeholder.com/460x280?text=ArcGIS+Coastal+Data+Processing" alt="ArcGIS Processing" class="carousel-slide">
+                        <img src="https://via.placeholder.com/460x280?text=Statistical+Data+Analysis+Sheets" alt="Excel Processing" class="carousel-slide">
                     </div>
                 </div>
                 <div class="exp-content">
@@ -406,12 +391,10 @@
             <!-- Experience Row 6 -->
             <div class="exp-row fieldwork" data-timestamp="202301">
                 <div class="exp-media">
-                    <div class="exp-collage">
-                        <img src="https://via.placeholder.com/440x280?text=Water+Well+Sampling" alt="Groundwater Sampling" class="collage-main">
-                        <div class="collage-thumbs">
-                            <img src="https://via.placeholder.com/150x114?text=Deep+Tubewell" alt="Tubewell Sampling Site" class="collage-thumb">
-                            <img src="https://via.placeholder.com/150x114?text=Lab+Titration" alt="Salinity Lab Tests" class="collage-thumb">
-                        </div>
+                    <div class="carousel-wrapper" data-interval="4400">
+                        <img src="https://via.placeholder.com/460x280?text=Groundwater+Well+Sampling" alt="Groundwater Sampling" class="carousel-slide active">
+                        <img src="https://via.placeholder.com/460x280?text=Deep+Tubewell+Field+Sites" alt="Tubewell Sampling Site" class="carousel-slide">
+                        <img src="https://via.placeholder.com/460x280?text=Laboratory+Salinity+Titration" alt="Salinity Lab Tests" class="carousel-slide">
                     </div>
                 </div>
                 <div class="exp-content">
@@ -424,12 +407,10 @@
             <!-- Experience Row 7 -->
             <div class="exp-row fieldwork" data-timestamp="202300">
                 <div class="exp-media">
-                    <div class="exp-collage">
-                        <img src="https://via.placeholder.com/440x280?text=Kaptai+Stratigraphy" alt="Kaptai Field Work Group" class="collage-main">
-                        <div class="collage-thumbs">
-                            <img src="https://via.placeholder.com/150x114?text=Road+Cut" alt="Road Cut Section" class="collage-thumb">
-                            <img src="https://via.placeholder.com/150x114?text=Faculty" alt="Field Mentors" class="collage-thumb">
-                        </div>
+                    <div class="carousel-wrapper" data-interval="4700">
+                        <img src="https://via.placeholder.com/460x280?text=Kaptai+Stratigraphy+Field+Work" alt="Kaptai Field Work Group" class="carousel-slide active">
+                        <img src="https://via.placeholder.com/460x280?text=Road+Cut+Engineering+Section" alt="Road Cut Section" class="carousel-slide">
+                        <img src="https://via.placeholder.com/460x280?text=Field+Mentorship+Discussions" alt="Field Mentors" class="carousel-slide">
                     </div>
                 </div>
                 <div class="exp-content">
@@ -445,12 +426,10 @@
             <!-- Experience Row 8 -->
             <div class="exp-row research" data-timestamp="202212">
                 <div class="exp-media">
-                    <div class="exp-collage">
-                        <img src="https://via.placeholder.com/440x280?text=Sugandha+River+Study" alt="Sugandha River Map Study" class="collage-main">
-                        <div class="collage-thumbs">
-                            <img src="https://via.placeholder.com/150x114?text=Geomorphic" alt="Geomorphic Analysis" class="collage-thumb">
-                            <img src="https://via.placeholder.com/150x114?text=Socio-Eco" alt="Socio-Economic Data" class="collage-thumb">
-                        </div>
+                    <div class="carousel-wrapper" data-interval="4500">
+                        <img src="https://via.placeholder.com/460x280?text=Sugandha+River+Geomorphic+Study" alt="Sugandha River Map Study" class="carousel-slide active">
+                        <img src="https://via.placeholder.com/460x280?text=Channel+Alteration+Analysis" alt="Geomorphic Analysis" class="carousel-slide">
+                        <img src="https://via.placeholder.com/460x280?text=Socio-Economic+Impact+Data" alt="Socio-Economic Data" class="carousel-slide">
                     </div>
                 </div>
                 <div class="exp-content">
@@ -463,12 +442,10 @@
             <!-- Experience Row 9 -->
             <div class="exp-row fieldwork" data-timestamp="202203">
                 <div class="exp-media">
-                    <div class="exp-collage">
-                        <img src="https://via.placeholder.com/440x280?text=Sitakund+Anticline" alt="Sitakund Anticline Ridge" class="collage-main">
-                        <div class="collage-thumbs">
-                            <img src="https://via.placeholder.com/150x114?text=Chittagong+Dip" alt="Structural Measurement" class="collage-thumb">
-                            <img src="https://via.placeholder.com/150x114?text=Outcrop" alt="Outcrop Outlines" class="collage-thumb">
-                        </div>
+                    <div class="carousel-wrapper" data-interval="4800">
+                        <img src="https://via.placeholder.com/460x280?text=Sitakund+Anticline+Expedition" alt="Sitakund Anticline Ridge" class="carousel-slide active">
+                        <img src="https://via.placeholder.com/460x280?text=Structural+Dip+Measurements" alt="Structural Measurement" class="carousel-slide">
+                        <img src="https://via.placeholder.com/460x280?text=Outcrop+Stratigraphy+Mapping" alt="Outcrop Outlines" class="carousel-slide">
                     </div>
                 </div>
                 <div class="exp-content">
@@ -484,33 +461,33 @@
         </div>
     </div>
 
-    <!-- 🎠 Feature 2: Synced Home Page Layout Slider Carousel Component -->
-    <section class="carousel-section">
-        <h2 class="carousel-title">Fieldwork & Gallery Highlights</h2>
-        <div class="carousel-viewport" onmouseenter="pauseCarousel()" onmouseleave="resumeCarousel()">
-            <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-slide">
+    <!-- 🎠 Bottom Footer Gallery Highlight Carousel -->
+    <section class="gallery-carousel-section">
+        <h2 class="gallery-carousel-title">Fieldwork & Gallery Highlights</h2>
+        <div class="gallery-viewport" onmouseenter="pauseGallery()" onmouseleave="resumeGallery()">
+            <div class="gallery-track" id="galleryTrack">
+                <div class="gallery-slide">
                     <img src="images/home_bannar1.jpg" alt="Field Collection Core Setup">
-                    <div class="carousel-caption">Fieldwork Equipment & Geospatial Mapping Calibration Setup</div>
+                    <div class="gallery-caption">Fieldwork Equipment & Geospatial Mapping Calibration Setup</div>
                 </div>
-                <div class="carousel-slide">
+                <div class="gallery-slide">
                     <img src="images/bu10.jpg" alt="Academic Collaboration Forum">
-                    <div class="carousel-caption">Research Panel Analysis and Academic Presentation Sessions</div>
+                    <div class="gallery-caption">Research Panel Analysis and Academic Presentation Sessions</div>
                 </div>
-                <div class="carousel-slide">
+                <div class="gallery-slide">
                     <img src="images/GIS_course_bannar.jpg" alt="GIS Workshop Class">
-                    <div class="carousel-caption">Instructional Training for Basic GIS and Remote Sensing Pipelines</div>
+                    <div class="gallery-caption">Instructional Training for Basic GIS and Remote Sensing Pipelines</div>
                 </div>
             </div>
             
-            <button class="carousel-nav-btn carousel-prev" onclick="moveCarousel(-1)"><i class="fas fa-chevron-left"></i></button>
-            <button class="carousel-nav-btn carousel-next" onclick="moveCarousel(1)"><i class="fas fa-chevron-right"></i></button>
+            <button class="gallery-nav-btn gallery-prev" onclick="moveGallery(-1)"><i class="fas fa-chevron-left"></i></button>
+            <button class="gallery-nav-btn gallery-next" onclick="moveGallery(1)"><i class="fas fa-chevron-right"></i></button>
         </div>
         
-        <div class="carousel-dots" id="carouselDots">
-            <button class="carousel-dot active" onclick="jumpToSlide(0)"></button>
-            <button class="carousel-dot" onclick="jumpToSlide(1)"></button>
-            <button class="carousel-dot" onclick="jumpToSlide(2)"></button>
+        <div class="gallery-dots" id="galleryDots">
+            <button class="gallery-dot active" onclick="jumpToGallerySlide(0)"></button>
+            <button class="gallery-dot" onclick="jumpToGallerySlide(1)"></button>
+            <button class="gallery-dot" onclick="jumpToGallerySlide(2)"></button>
         </div>
     </section>
 
@@ -518,15 +495,16 @@
         <p>&copy; Shacin Saha 2026</p>
     </footer>
 
-    <!-- Interactive Filter & Slider Logical Operations Scripts -->
+    <!-- Interactive Logic Processing Engines -->
     <script>
+        // 💾 Global Row References
         const container = document.getElementById("experience-container");
         const allRows = Array.from(container.getElementsByClassName("exp-row"));
+        let rowIntervals = []; // To track dynamic carousel intervals cleanly
 
-        // 🏷️ Filter Processing Pipeline
+        // 🏷️ Category Filter & Order Engine
         function filterExperience(category, event) {
             var buttons = document.getElementsByClassName("filter-btn");
-            
             for (var i = 0; i < buttons.length; i++) {
                 buttons[i].classList.remove("active");
             }
@@ -538,6 +516,7 @@
                 return category === "all" || row.classList.contains(category);
             });
 
+            // Always display chronologically descending
             matchedRows.sort((a, b) => {
                 return parseInt(b.getAttribute("data-timestamp")) - parseInt(a.getAttribute("data-timestamp"));
             });
@@ -554,42 +533,68 @@
             });
         }
 
-        // 🎠 Slider Control Engine
-        let currentSlideIndex = 0;
-        const track = document.getElementById('carouselTrack');
-        const dots = document.getElementById('carouselDots').children;
-        const totalSlides = track.children.length;
-        let automaticSliderTimer = setInterval(() => moveCarousel(1), 4000);
+        // 🎠 Dynamic Row Carousel Initialization Engine (Fading Style)
+        function initRowCarousels() {
+            // Clean up existing intervals first
+            rowIntervals.forEach(clearInterval);
+            rowIntervals = [];
 
-        function updateCarouselDisplay() {
-            track.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
-            for (let i = 0; i < dots.length; i++) {
-                dots[i].classList.remove('active');
+            const inlineCarousels = document.querySelectorAll('.carousel-wrapper');
+            inlineCarousels.forEach(carousel => {
+                const slides = carousel.querySelectorAll('.carousel-slide');
+                const intervalTime = parseInt(carousel.getAttribute('data-interval')) || 4000;
+                let currentIdx = 0;
+
+                if (slides.length <= 1) return;
+
+                // Reset states to ensure visibility
+                slides.forEach((slide, i) => {
+                    if(i === 0) slide.classList.add('active');
+                    else slide.classList.remove('active');
+                });
+
+                let interval = setInterval(() => {
+                    slides[currentIdx].classList.remove('active');
+                    currentIdx = (currentIdx + 1) % slides.length;
+                    slides[currentIdx].classList.add('active');
+                }, intervalTime);
+
+                rowIntervals.push(interval);
+            });
+        }
+
+        // 🎠 Footer Landscape Slide Gallery Engine
+        let footerSlideIdx = 0;
+        const galleryTrack = document.getElementById('galleryTrack');
+        const galleryDots = document.getElementById('galleryDots').children;
+        const totalFooterSlides = galleryTrack.children.length;
+        let footerGalleryTimer = setInterval(() => moveGallery(1), 4000);
+
+        function updateGalleryDisplay() {
+            galleryTrack.style.transform = `translateX(-${footerSlideIdx * 100}%)`;
+            for (let i = 0; i < galleryDots.length; i++) {
+                galleryDots[i].classList.remove('active');
             }
-            dots[currentSlideIndex].classList.add('active');
+            galleryDots[footerSlideIdx].classList.add('active');
         }
 
-        function moveCarousel(direction) {
-            currentSlideIndex = (currentSlideIndex + direction + totalSlides) % totalSlides;
-            updateCarouselDisplay();
+        function moveGallery(direction) {
+            footerSlideIdx = (footerSlideIdx + direction + totalFooterSlides) % totalFooterSlides;
+            updateGalleryDisplay();
         }
 
-        function jumpToSlide(index) {
-            currentSlideIndex = index;
-            updateCarouselDisplay();
+        function jumpToGallerySlide(index) {
+            footerSlideIdx = index;
+            updateGalleryDisplay();
         }
 
-        function pauseCarousel() {
-            clearInterval(automaticSliderTimer);
-        }
+        function pauseGallery() { clearInterval(footerGalleryTimer); }
+        function resumeGallery() { footerGalleryTimer = setInterval(() => moveGallery(1), 4000); }
 
-        function resumeCarousel() {
-            automaticSliderTimer = setInterval(() => moveCarousel(1), 4000);
-        }
-
-        // Run automatically when page opens to order items chronological by default
+        // Execution Pipeline Orchestrator on Boot
         window.onload = function() {
             filterExperience('all', null);
+            initRowCarousels();
         };
     </script>
 </body>
