@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Work Experience | Shacin Saha</title>
+    <title>Education | Shacin Saha</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Global Layout */
+        /* Global Layout Styles */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
             background-color: #ffffff; 
             color: #333;
             line-height: 1.6;
-            padding-top: 70px; /* Space for fixed nav */
+            padding-top: 70px; /* Space for fixed nav bar */
         }
         
         /* Navigation Bar */
@@ -47,53 +47,52 @@
             font-size: 1.8rem;
             font-weight: 600;
             letter-spacing: 0.5px;
+            margin-bottom: 40px;
         }
 
-        /* Filter Buttons Block */
-        .filter-menu { 
-            margin-bottom: 40px; 
-            text-align: center; 
-            position: sticky;
-            top: 65px; 
-            background: #ffffff; 
-            padding: 15px 0;
-            z-index: 100;
-            border-bottom: 1px solid #f0f0f0;
+        /* Level Banner */
+        .level-banner {
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #1a6b8c;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 8px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-        .filter-btn { 
-            padding: 8px 18px; 
-            margin: 5px; 
-            cursor: pointer; 
-            border: 1px solid #dadce0; 
-            background: #ffffff; 
-            color: #1a6b8c; 
-            border-radius: 4px; 
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
-        }
-        .filter-btn:hover { background: #f1f3f4; border-color: #1a6b8c; }
-        .filter-btn.active { background: #1a6b8c; color: white; border-color: #1a6b8c; }
 
-        /* Experience Row List */
-        .experience-wrapper { padding: 20px; background-color: #ffffff; }
-        .experience-container { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 50px; }
-        .exp-row { display: flex; flex-direction: row; align-items: flex-start; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid #e0e0e0; }
+        /* Education Layout Container */
+        .edu-wrapper { padding: 0 20px; background-color: #ffffff; }
+        .edu-container { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 60px; }
+        .edu-row { display: flex; flex-direction: row; align-items: flex-start; gap: 50px; margin-bottom: 60px; }
         
-        /* 🎠 Left Column: Embedded Row Carousels (Education Page Style) */
-        .exp-media { 
-            flex: 0 0 42%; 
-            max-width: 460px; 
+        /* Alternating layout for rows */
+        .edu-row:nth-child(even) { flex-direction: row-reverse; }
+
+        /* Left/Right Column: Carousel Container Area */
+        .edu-media { 
+            flex: 0 0 45%; 
+            max-width: 480px; 
             width: 100%;
         }
+
+        /* Carousel Slideshow Wrapper */
         .carousel-wrapper {
             position: relative;
             width: 100%;
-            height: 280px;
+            height: 300px;
             overflow: hidden;
             border-radius: 4px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            /* Soft razor-thin outline for your technical graphics layout */
             box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0,0,0,0.08);
         }
+
+        /* Carousel Images Configuration */
         .carousel-slide {
             position: absolute;
             top: 0;
@@ -102,126 +101,39 @@
             height: 100%;
             object-fit: cover;
             opacity: 0;
-            transition: opacity 1s ease-in-out;
+            transition: opacity 1s ease-in-out; /* Smooth transition effect */
             z-index: 1;
         }
+
+        /* Active slide visibility state */
         .carousel-slide.active {
             opacity: 1;
             z-index: 2;
         }
         
-        /* Right Column: Text Content Area */
-        .exp-content { flex: 1; position: relative; padding-top: 5px; }
-        .exp-title { font-size: 1.5rem; font-weight: bold; color: #1a6b8c; line-height: 1.3; margin-bottom: 15px; padding-right: 180px; }
-        .exp-text { font-size: 0.95rem; color: #424242; margin-bottom: 15px; text-align: justify; }
+        /* Right/Left Column: Text Content Area */
+        .edu-content { flex: 1; }
+        .edu-title { font-size: 2rem; font-weight: bold; color: #1a6b8c; margin-bottom: 5px; }
+        .edu-subtitle { font-size: 1.1rem; color: #555; font-weight: 600; margin-bottom: 15px; }
         
-        /* Upper Right Corner Date Badge */
-        .exp-date { 
-            position: absolute; top: 5px; right: 0; font-size: 0.85rem; font-weight: 600; color: #555555; 
-            background: #f0f4f8; padding: 5px 12px; border-radius: 4px; border: 1px solid #dcdcdc; white-space: nowrap; 
-        }
+        .edu-meta-group { margin-bottom: 20px; }
+        .edu-meta { font-size: 0.95rem; color: #666; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; }
+        .edu-meta i { color: #1a6b8c; width: 16px; }
         
-        /* Document Links Style */
-        .links-section { margin-top: 15px; font-size: 0.9rem; }
-        .links-section p { font-weight: bold; margin-bottom: 5px; color: #333; }
-        .links-section ol { padding-left: 20px; }
-        .links-section a { color: #1a6b8c; text-decoration: none; }
-        .links-section a:hover { text-decoration: underline; }
+        .edu-description { font-size: 0.98rem; color: #424242; text-align: justify; }
+        .edu-description p { margin-bottom: 12px; }
+        .edu-description ul { margin-left: 20px; margin-bottom: 12px; list-style-type: disc; }
+        .edu-description li { margin-bottom: 4px; }
 
-        /* 🎠 Bottom Footer Image Carousel Block */
-        .gallery-carousel-section {
-            max-width: 1100px;
-            margin: 60px auto 0 auto;
-            padding: 0 20px;
-        }
-        .gallery-carousel-title {
-            font-size: 1.4rem;
-            color: #1a6b8c;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-bottom: 2px solid #1a6b8c;
-            padding-bottom: 8px;
-            display: inline-block;
-        }
-        .gallery-viewport {
-            position: relative;
-            width: 100%;
-            height: 400px;
-            overflow: hidden;
-            border-radius: 6px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-        .gallery-track {
-            display: flex;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        .gallery-slide {
-            min-width: 100%;
-            height: 100%;
-            position: relative;
-        }
-        .gallery-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: linear-gradient(transparent, rgba(0,0,0,0.85));
-            color: #fff;
-            padding: 25px 20px;
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-        .gallery-nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.85);
-            border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #1a6b8c;
-            font-size: 1.2rem;
-            z-index: 10;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-            transition: background 0.2s, color 0.2s;
-        }
-        .gallery-nav-btn:hover { background: #1a6b8c; color: #fff; }
-        .gallery-prev { left: 15px; }
-        .gallery-next { right: 15px; }
-
-        .gallery-dots {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 15px;
-        }
-        .gallery-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #cbd5e1;
-            cursor: pointer;
-            border: none;
-            transition: background 0.2s;
-        }
-        .gallery-dot.active {
-            width: 24px;
-            border-radius: 10px;
-            background: #1a6b8c;
+        /* Minimal Footer layout */
+        footer {
+            margin-top: 80px;
+            padding: 30px 20px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            color: #666;
+            font-size: 0.95rem;
+            background-color: #fafafa;
         }
 
         /* Mobile Responsive adjustments */
@@ -229,24 +141,12 @@
             header { position: relative; flex-direction: column; gap: 10px; }
             body { padding-top: 0; }
             nav ul { flex-wrap: wrap; justify-content: center; }
-            .filter-menu { top: 0; }
-            .exp-row { flex-direction: column; gap: 25px; }
-            .exp-media { max-width: 100%; }
+            .edu-row, .edu-row:nth-child(even) { flex-direction: column; gap: 25px; text-align: center; }
+            .edu-media { max-width: 100%; width: 100%; }
             .carousel-wrapper { height: 220px; }
-            .exp-title { padding-right: 0; font-size: 1.4rem; }
-            .exp-date { position: static; display: inline-block; margin-bottom: 15px; }
-            .gallery-viewport { height: 260px; }
-            .gallery-caption { font-size: 0.95rem; padding: 15px; }
-        }
-
-        footer {
-            margin-top: 60px;
-            padding: 30px 20px;
-            border-top: 1px solid #e0e0e0;
-            text-align: center;
-            color: #666;
-            font-size: 0.95rem;
-            background-color: #fafafa;
+            .edu-title { font-size: 1.7rem; }
+            .edu-meta { justify-content: center; }
+            .edu-description ul { text-align: left; }
         }
     </style>
 </head>
@@ -260,342 +160,152 @@
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="experience.html" class="active">Work Experiences</a></li>
+                <li><a href="experience.html">Work Experiences</a></li>
                 <li><a href="technical_skills.html">Technical Skills</a></li>
                 <li><a href="portfolio.html">Portfolios</a></li>
                 <li><a href="achievements.html">Achievements</a></li>
                 <li><a href="volunteering.html">Volunteering Activities</a></li>
                 <li><a href="publications.html">Publications</a></li>
-                <li><a href="education.html">Education</a></li>
+                <li><a href="education.html" class="active">Education</a></li>
                 <li><a href="contacts.html">Contacts</a></li>
             </ul>
         </nav>
     </header>
 
-    <div class="section-strip">Work Experiences</div>
+    <div class="section-strip">Education</div>
     
-    <div class="filter-menu">
-        <button class="filter-btn active" onclick="filterExperience('all', event)">All Experience</button>
-        <button class="filter-btn" onclick="filterExperience('instructor', event)">Instructor</button>
-        <button class="filter-btn" onclick="filterExperience('assistant', event)">Teaching Assistant</button>
-        <button class="filter-btn" onclick="filterExperience('survey', event)">Field Survey</button>
-        <button class="filter-btn" onclick="filterExperience('research', event)">Research Assistant</button>
-        <button class="filter-btn" onclick="filterExperience('fieldwork', event)">Academic Fieldwork</button>
-    </div>
+    <div class="edu-wrapper">
+        <div class="edu-container">
 
-    <div class="experience-wrapper">
-        <div id="experience-container" class="experience-container">
-            
-            <!-- Experience Row 1 -->
-            <div class="exp-row instructor" data-timestamp="202410">
-                <div class="exp-media">
-                    <div class="carousel-wrapper" data-interval="4000">
-                        <img src="images/GIS_course_bannar.jpg" alt="GIS Course Banner" class="carousel-slide active">
-                        <img src="https://via.placeholder.com/460x280?text=Live+Class+Session" alt="Live Class Session" class="carousel-slide">
-                        <img src="https://via.placeholder.com/460x280?text=Practical+Lab+Assessment" alt="Practical Assessment" class="carousel-slide">
+            <div>
+                <div class="level-banner">Undergraduate Level</div>
+                <div class="edu-row">
+                    <div class="edu-media">
+                        <div class="carousel-wrapper" data-interval="4000">
+                            <img src="images/bu1.jpg" alt="University of Barishal Campus" class="carousel-slide active">
+                            <img src="images/bu2.jpg" alt="University of Barishal Campus" class="carousel-slide">
+                            <img src="images/2.1.jpg" alt="University of Barishal Campus" class="carousel-slide">
+                            <img src="images/bu3.jpg" alt="University of Barishal Campus" class="carousel-slide">
+                            <img src="images/bu3.1.jpg" alt="University of Barishal Campus" class="carousel-slide">
+                            <img src="images/bu3.2.jpg" alt="University of Barishal Campus" class="carousel-slide">
+                            <img src="images/bu4.jpg" alt="University of Barishal Campus" class="carousel-slide">
+                            
+                            <img src="images/bu5.5.jpg" alt="University of Barishal Campus" class="carousel-slide">
+                            <img src="images/bu6.jpg" alt="University of Barishal Campus" class="carousel-slide">
+                            <img src="images/bu7.jpg" alt="University of Barishal Campus" class="carousel-slide">
+                            <img src="images/bu8.jpg" alt="University of Barishal Campus" class="carousel-slide">
+                            <img src="images/bu9.jpg" alt="University of Barishal Campus" class="carousel-slide">
+                            <img src="images/bu10.jpg" alt="University of Barishal Campus" class="carousel-slide">
+                            <img src="images/11.jpg" alt="University of Barishal Campus" class="carousel-slide">
+                            
+                        </div>
                     </div>
-                </div>
-                <div class="exp-content">
-                    <div class="exp-date">Oct, 2024</div>
-                    <h1 class="exp-title">Geographic Information System (GIS) Basic Course</h1>
-                    <p class="exp-text">I had the privilege of leading the GIS and Remote Sensing training course as the main instructor. My primary role was to teach and guide the participants through both the theory and practical applications of GIS and Remote Sensing.</p>
-                    <p class="exp-text">In this course, I worked on designing the syllabus, delivering live classes, creating assignments, and helping students complete their tasks successfully. I also prepared quizzes and practical assessments to measure their learning progress. Besides teaching, I supported the overall organization of the course to ensure everything ran smoothly.</p>
-                    <p class="exp-text">This course was organized by Geo Avengers and Barishal University Science Club, and it was truly a team effort. Together, we aimed to provide participants with the skills they need to use geospatial technologies effectively.</p>
-                    <div class="links-section">
-                        <p>Know more about the course:</p>
-                        <ol>
-                            <li><a href="https://drive.google.com/file/d/1VcHNtbBrvuweUbFdMKKy24vGZZ7XV789/view?usp=drive_link" target="_blank">Course Outline</a></li>
-                            <li><a href="https://drive.google.com/file/d/1cVxD38Wt-d9YO3myUklHCD9iQRnXCRJM/view?usp=drive_link" target="_blank">Feedback from Participants</a></li>
-                            <li><a href="https://drive.google.com/drive/folders/1HRSs_sEVyOuqshwxTz69SScPmyIZOzrf?usp=drive_link" target="_blank">My Lectures</a></li>
-                        </ol>
+                    <div class="edu-content">
+                        <h1 class="edu-title">University of Barishal</h1>
+                        <p class="edu-subtitle">Bachelor of Science (B.Sc. Hons.) in Geology and Mining</p>
+                        
+                        <div class="edu-meta-group">
+                            <div class="edu-meta"><i class="fa-solid fa-graduation-cap"></i> Recent Graduate</div>
+                            <div class="edu-meta"><i class="fa-solid fa-location-dot"></i> Barishal, Bangladesh</div>
+                        </div>
+
+                        <div class="edu-description">
+                            <p>The Department of Geology and Mining at the University of Barishal focuses heavily on hands-on application and fundamental Earth sciences, providing an intensive curriculum bridging classical field observations with dynamic laboratory methods.</p>
+                            <p>During my tenure, I developed a strong foundation across structural geology, hydrogeochemistry, and disaster management science. My academic growth was profoundly driven by extensive field mappings and active collaborations on faculty-led research initiatives.</p>
+                            <ul>
+                                <li><strong>Key Fieldwork Journeys:</strong> Executed structural engineering and stratigraphic map cuts across the Sitakund Anticline (Chittagong) and the Kaptai-Rangamati Road Section.</li>
+                                <li><strong>Research Focus:</strong> Integrated GIS and Remote Sensing platforms to target environmental hazards, deltaic geomorphology, and coastal water salinity challenges.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Experience Row 2 -->
-            <div class="exp-row assistant" data-timestamp="202401">
-                <div class="exp-media">
-                    <div class="carousel-wrapper" data-interval="4200">
-                        <img src="images/CH8.jpg" alt="Teaching Assistant Session" class="carousel-slide active">
-                        <img src="https://via.placeholder.com/460x280?text=Remote+Lab+Workshops" alt="Lab Session" class="carousel-slide">
-                        <img src="https://via.placeholder.com/460x280?text=Assignment+Evaluation" alt="Grading Track" class="carousel-slide">
+            <div>
+                <div class="level-banner">Higher Secondary Level</div>
+                <div class="edu-row">
+                    <div class="edu-media">
+                        <div class="carousel-wrapper" data-interval="4500">
+                            <img src="images/lgc1.jpeg" alt="Lakshmipur Government College" class="carousel-slide active">
+                            <img src="images/lgc2.jpeg" alt="Lakshmipur Government College" class="carousel-slide">
+                            <img src="images/lgc3.jpeg" alt="Lakshmipur Government College" class="carousel-slide">
+                        </div>
                     </div>
-                </div>
-                <div class="exp-content">
-                    <div class="exp-date">Jan, 2024</div>
-                    <h1 class="exp-title">GIS and RS Basic to Advanced Course</h1>
-                    <p class="exp-text">During my recent role as a Teaching Assistant in the 'GIS and RS Basic to Advance Course,' under the guidance of Md. Abdullah Salman, Assistant Professor at the Geology and Mining Department, University of Barishal, I was responsible for creating prerecorded video classes, conducting live sessions, and meticulously evaluating assignments.</p>
-                    <p class="exp-text">This experience not only honed my technical proficiency in GIS and RS but also provided valuable insights into effective teaching methodologies. It was a rewarding opportunity to contribute to the education of aspiring professionals in this dynamic field.</p>
-                    <div class="links-section">
-                        <p>Know more about the course:</p>
-                        <ol>
-                            <li><a href="https://drive.google.com/file/d/1FpBrXSMixgCur8lUHOsc3IBAvuTr8TC3/view?usp=drive_link" target="_blank">Course Outline</a></li>
-                            <li><a href="https://drive.google.com/drive/folders/1vE0q9Z7cGc_4Jm4_FpxKwIr7GPT2hAzB?usp=drive_link" target="_blank">My Lectures</a></li>
-                        </ol>
+                    <div class="edu-content">
+                        <h1 class="edu-title">Lakshmipur Government College</h1>
+                        <p class="edu-subtitle">Higher Secondary Certificate (HSC)</p>
+                        
+                        <div class="edu-meta-group">
+                            <div class="edu-meta"><i class="fa-solid fa-book"></i> Science Group</div>
+                            <div class="edu-meta"><i class="fa-solid fa-location-dot"></i> Lakshmipur, Bangladesh</div>
+                        </div>
+
+                        <div class="edu-description">
+                            <p>Lakshmipur Government College is one of the oldest and most well-regarded higher education centers in the region, established to foster rigorous academic standards in the southeastern coastal belt of Bangladesh.</p>
+                            <p>Enrolled in the highly competitive Science group, this curriculum built the analytical competencies necessary for advanced data evaluation and engineering disciplines. Studies comprehensively concentrated on mathematical problem solving, physics principles, and analytical chemistry, sparking my initial passion for applying physical and chemical parameters to complex spatial natural systems.</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Experience Row 3 -->
-            <div class="exp-row survey" data-timestamp="202311">
-                <div class="exp-media">
-                    <div class="carousel-wrapper" data-interval="4500">
-                        <img src="https://via.placeholder.com/460x280?text=Barguna+Household+Surveys" alt="Barguna Field Survey" class="carousel-slide active">
-                        <img src="https://via.placeholder.com/460x280?text=Water+Salinity+Field+Testing" alt="Water Assessment" class="carousel-slide">
-                        <img src="https://via.placeholder.com/460x280?text=Volunteer+Survey+Mapping" alt="Survey Mapping" class="carousel-slide">
+            <div>
+                <div class="level-banner">Secondary Level</div>
+                <div class="edu-row">
+                    <div class="edu-media">
+                        <div class="carousel-wrapper" data-interval="5000">
+                            <img src="images/HHS1.jpg" alt="Hossainpur High School 1" class="carousel-slide active">
+                            <img src="images/HHS2.jpg" alt="Hossainpur High School 2" class="carousel-slide">
+                        </div>
                     </div>
-                </div>
-                <div class="exp-content">
-                    <div class="exp-date">Nov, 2023</div>
-                    <h1 class="exp-title">A household survey to assess the impact of drinking saline water in the coastal region of Barguna, Barishal</h1>
-                    <p class="exp-text">I had privilege of attending this household survey in the coastal region of Barguna. As the <strong>project manager</strong>, I played a multifaceted role, ensuring the success of this impactful initiative.</p>
-                    <p class="exp-text">This survey was a part of the project 'Aquifer Salinity Solution' funded by <strong>Unicef Bangladesh, Jago Foundation</strong>.</p>
-                    <p class="exp-text">My responsibilities was the design of questionnaires, collaborating with mentors, mapping the study area, managing all volunteers, etc.</p>
-                    <p class="exp-text">This experience has been immensely fulfilling, underscoring the power of collaboration and community-driven initiatives in effecting positive change. I look forward to leveraging these insights to support further endeavors aimed at empowering vulnerable communities and fostering sustainable development in coastal regions.</p>
-                </div>
-            </div>
+                    <div class="edu-content">
+                        <h1 class="edu-title">Hossainpur High School</h1>
+                        <p class="edu-subtitle">Secondary School Certificate (SSC)</p>
+                        
+                        <div class="edu-meta-group">
+                            <div class="edu-meta"><i class="fa-solid fa-book"></i> Science Group</div>
+                            <div class="edu-meta"><i class="fa-solid fa-location-dot"></i> Lakshmipur, Bangladesh</div>
+                        </div>
 
-            <!-- Experience Row 4 -->
-            <div class="exp-row research" data-timestamp="202303">
-                <div class="exp-media">
-                    <div class="carousel-wrapper" data-interval="4300">
-                        <img src="https://via.placeholder.com/460x280?text=Barind+Tract+Agricultural+Drought" alt="Drought Assessment" class="carousel-slide active">
-                        <img src="https://via.placeholder.com/460x280?text=NDVI+Drought+Index+Matrix" alt="NDVI Metric Data" class="carousel-slide">
-                        <img src="https://via.placeholder.com/460x280?text=Vegetation+Health+Index+Mapping" alt="Vegetation Health Map" class="carousel-slide">
-                    </div>
-                </div>
-                <div class="exp-content">
-                    <div class="exp-date">Mar, 2023</div>
-                    <h1 class="exp-title">Assessment of impacts of drought on agricultural vegetation and production in the Barind Tract, Bangladesh</h1>
-                    <p class="exp-text">In collaboration with Professor Md. Abdullah Salman, I actively contributed to the research project focused on assessing the impacts of drought on agricultural vegetation and production in the Barind Tract, Bangladesh. This endeavor harnessed the combined power of satellite, meteorological, and household observations to garner comprehensive insights.</p>
-                    <p class="exp-text">My primary responsibility in this project was the meticulous analysis of satellite data. This involved the calculation of various drought-related indices such as NDVI, SVI, TCI, VCI, and VHI. These indices played a crucial role in assessing the severity and extent of drought impacts on agricultural vegetation. Furthermore, I was tasked with the critical role of mapping these indices to create visual representations that provided actionable insights for the research team.</p>
-                </div>
-            </div>
-
-            <!-- Experience Row 5 -->
-            <div class="exp-row research" data-timestamp="202302">
-                <div class="exp-media">
-                    <div class="carousel-wrapper" data-interval="4600">
-                        <img src="https://via.placeholder.com/460x280?text=Cyclone+Vulnerability+Risk+Map" alt="Cyclone Assessment" class="carousel-slide active">
-                        <img src="https://via.placeholder.com/460x280?text=ArcGIS+Coastal+Data+Processing" alt="ArcGIS Processing" class="carousel-slide">
-                        <img src="https://via.placeholder.com/460x280?text=Statistical+Data+Analysis+Sheets" alt="Excel Processing" class="carousel-slide">
-                    </div>
-                </div>
-                <div class="exp-content">
-                    <div class="exp-date">Mar, 2022 - Apr, 2023</div>
-                    <h1 class="exp-title">Cyclone Vulnerability Assessment - Central Coast BD</h1>
-                    <p class="exp-text">As a Research Assistant in the 'Cyclone Vulnerability Assessment – Central Coast of Bangladesh' project led by Md. Abdullah Salman, Assistant Professor at the Geology and Mining Department, University of Barishal, I played a pivotal role in this significant undertaking. My responsibilities included data collection, data cleaning, rigorous analysis, and visualization using ArcGIS, Google Earth Pro, MS Word, and MS Excel. This experience not only deepened my understanding of cyclone vulnerability but also honed my proficiency in various essential tools.</p>
-                </div>
-            </div>
-
-            <!-- Experience Row 6 -->
-            <div class="exp-row fieldwork" data-timestamp="202301">
-                <div class="exp-media">
-                    <div class="carousel-wrapper" data-interval="4400">
-                        <img src="https://via.placeholder.com/460x280?text=Groundwater+Well+Sampling" alt="Groundwater Sampling" class="carousel-slide active">
-                        <img src="https://via.placeholder.com/460x280?text=Deep+Tubewell+Field+Sites" alt="Tubewell Sampling Site" class="carousel-slide">
-                        <img src="https://via.placeholder.com/460x280?text=Laboratory+Salinity+Titration" alt="Salinity Lab Tests" class="carousel-slide">
-                    </div>
-                </div>
-                <div class="exp-content">
-                    <div class="exp-date">Jan, 2023</div>
-                    <h1 class="exp-title">Groundwater Sampling from Satkhira Sadar and Syamnagar Upazila</h1>
-                    <p class="exp-text">This fieldwork is completed under the supervision of Sukhen Goswami, Assistant Professor in Geology and Mining at the University of Barishal. My work involved the comprehensive collection of samples from various deep tubewells, followed by rigorous testing and mapping. The research spanned every union in these two upazilas, providing a detailed understanding of the region's groundwater conditions. Through this experience, I witnessed firsthand the challenges faced by coastal communities due to water salinity. This project not only deepened my understanding of geology but also underscored the critical importance of addressing water salinity issues for the well-being of these communities.</p>
-                </div>
-            </div>
-
-            <!-- Experience Row 7 -->
-            <div class="exp-row fieldwork" data-timestamp="202300">
-                <div class="exp-media">
-                    <div class="carousel-wrapper" data-interval="4700">
-                        <img src="https://via.placeholder.com/460x280?text=Kaptai+Stratigraphy+Field+Work" alt="Kaptai Field Work Group" class="carousel-slide active">
-                        <img src="https://via.placeholder.com/460x280?text=Road+Cut+Engineering+Section" alt="Road Cut Section" class="carousel-slide">
-                        <img src="https://via.placeholder.com/460x280?text=Field+Mentorship+Discussions" alt="Field Mentors" class="carousel-slide">
-                    </div>
-                </div>
-                <div class="exp-content">
-                    <div class="exp-date">Jan 27 - Feb 1, 2023</div>
-                    <h1 class="exp-title">GEOLOGICAL FIELD Work ON Kaptai Rangamati Road-Cut Section</h1>
-                    <p class="exp-text">In an enriching academic tradition, our second-year fieldwork took us to the fascinating geological terrain of Kaptai, Rangamati Road Cut Section. This year's expedition was particularly special, as we were accompanied by distinguished faculty members, Dr. A S M Woobaidullah, Supernumerary Professor from the Department of Geology and Mining at the University of Dhaka, and our own dedicated mentors, Muhammad Risalat Rafiq and Md. Abdullah Salman.</p>
-                    <div class="links-section">
-                        <p><a href="#" target="_blank">See Field Report</a></p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Experience Row 8 -->
-            <div class="exp-row research" data-timestamp="202212">
-                <div class="exp-media">
-                    <div class="carousel-wrapper" data-interval="4500">
-                        <img src="https://via.placeholder.com/460x280?text=Sugandha+River+Geomorphic+Study" alt="Sugandha River Map Study" class="carousel-slide active">
-                        <img src="https://via.placeholder.com/460x280?text=Channel+Alteration+Analysis" alt="Geomorphic Analysis" class="carousel-slide">
-                        <img src="https://via.placeholder.com/460x280?text=Socio-Economic+Impact+Data" alt="Socio-Economic Data" class="carousel-slide">
-                    </div>
-                </div>
-                <div class="exp-content">
-                    <div class="exp-date">Dec, 2022</div>
-                    <h1 class="exp-title">Assessment of Geomorphic Index Alteration at the Sugandha river</h1>
-                    <p class="exp-text">Recently, I served as a Research Assistant in the project 'Assessment of Geomorphic Index Alteration and its Socio-Economic Impact at the Sugandha River,' under the guidance of Assistant Professor & Chairman, Sukhen Goswami, in my department. My role involved collecting and analyzing data, assessing various indices using ArcGIS and Google Earth Pro, and visualizing results on maps. This experience deepened my understanding of geomorphology and its socioeconomic implications, while enhancing my proficiency in geospatial tools.</p>
-                </div>
-            </div>
-
-            <!-- Experience Row 9 -->
-            <div class="exp-row fieldwork" data-timestamp="202203">
-                <div class="exp-media">
-                    <div class="carousel-wrapper" data-interval="4800">
-                        <img src="https://via.placeholder.com/460x280?text=Sitakund+Anticline+Expedition" alt="Sitakund Anticline Ridge" class="carousel-slide active">
-                        <img src="https://via.placeholder.com/460x280?text=Structural+Dip+Measurements" alt="Structural Measurement" class="carousel-slide">
-                        <img src="https://via.placeholder.com/460x280?text=Outcrop+Stratigraphy+Mapping" alt="Outcrop Outlines" class="carousel-slide">
-                    </div>
-                </div>
-                <div class="exp-content">
-                    <div class="exp-date">7 Days, 2022</div>
-                    <h1 class="exp-title">Geological Field Work On Sitakund Anticline Chittagong, Bangladesh</h1>
-                    <p class="exp-text">As a undergraduate student in Geology and Mining, each academic year included a pivotal course known as "Field Work". In my inaugural year, we embarked on an enlightening expedition to Sitakund Anticline, Chittagong, Bangladesh. Accompanied by our esteemed professors, Muhammad Risalat Rafiq and Md. Abdullah Salman, this immersive experience spanned seven days.</p>
-                    <div class="links-section">
-                        <p><a href="#" target="_blank">See Field Report</a></p>
+                        <div class="edu-description">
+                            <p>Hossainpur High School provides a critical foundational gateway for young minds in the district, centering its academic culture on structural science tracks, teamwork, and strong foundational mathematics.</p>
+                            <p>Completing my secondary board certifications within the Science group allowed me to master core physical sciences early on. This fundamental preparation established the baseline scientific principles, deductive reasoning methods, and logic workflows that later proved vital during advanced computation models and geospatial analytics projects.</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
         </div>
     </div>
-
-    <!-- 🎠 Bottom Footer Gallery Highlight Carousel -->
-    <section class="gallery-carousel-section">
-        <h2 class="gallery-carousel-title">Fieldwork & Gallery Highlights</h2>
-        <div class="gallery-viewport" onmouseenter="pauseGallery()" onmouseleave="resumeGallery()">
-            <div class="gallery-track" id="galleryTrack">
-                <div class="gallery-slide">
-                    <img src="images/home_bannar1.jpg" alt="Field Collection Core Setup">
-                    <div class="gallery-caption">Fieldwork Equipment & Geospatial Mapping Calibration Setup</div>
-                </div>
-                <div class="gallery-slide">
-                    <img src="images/bu10.jpg" alt="Academic Collaboration Forum">
-                    <div class="gallery-caption">Research Panel Analysis and Academic Presentation Sessions</div>
-                </div>
-                <div class="gallery-slide">
-                    <img src="images/GIS_course_bannar.jpg" alt="GIS Workshop Class">
-                    <div class="gallery-caption">Instructional Training for Basic GIS and Remote Sensing Pipelines</div>
-                </div>
-            </div>
-            
-            <button class="gallery-nav-btn gallery-prev" onclick="moveGallery(-1)"><i class="fas fa-chevron-left"></i></button>
-            <button class="gallery-nav-btn gallery-next" onclick="moveGallery(1)"><i class="fas fa-chevron-right"></i></button>
-        </div>
-        
-        <div class="gallery-dots" id="galleryDots">
-            <button class="gallery-dot active" onclick="jumpToGallerySlide(0)"></button>
-            <button class="gallery-dot" onclick="jumpToGallerySlide(1)"></button>
-            <button class="gallery-dot" onclick="jumpToGallerySlide(2)"></button>
-        </div>
-    </section>
 
     <footer>
         <p>&copy; Shacin Saha 2026</p>
     </footer>
 
-    <!-- Interactive Logic Processing Engines -->
     <script>
-        // 💾 Global Row References
-        const container = document.getElementById("experience-container");
-        const allRows = Array.from(container.getElementsByClassName("exp-row"));
-        let rowIntervals = []; // To track dynamic carousel intervals cleanly
-
-        // 🏷️ Category Filter & Order Engine
-        function filterExperience(category, event) {
-            var buttons = document.getElementsByClassName("filter-btn");
-            for (var i = 0; i < buttons.length; i++) {
-                buttons[i].classList.remove("active");
-            }
-            if(event) {
-                event.currentTarget.classList.add("active");
-            }
-
-            const matchedRows = allRows.filter(row => {
-                return category === "all" || row.classList.contains(category);
-            });
-
-            // Always display chronologically descending
-            matchedRows.sort((a, b) => {
-                return parseInt(b.getAttribute("data-timestamp")) - parseInt(a.getAttribute("data-timestamp"));
-            });
-
-            container.innerHTML = "";
+        document.addEventListener("DOMContentLoaded", () => {
+            const carousels = document.querySelectorAll('.carousel-wrapper');
             
-            allRows.forEach(row => {
-                if (matchedRows.includes(row)) {
-                    container.appendChild(row);
-                    row.style.display = "flex"; 
-                } else {
-                    row.style.display = "none";
-                }
-            });
-        }
-
-        // 🎠 Dynamic Row Carousel Initialization Engine (Fading Style)
-        function initRowCarousels() {
-            // Clean up existing intervals first
-            rowIntervals.forEach(clearInterval);
-            rowIntervals = [];
-
-            const inlineCarousels = document.querySelectorAll('.carousel-wrapper');
-            inlineCarousels.forEach(carousel => {
+            carousels.forEach(carousel => {
                 const slides = carousel.querySelectorAll('.carousel-slide');
                 const intervalTime = parseInt(carousel.getAttribute('data-interval')) || 4000;
                 let currentIdx = 0;
 
+                // Exit early if the wrapper doesn't have multiple images
                 if (slides.length <= 1) return;
 
-                // Reset states to ensure visibility
-                slides.forEach((slide, i) => {
-                    if(i === 0) slide.classList.add('active');
-                    else slide.classList.remove('active');
-                });
-
-                let interval = setInterval(() => {
+                setInterval(() => {
+                    // Remove current focus active tags
                     slides[currentIdx].classList.remove('active');
+                    
+                    // Progress to the sequential index array item loop
                     currentIdx = (currentIdx + 1) % slides.length;
+                    
+                    // Apply display layout visibility rules
                     slides[currentIdx].classList.add('active');
                 }, intervalTime);
-
-                rowIntervals.push(interval);
             });
-        }
-
-        // 🎠 Footer Landscape Slide Gallery Engine
-        let footerSlideIdx = 0;
-        const galleryTrack = document.getElementById('galleryTrack');
-        const galleryDots = document.getElementById('galleryDots').children;
-        const totalFooterSlides = galleryTrack.children.length;
-        let footerGalleryTimer = setInterval(() => moveGallery(1), 4000);
-
-        function updateGalleryDisplay() {
-            galleryTrack.style.transform = `translateX(-${footerSlideIdx * 100}%)`;
-            for (let i = 0; i < galleryDots.length; i++) {
-                galleryDots[i].classList.remove('active');
-            }
-            galleryDots[footerSlideIdx].classList.add('active');
-        }
-
-        function moveGallery(direction) {
-            footerSlideIdx = (footerSlideIdx + direction + totalFooterSlides) % totalFooterSlides;
-            updateGalleryDisplay();
-        }
-
-        function jumpToGallerySlide(index) {
-            footerSlideIdx = index;
-            updateGalleryDisplay();
-        }
-
-        function pauseGallery() { clearInterval(footerGalleryTimer); }
-        function resumeGallery() { footerGalleryTimer = setInterval(() => moveGallery(1), 4000); }
-
-        // Execution Pipeline Orchestrator on Boot
-        window.onload = function() {
-            filterExperience('all', null);
-            initRowCarousels();
-        };
+        });
     </script>
+
 </body>
 </html>
