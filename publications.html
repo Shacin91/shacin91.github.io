@@ -205,6 +205,24 @@
                 display: flex;
                 transform: none;
             }
+            /* 4. 🔥 Force layout visibility down to individual inner elements */
+            .dropdown-menu-item.mobile-open .dropdown-wrapper li {
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                width: 100% !important;
+            }
+
+            /* 5. 🔥 Force-paint link text so color changes don't wash it out */
+            .dropdown-menu-item.mobile-open .dropdown-wrapper li a {
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                color: #444444 !important; /* Dark slate text for clarity */
+                padding: 12px 15px !important;
+                font-size: 0.9rem !important;
+                text-align: left !important;
+            }
         }
     </style>
 </head>
@@ -309,6 +327,28 @@
     <footer>
         <p>&copy; Shacin Saha 2026</p>
     </footer>
+<script>
+    function toggleMobileMenu(event) {
+            // Only intercept and execute click mechanics on mobile breakpoints
+            if (window.innerWidth <= 768) {
+                event.preventDefault(); // Stop the "#" href anchor action from reloading/jumping
+                
+                const moreMenuContainer = document.getElementById('moreMenu');
+                
+                // Toggle the open class engine framework configuration
+                moreMenuContainer.classList.toggle('mobile-open');
+            }
+        }
 
+        // Optional Polish: Close the menu if a user clicks completely outside of it on mobile
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                const moreMenuContainer = document.getElementById('moreMenu');
+                if (!moreMenuContainer.contains(e.target)) {
+                    moreMenuContainer.classList.remove('mobile-open');
+                }
+            }
+        });
+</script>
 </body>
 </html>
