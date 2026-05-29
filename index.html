@@ -350,14 +350,14 @@
             .footer-grid { grid-template-columns: 1fr; }
         }
         .profile-img-oval {
-    width: 220px;
-    height: 280px; /* Increased height to create a clean vertical oval shape */
-    border-radius: 50% / 40%; /* Custom percentage creates a smooth oval curve */
-    border: 3px solid #222;
-    object-fit: cover;
-    object-position: center top; /* Keeps focus on your face so the top of your head isn't cut */
-    margin-bottom: 30px;
-    display: inline-block;
+            width: 220px;
+            height: 280px; /* Increased height to create a clean vertical oval shape */
+            border-radius: 50% / 40%; /* Custom percentage creates a smooth oval curve */
+            border: 3px solid #222;
+            object-fit: cover;
+            object-position: center top; /* Keeps focus on your face so the top of your head isn't cut */
+            margin-bottom: 30px;
+            display: inline-block;
         }
         
         /* Minimal Footer layout */
@@ -460,6 +460,27 @@
             /* Target utility class to keep the expansion menu open fixedly */
             .dropdown-menu-item.mobile-open .dropdown-wrapper {
                 display: flex !important;
+                Opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+            }
+            /* 4. 🔥 Force layout visibility down to individual inner elements */
+            .dropdown-menu-item.mobile-open .dropdown-wrapper li {
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                width: 100% !important;
+            }
+
+            /* 5. 🔥 Force-paint link text so color changes don't wash it out */
+            .dropdown-menu-item.mobile-open .dropdown-wrapper li a {
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                color: #444444 !important; /* Dark slate text for clarity */
+                padding: 12px 15px !important;
+                font-size: 0.9rem !important;
+                text-align: left !important;
             }
         }
 
