@@ -248,6 +248,85 @@
             font-size: 0.95rem;
             background-color: #fafafa;
         }
+        /* --- Dropdown Menu Engine Styles --- */
+        .dropdown-menu-item {
+            position: relative;
+        }
+
+        /* Style for the "More" link text layout */
+        .dropdown-trigger {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Hidden dropdown box setup */
+        .dropdown-wrapper {
+            display: block;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background-color: #ffffff;
+            min-width: 160px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-radius: 4px;
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: all 0.25s ease-in-out;
+            z-index: 2000;
+            flex-direction: column !important; /* Forces vertical stacking */
+            gap: 0 !important;
+        }
+
+        /* Change the nested list direction from row to column layout */
+        .dropdown-wrapper li {
+            width: 100%;
+        }
+
+        .dropdown-wrapper li a {
+            display: block;
+            padding: 10px 20px;
+            color: #333333 !important;
+            font-size: 0.88rem;
+            font-weight: 500;
+            text-align: left;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        /* Hover effects inside the dropdown */
+        .dropdown-wrapper li a:hover {
+            background-color: #f5f5f5;
+            color: #1a6b8c !important;
+        }
+
+        /* 🔥 The Trigger: Show menu cleanly when hovering over parent list item */
+        .dropdown-menu-item:hover .dropdown-wrapper {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Mobile Responsive Override */
+        @media (max-width: 768px) {
+            .dropdown-wrapper {
+                position: static;
+                transform: none;
+                box-shadow: none;
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+                padding-left: 15px;
+                display: none; /* Can be toggled with JS or left visible in mobile list view */
+            }
+            .dropdown-menu-item:hover .dropdown-wrapper {
+                display: flex;
+                transform: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -268,6 +347,12 @@
                 <li><a href="publications.html">Publications</a></li>
                 <li><a href="education.html">Education</a></li>
                 <li><a href="contacts.html">Contacts</a></li>
+                <li class="dropdown-menu-item">
+                    <a href="#" class="dropdown-trigger">More <i class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown-wrapper">
+                        <li><a href="blog.html">Blogs</a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </header>
