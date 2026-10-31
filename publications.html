@@ -107,6 +107,13 @@
             text-transform: uppercase;
         }
         .status-review { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
+        .publication-filters { position:sticky; top:65px; z-index:5; display:flex; justify-content:center; flex-wrap:wrap; gap:8px; margin:-20px 0 28px; padding:14px 12px; background:#ffffffed; border-bottom:1px solid #f0f0f0; backdrop-filter:blur(8px); }
+        .publication-filter { padding:8px 15px; border:1px solid #cfdadd; border-radius:999px; background:#fff; color:#1a6b8c; font:inherit; font-size:.9rem; cursor:pointer; }
+        .publication-filter:hover,.publication-filter[aria-pressed="true"] { background:#1a6b8c; border-color:#1a6b8c; color:#fff; }
+        .publication-count { display:inline-grid; place-items:center; min-width:21px; height:21px; margin-left:5px; padding:0 5px; border-radius:999px; background:#edf4f6; color:inherit; font-size:.78rem; font-weight:700; }
+        .publication-filter[aria-pressed="true"] .publication-count { background:#ffffff33; }
+        .pub-item[hidden] { display:none; }
+        .publication-empty { display:none; max-width:900px; margin:0 auto; padding:30px 18px; text-align:center; color:#68777e; }
 
         /* Minimal Footer layout */
         footer {
@@ -242,6 +249,7 @@
                 <li><a href="achievements.html">Achievements</a></li>
                 <li><a href="volunteering.html">Volunteering Activities</a></li>
                 <li><a href="publications.html" class="active">Publications</a></li>
+                <li><a href="certificates.html">Certificates</a></li>
                 <li><a href="education.html">Education</a></li>
                 <li><a href="contacts.html">Contacts</a></li>
                 <li class="dropdown-menu-item">
@@ -256,16 +264,22 @@
 
     <div class="section-strip">My Publications</div>
     
+    <div class="publication-filters" id="publication-filter-menu" role="group" aria-label="Filter publication records">
+        <button class="publication-filter" type="button" data-status-filter="all" aria-pressed="true">All <span class="publication-count">0</span></button>
+        <button class="publication-filter" type="button" data-status-filter="published" aria-pressed="false">Published <span class="publication-count">0</span></button>
+        <button class="publication-filter" type="button" data-status-filter="under-review" aria-pressed="false">Under review <span class="publication-count">0</span></button>
+        <button class="publication-filter" type="button" data-status-filter="review-activity" aria-pressed="false">Activity as reviewer <span class="publication-count">0</span></button>
+    </div>
     <div class="publications-wrapper">
-        <div class="publications-container">
+        <div class="publications-container" id="publications-container">
 
-            <div class="pub-item">
+            <div class="pub-item" data-status="under-review">
                 <div class="pub-number">7</div>
                 <div class="pub-details">
                     <strong>Shacin Chandra Saha</strong>. 2026. "Spatiotemporal Evolution of Urban Heat Islands in a Secondary Coastal City: Assessing the Nexus Between Biophysical Drivers and Thermal Trends in Barishal, Bangladesh." <span class="status-badge status-review">Under Review</span>
                 </div>
             </div>
-            <div class="pub-item">
+            <div class="pub-item" data-status="published">
                 <div class="pub-number">6</div>
                 <div class="pub-details">
                     <strong>Saha, Shacin Chandra</strong>, Ummya Ayman Satil, Nitun Paul, Dipok Chandra Nath, Farhana Rahman Nepa, Mir Md. Tasnim Alam, and Sukhen Goswami. 2026. “<em>Spatiotemporal dynamics and drivers of surface urban heat island intensity in Dhaka, Bangladesh using geospatial remote sensing.</em>” <em>Discover Geoscience</em> 4, article 396.
@@ -273,7 +287,7 @@
                 </div>
             </div>
 
-            <div class="pub-item">
+            <div class="pub-item" data-status="published">
                 <div class="pub-number">5</div>
                 <div class="pub-details">
                     Hossain, Md. Uzzal, Md. Jahedul Islam Sourov, <strong>Shacin Chandra Saha</strong>, Afsana Marium, Md. Gajiur Rahman, and Sonia Khan Sony. 2026. “<em>Urban tree canopy and ecosystem services distribution in city corporations linking environmental legal policy of Bangladesh.</em>” <em>Discover Sustainability</em>.
@@ -281,7 +295,7 @@
                 </div>
             </div>
 
-            <div class="pub-item">
+            <div class="pub-item" data-status="published">
             
                 <div class="pub-number">4</div>
                 <div class="pub-details">
@@ -293,7 +307,7 @@
             
             </div>
 
-            <div class="pub-item">
+            <div class="pub-item" data-status="published">
             
                 <div class="pub-number">3</div>
                 <div class="pub-details">
@@ -305,7 +319,7 @@
             
             </div>
 
-            <div class="pub-item"> 
+            <div class="pub-item" data-status="published"> 
             
                 <div class="pub-number">2</div>
                 <div class="pub-details">
@@ -317,7 +331,7 @@
             
             </div>
 
-            <div class="pub-item">
+            <div class="pub-item" data-status="published">
             
                 <div class="pub-number">1</div>
                 <div class="pub-details">
@@ -329,13 +343,23 @@
             
             </div>
 
+                    <div class="pub-item" data-status="review-activity">
+                <div class="pub-number">R1</div>
+                <div class="pub-details">Peer review for <em>Environmental Systems Research</em>. Publisher: Springer Nature. <span class="status-badge status-review">In progress</span></div>
+            </div>
+
         </div>
+        <p id="publication-empty-state" class="publication-empty">No records in this category yet.</p>
     </div>
 
     <footer>
         <p>&copy; Shacin Saha 2026</p>
     </footer>
 <script>
+    const publicationItems=[...document.querySelectorAll("#publications-container .pub-item")];
+    const publicationFilters=[...document.querySelectorAll(".publication-filter")];
+    const publicationEmpty=document.getElementById("publication-empty-state");
+    publicationFilters.forEach(button=>{const key=button.dataset.statusFilter;button.querySelector(".publication-count").textContent=key==="all"?publicationItems.filter(item=>item.dataset.status!=="review-activity").length:publicationItems.filter(item=>item.dataset.status===key).length;button.addEventListener("click",()=>{publicationFilters.forEach(filter=>filter.setAttribute("aria-pressed",String(filter===button)));let shown=0;publicationItems.forEach(item=>{const visible=key==="all"?item.dataset.status!=="review-activity":item.dataset.status===key;item.hidden=!visible;if(visible)shown++});publicationEmpty.style.display=shown?"none":"block"})});
     function toggleMobileMenu(event) {
             // Only intercept and execute click mechanics on mobile breakpoints
             if (window.innerWidth <= 768) {

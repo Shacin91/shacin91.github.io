@@ -74,6 +74,8 @@
         }
         .filter-btn:hover { background: #f1f3f4; border-color: #1a6b8c; }
         .filter-btn.active { background: #1a6b8c; color: white; border-color: #1a6b8c; }
+        .filter-count { display:inline-grid; place-items:center; min-width:21px; height:21px; margin-left:5px; padding:0 5px; border-radius:999px; background:#edf4f6; color:inherit; font-size:.78rem; font-weight:700; }
+        .filter-btn.active .filter-count { background:#ffffff33; }
 
         /* Experience Row List */
         .experience-wrapper { padding: 20px; background-color: #ffffff; }
@@ -375,6 +377,7 @@
                 <li><a href="achievements.html">Achievements</a></li>
                 <li><a href="volunteering.html">Volunteering Activities</a></li>
                 <li><a href="publications.html">Publications</a></li>
+                <li><a href="certificates.html">Certificates</a></li>
                 <li><a href="education.html">Education</a></li>
                 <li><a href="contacts.html">Contacts</a></li>
                 <li class="dropdown-menu-item" id="moreMenu">
@@ -390,12 +393,12 @@
     <div class="section-strip">Work Experiences</div>
     
     <div class="filter-menu">
-        <button class="filter-btn active" onclick="filterExperience('all', event)">All Experience</button>
-        <button class="filter-btn" onclick="filterExperience('instructor', event)">Instructor</button>
-        <button class="filter-btn" onclick="filterExperience('assistant', event)">Teaching Assistant</button>
-        <button class="filter-btn" onclick="filterExperience('survey', event)">Field Survey</button>
-        <button class="filter-btn" onclick="filterExperience('research', event)">Research Assistant</button>
-        <button class="filter-btn" onclick="filterExperience('fieldwork', event)">Academic Fieldwork</button>
+        <button class="filter-btn active" onclick="filterExperience('all', event)">All Experience <span class="filter-count" data-count-for="all">0</span></button>
+        <button class="filter-btn" onclick="filterExperience('instructor', event)">Instructor <span class="filter-count" data-count-for="instructor">0</span></button>
+        <button class="filter-btn" onclick="filterExperience('assistant', event)">Teaching Assistant <span class="filter-count" data-count-for="assistant">0</span></button>
+        <button class="filter-btn" onclick="filterExperience('survey', event)">Field Survey <span class="filter-count" data-count-for="survey">0</span></button>
+        <button class="filter-btn" onclick="filterExperience('research', event)">Research Assistant <span class="filter-count" data-count-for="research">0</span></button>
+        <button class="filter-btn" onclick="filterExperience('fieldwork', event)">Academic Fieldwork <span class="filter-count" data-count-for="fieldwork">0</span></button>
     </div>
 
     <div class="experience-wrapper">
@@ -661,6 +664,10 @@
                     <img src="images/Exp_9.jpg" alt="GIS Workshop Class">
                     <div class="gallery-caption"></div>
                 </div>
+                <div class="gallery-slide">
+                    <img src="certificates-assets/database-training-instructor.webp" alt="Shacin with the database course instructor">
+                    <div class="gallery-caption">With the instructor during the 80-hour database training course (March–June 2024)</div>
+                </div>
             </div>
             
             <button class="gallery-nav-btn gallery-prev" onclick="moveGallery(-1)"><i class="fas fa-chevron-left"></i></button>
@@ -683,6 +690,7 @@
         // 💾 Global Row References
         const container = document.getElementById("experience-container");
         const allRows = Array.from(container.getElementsByClassName("exp-row"));
+        document.querySelectorAll("[data-count-for]").forEach(badge => { const key=badge.dataset.countFor; badge.textContent=key==="all"?allRows.length:allRows.filter(row=>row.classList.contains(key)).length; });
         let rowIntervals = []; // To track dynamic carousel intervals cleanly
 
         // 🏷️ Category Filter & Order Engine
@@ -751,6 +759,7 @@
         const galleryTrack = document.getElementById('galleryTrack');
         const galleryDots = document.getElementById('galleryDots').children;
         const totalFooterSlides = galleryTrack.children.length;
+        document.getElementById("galleryDots").innerHTML = Array.from({length: totalFooterSlides}, (_, i) => "<button class=\"gallery-dot" + (i === 0 ? " active" : "") + "\" onclick=\"jumpToGallerySlide(" + i + ")\" aria-label=\"Show gallery image " + (i + 1) + "\"></button>").join("");
         let footerGalleryTimer = setInterval(() => moveGallery(1), 4000);
 
         function updateGalleryDisplay() {

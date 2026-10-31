@@ -24,6 +24,8 @@
     .filter-btn { padding:8px 18px; margin:0; cursor:pointer; border:1px solid #dadce0; background:#fff; color:var(--blue); border-radius:4px; font-weight:500; font-size:.9rem; transition:all .2s ease; }
     .filter-btn:hover { background:#f1f3f4; border-color:var(--blue); }
     .filter-btn.active { background:var(--blue); color:#fff; border-color:var(--blue); }
+    .filter-count { display:inline-grid; place-items:center; min-width:21px; height:21px; margin-left:5px; padding:0 5px; border-radius:999px; background:#edf4f6; color:inherit; font-size:.78rem; font-weight:700; }
+    .filter-btn.active .filter-count { background:#ffffff33; }
     .portfolio-wrapper { padding:20px; }
     .portfolio-container { max-width:1100px; margin:0 auto; display:flex; flex-direction:column; gap:32px; }
     .port-row { display:flex; flex-direction:row; align-items:stretch; gap:35px; padding:25px; border:1px solid var(--line); border-radius:6px; background:#fff; transition:box-shadow .2s,border-color .2s; }
@@ -71,7 +73,8 @@
       <li><a href="index.html">Home</a></li><li><a href="experience.html">Work Experiences</a></li>
       <li><a href="technical_skills.html">Technical Skills</a></li><li><a href="portfolio.html" class="active" aria-current="page">Portfolios</a></li>
       <li><a href="achievements.html">Achievements</a></li><li><a href="volunteering.html">Volunteering Activities</a></li>
-      <li><a href="publications.html">Publications</a></li><li><a href="education.html">Education</a></li><li><a href="contacts.html">Contacts</a></li>
+      <li><a href="publications.html">Publications</a></li>
+                <li><a href="certificates.html">Certificates</a></li><li><a href="education.html">Education</a></li><li><a href="contacts.html">Contacts</a></li>
       <li class="dropdown-menu-item" id="moreMenu"><a href="#" class="dropdown-trigger" onclick="toggleMobileMenu(event)" aria-haspopup="true">More <i class="fas fa-caret-down" aria-hidden="true"></i></a>
         <ul class="dropdown-wrapper"><li><a href="blog.html">Blogs</a></li></ul>
       </li>
@@ -81,8 +84,8 @@
   <main>
     <h2 class="section-strip">Portfolios</h2>
     <div class="filter-menu" role="group" aria-label="Filter projects">
-      <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All Projects</button>
-      <button class="filter-btn" type="button" data-filter="arcgis" aria-pressed="false">ArcGIS Pro</button>
+      <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All Projects <span class="filter-count" data-count-for="all">0</span></button>
+      <button class="filter-btn" type="button" data-filter="arcgis" aria-pressed="false">ArcGIS Pro <span class="filter-count" data-count-for="arcgis">0</span></button>
     </div>
 
     <section class="portfolio-wrapper" aria-label="Selected projects">
@@ -112,6 +115,7 @@
     const projects = Array.from(document.querySelectorAll(".port-row"));
     const filterButtons = Array.from(document.querySelectorAll(".filter-btn"));
     const emptyState = document.getElementById("empty-state");
+    document.querySelectorAll("[data-count-for]").forEach(badge => { const key=badge.dataset.countFor; badge.textContent=key==="all"?projects.length:projects.filter(project=>project.classList.contains(key)).length; });
 
     function filterPortfolio(category) {
       filterButtons.forEach(button => {
