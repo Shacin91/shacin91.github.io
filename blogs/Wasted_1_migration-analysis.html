@@ -174,7 +174,13 @@
             color: #666;
             background-color: #fafafa;
         }
-    </style>
+    /* Shared navigation dropdown behavior */
+header nav .dropdown-menu-item{position:relative}
+header nav .dropdown-wrapper{display:none;position:absolute;top:100%;left:0;min-width:210px;flex-direction:column;gap:0;padding:8px 0;margin:0;list-style:none;background:#fff;border:1px solid #e1e7ea;border-radius:8px;box-shadow:0 10px 24px #162b3820;z-index:3000}
+header nav .dropdown-wrapper li{width:100%;list-style:none}
+header nav .dropdown-wrapper li a{display:block;padding:10px 16px;white-space:nowrap;text-decoration:none}
+header nav .dropdown-menu-item:hover>.dropdown-wrapper,header nav .dropdown-menu-item:focus-within>.dropdown-wrapper,header nav .dropdown-menu-item.mobile-open>.dropdown-wrapper{display:flex;opacity:1;visibility:visible;pointer-events:auto;transform:none}
+@media(max-width:768px){header nav .dropdown-wrapper{position:static;min-width:0;width:100%;margin:6px 0 0;padding:5px 0 5px 14px;border:0;border-left:2px solid #d9e7ec;border-radius:0;box-shadow:none;background:#f8fbfc;transform:none}header nav .dropdown-menu-item:hover>.dropdown-wrapper{display:none}header nav .dropdown-menu-item.mobile-open>.dropdown-wrapper{display:flex}header nav .dropdown-wrapper li a{white-space:normal;padding:10px 12px}}header nav>ul>li>a.active,header nav>ul>li>a[aria-current="page"]{color:#1a6b8c!important;font-weight:700}\n</style>
 </head>
 <body>
 
@@ -184,17 +190,16 @@
         </div>
         <nav>
             <ul>
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../experience.html">Work Experiences</a></li>
-                <li><a href="../technical_skills.html">Technical Skills</a></li>
-                <li><a href="../portfolio.html">Portfolios</a></li>
-                <li><a href="../achievements.html">Achievements</a></li>
-                <li><a href="../volunteering.html">Volunteering Activities</a></li>
-                <li><a href="../publications.html">Publications</a></li>
-                <li><a href="../education.html">Education</a></li>
-                <li><a href="../blog.html" style="color: #1a6b8c; font-weight: bold;">Blog</a></li>
-                <li><a href="../contacts.html">Contacts</a></li>
-            </ul>
+<li><a href="../index.html">Home</a></li>
+<li><a href="../experience.html">Experiences</a></li>
+<li><a href="../portfolio.html">Portfolios</a></li>
+<li><a href="../publications.html">Publications</a></li>
+<li><a href="../certificates.html">Certificates</a></li>
+<li><a href="../blog.html" class="active" aria-current="page">Blogs</a></li>
+<li><a href="../volunteering.html">Volunteering Activities</a></li>
+<li><a href="../education.html">Education</a></li>
+<li class="dropdown-menu-item" id="moreMenu"><a href="#" class="dropdown-trigger" aria-haspopup="true" aria-expanded="false">More <i class="fas fa-caret-down" aria-hidden="true"></i></a><ul class="dropdown-wrapper"><li><a href="../contacts.html">Contacts</a></li><li><a href="../technical_skills.html">Data and Tools</a></li></ul></li>
+</ul>
         </nav>
     </header>
 
@@ -314,5 +319,7 @@
             localStorage.setItem(`unlikes_${blogId}`, currentUnlikes);
         }
     </script>
-</body>
+<script>
+(()=>{const menu=document.getElementById('moreMenu');if(!menu)return;const trigger=menu.querySelector('.dropdown-trigger');const setOpen=open=>{menu.classList.toggle('mobile-open',open);trigger.setAttribute('aria-expanded',String(open));};trigger.addEventListener('click',event=>{event.preventDefault();setOpen(!menu.classList.contains('mobile-open'));});document.addEventListener('click',event=>{if(!menu.contains(event.target))setOpen(false);});document.addEventListener('keydown',event=>{if(event.key==='Escape')setOpen(false);});})();
+</script></body>
 </html>
