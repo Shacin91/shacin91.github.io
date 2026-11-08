@@ -15,7 +15,7 @@
             line-height: 1.6;
             padding-top: 70px; /* Space for fixed nav bar */
         }
-        
+
         /* Navigation Bar */
         header {
             display: flex;
@@ -53,7 +53,7 @@
         /* Publications Content Container */
         .publications-wrapper { padding: 0 20px; background-color: #ffffff; }
         .publications-container { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px; }
-        
+
         /* Individual Paper Row Entry */
         .pub-item { 
             display: flex; 
@@ -90,7 +90,7 @@
         .pub-details { flex: 1; font-size: 1rem; color: #424242; text-align: justify; }
         .pub-details em { color: #111; font-style: italic; }
         .pub-details strong { color: #000; font-weight: 700; }
-        
+
         /* DOI/Links Section styling */
         .pub-links { margin-top: 8px; font-size: 0.9rem; }
         .pub-links a { color: #1a6b8c; text-decoration: none; font-weight: 500; }
@@ -107,6 +107,16 @@
             text-transform: uppercase;
         }
         .status-review { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
+        .status-completed { background-color:#e6f4ec; color:#276749; border:1px solid #b7dfc7; }
+        .review-date { margin-top:5px; color:#52616a; font-size:.9rem; }
+        .review-certificate { display:block; width:min(260px,100%); margin-top:12px; padding:0; border:0; background:transparent; text-align:left; cursor:zoom-in; }
+        .review-certificate img { display:block; width:100%; height:auto; border:1px solid #dce4e8; border-radius:4px; }
+        .review-certificate:focus-visible { outline:3px solid #1a6b8c; outline-offset:3px; }
+        .certificate-dialog { width:min(900px,94vw); max-width:94vw; max-height:92vh; padding:0; border:0; border-radius:8px; background:#fff; box-shadow:0 20px 60px #0005; }
+        .certificate-dialog::backdrop { background:#10232dcc; backdrop-filter:blur(3px); }
+        .certificate-dialog img { display:block; max-width:100%; max-height:calc(92vh - 54px); width:auto; height:auto; margin:auto; object-fit:contain; }
+        .certificate-dialog-head { display:flex; justify-content:space-between; align-items:center; gap:14px; padding:10px 14px; border-bottom:1px solid #e0e6e9; color:#26343b; }
+        .certificate-dialog-close { border:1px solid #ccd7dc; border-radius:50%; width:34px; height:34px; background:#fff; color:#314851; font-size:1.2rem; cursor:pointer; }
         .publication-filters { position:sticky; top:65px; z-index:5; display:flex; justify-content:center; flex-wrap:wrap; gap:8px; margin:-20px 0 28px; padding:14px 12px; background:#ffffffed; border-bottom:1px solid #f0f0f0; backdrop-filter:blur(8px); }
         .publication-filter { padding:8px 15px; border:1px solid #cfdadd; border-radius:999px; background:#fff; color:#1a6b8c; font:inherit; font-size:.9rem; cursor:pointer; }
         .publication-filter:hover,.publication-filter[aria-pressed="true"] { background:#1a6b8c; border-color:#1a6b8c; color:#fff; }
@@ -238,6 +248,7 @@ header nav .dropdown-wrapper li{width:100%;list-style:none}
 header nav .dropdown-wrapper li a{display:block;padding:10px 16px;white-space:nowrap;text-decoration:none}
 header nav .dropdown-menu-item:hover>.dropdown-wrapper,header nav .dropdown-menu-item:focus-within>.dropdown-wrapper,header nav .dropdown-menu-item.mobile-open>.dropdown-wrapper{display:flex;opacity:1;visibility:visible;pointer-events:auto;transform:none}
 @media(max-width:768px){header nav .dropdown-wrapper{position:static;min-width:0;width:100%;margin:6px 0 0;padding:5px 0 5px 14px;border:0;border-left:2px solid #d9e7ec;border-radius:0;box-shadow:none;background:#f8fbfc;transform:none}header nav .dropdown-menu-item:hover>.dropdown-wrapper{display:none}header nav .dropdown-menu-item.mobile-open>.dropdown-wrapper{display:flex}header nav .dropdown-wrapper li a{white-space:normal;padding:10px 12px}}header nav>ul>li>a.active,header nav>ul>li>a[aria-current="page"]{color:#1a6b8c!important;font-weight:700}\n</style>
+<meta name="page-last-updated" content="2026-11-09T00:05:38+06:00">
 </head>
 <body>
 
@@ -256,13 +267,13 @@ header nav .dropdown-menu-item:hover>.dropdown-wrapper,header nav .dropdown-menu
 <li><a href="blog.html">Blogs</a></li>
 <li><a href="volunteering.html">Volunteering Activities</a></li>
 <li><a href="education.html">Education</a></li>
-<li class="dropdown-menu-item" id="moreMenu"><a href="#" class="dropdown-trigger" aria-haspopup="true" aria-expanded="false">More <i class="fas fa-caret-down" aria-hidden="true"></i></a><ul class="dropdown-wrapper"><li><a href="contacts.html">Contacts</a></li><li><a href="technical_skills.html">Data and Tools</a></li></ul></li>
+<li class="dropdown-menu-item" id="moreMenu"><a href="#" class="dropdown-trigger" aria-haspopup="true" aria-expanded="false">More <i class="fas fa-caret-down" aria-hidden="true"></i></a><ul class="dropdown-wrapper"><li><a href="contacts.html">Contacts</a></li><li><a href="data-tools.html">Datasets &amp; Tools</a></li></ul></li>
 </ul>
         </nav>
     </header>
 
     <div class="section-strip">My Publications</div>
-    
+
     <div class="publication-filters" id="publication-filter-menu" role="group" aria-label="Filter publication records">
         <button class="publication-filter" type="button" data-status-filter="all" aria-pressed="true">All <span class="publication-count">0</span></button>
         <button class="publication-filter" type="button" data-status-filter="published" aria-pressed="false">Published <span class="publication-count">0</span></button>
@@ -295,7 +306,7 @@ header nav .dropdown-menu-item:hover>.dropdown-wrapper,header nav .dropdown-menu
             </div>
 
             <div class="pub-item" data-status="published">
-            
+
                 <div class="pub-number">4</div>
                 <div class="pub-details">
                     Akter, Rina, Md Ilias Mahmud, Abu Jafor Mia, Faisal Ahmed, Mohammad Feruj Alam, Atikul Haque Farazi, <strong>Shacin Chandra Saha</strong>, and Mohidar Hossain. 2026. "<em>Integrated Geospatial, Geotechnical, and Hydrologic Analysis of Bank Dynamics in the Kirtankhola River, Bangladesh.</em>" <em>International Journal of River Basin Management</em>, March, 1–20.
@@ -303,11 +314,11 @@ header nav .dropdown-menu-item:hover>.dropdown-wrapper,header nav .dropdown-menu
                         <a href="https://doi.org/10.1080/15715124.2026.2641785" target="_blank"><i class="fa-solid fa-link"></i> doi:10.1080/15715124.2026.2641785</a>
                     </div>
                 </div>
-            
+
             </div>
 
             <div class="pub-item" data-status="published">
-            
+
                 <div class="pub-number">3</div>
                 <div class="pub-details">
                     Aktar, S., Hossain, M., Rakib, M. M. H., <strong>Saha, S. C.</strong>, Ovi, M. H., Roy, D., Khan, A., Hasan, I., Salman, M. A., Khan, R., Rafiq, M. R., & Roy, D. K. (2025). "<em>Geomorphological Responses to Climate Change in the Ganges-Brahmaputra-Meghna Delta: A Multi-Decadal Remote Sensing Analysis.</em>" <em>Quaternary Science Advances</em>, 100296.
@@ -315,11 +326,11 @@ header nav .dropdown-menu-item:hover>.dropdown-wrapper,header nav .dropdown-menu
                         <a href="https://doi.org/10.1016/j.qsa.2025.100296" target="_blank"><i class="fa-solid fa-link"></i> https://doi.org/10.1016/j.qsa.2025.100296</a>
                     </div>
                 </div>
-            
+
             </div>
 
             <div class="pub-item" data-status="published"> 
-            
+
                 <div class="pub-number">2</div>
                 <div class="pub-details">
                     Goswami, S., Billah, M. M., Hossen, M. S., Ovi, M. H., <strong>Saha, S. C.</strong>, Alam, M. M. T., ... & Roy, D. K. (2025). "<em>Geomorphic index alterations and socioeconomic implications: A case study of a Coastal River system in Bangladesh.</em>" <em>Progress in Disaster Science</em>, 100450.
@@ -327,11 +338,11 @@ header nav .dropdown-menu-item:hover>.dropdown-wrapper,header nav .dropdown-menu
                         <a href="https://doi.org/10.1016/j.pdisas.2025.100450" target="_blank"><i class="fa-solid fa-link"></i> https://doi.org/10.1016/j.pdisas.2025.100450</a>
                     </div>
                 </div>
-            
+
             </div>
 
             <div class="pub-item" data-status="published">
-            
+
                 <div class="pub-number">1</div>
                 <div class="pub-details">
                     Salman MA, Rakib MH, <strong>Saha SC</strong>, Haque ME, Hossen MS (2025) "<em>Cyclone vulnerability assessment of the central coast of Bangladesh: A comprehensive study utilizing FAHP and geospatial techniques.</em>" <em>PLoS One</em> 20(7): e0326965.
@@ -339,22 +350,52 @@ header nav .dropdown-menu-item:hover>.dropdown-wrapper,header nav .dropdown-menu
                         <a href="https://doi.org/10.1371/journal.pone.0326965" target="_blank"><i class="fa-solid fa-link"></i> https://doi.org/10.1371/journal.pone.0326965</a>
                     </div>
                 </div>
-            
-            </div>
 
-                    <div class="pub-item" data-status="review-activity">
+            </div>
+            <div class="pub-item" data-status="review-activity">
                 <div class="pub-number">R1</div>
-                <div class="pub-details">Peer review for <em>Environmental Systems Research</em>. Publisher: Springer Nature. <span class="status-badge status-review">In progress</span></div>
+                <div class="pub-details">
+                    Peer review completed for <em>Environmental Systems Research</em> (Springer Nature).
+                    <span class="status-badge status-completed">Completed</span>
+                    <div class="review-date">Completed 7 November 2026</div>
+                    <button class="review-certificate" type="button" data-open-review-certificate aria-label="View reviewer certificate for Environmental Systems Research">
+                        <img src="images/reviewer-certificate-esr-2026.webp" alt="Springer Nature Reviewer Certificate for Environmental Systems Research, dated 7 November 2026" loading="lazy">
+                    </button>
+                </div>
+            </div>
+            <div class="pub-item" data-status="review-activity">
+                <div class="pub-number">R2</div>
+                <div class="pub-details">
+                    Peer review in progress: <strong>Assessing Socioeconomic Vulnerability and Inferred Environmental Migration Pressure Zones in Khulna District Using GIS and Indicator-Based Analysis with Clustering Validation.</strong>
+                    Journal: <em>Discover Applied Sciences</em>.
+                    <span class="status-badge status-review">In progress</span>
+                </div>
+            </div>
+            <div class="pub-item" data-status="review-activity">
+                <div class="pub-number">R3</div>
+                <div class="pub-details">
+                    Peer review in progress: <strong>Impact of Landscape patterns on thermal dynamics (2005-2025).</strong>
+                    Journal: <em>Discover Cities</em>.
+                    <span class="status-badge status-review">In progress</span>
+                </div>
             </div>
 
         </div>
         <p id="publication-empty-state" class="publication-empty">No records in this category yet.</p>
     </div>
 
-    <footer>
-        <p>&copy; Shacin Saha 2026</p>
-    </footer>
+    <dialog class="certificate-dialog" id="review-certificate-dialog" aria-label="Reviewer certificate">
+        <div class="certificate-dialog-head"><strong>Reviewer Certificate · Environmental Systems Research</strong><button class="certificate-dialog-close" type="button" data-close-review-certificate aria-label="Close certificate">&times;</button></div>
+        <img src="images/reviewer-certificate-esr-2026.webp" alt="Springer Nature Reviewer Certificate dated 7 November 2026">
+    </dialog>
+        <p class="page-last-updated" style="max-width:1120px;margin:2.8em auto 14px;padding:0 20px;text-align:left;color:#78848a;font:400 .78rem/1.5 Arial,sans-serif">Last Updated: <time></time></p>
+    <script>
+    (()=>{const meta=document.querySelector('meta[name="page-last-updated"]');const p=document.querySelector('.page-last-updated');const time=p&&p.querySelector('time');if(!meta||!time)return;const date=new Date(meta.content);time.dateTime=meta.content;const timeText=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Dhaka',hour:'numeric',minute:'2-digit',hour12:true}).format(date);const dateText=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Dhaka',day:'numeric',month:'long'}).format(date);time.textContent=timeText+', '+dateText+' (BST)'})();
+    </script>
+<footer><p class="copyright-notice" style="margin:6px 0 0;font-size:.78rem;line-height:1.5">© 2026 Shacin Saha. Original website text and figures may not be reused without permission. Third-party and co-authored materials remain subject to their respective rights.</p></footer>
 <script>
+(()=>{const dlg=document.getElementById("review-certificate-dialog");if(!dlg)return;document.querySelectorAll("[data-open-review-certificate]").forEach(button=>button.addEventListener("click",()=>dlg.showModal()));dlg.querySelector("[data-close-review-certificate]").addEventListener("click",()=>dlg.close());dlg.addEventListener("click",event=>{if(event.target===dlg)dlg.close()})})();
+</script><script>
     const publicationItems=[...document.querySelectorAll("#publications-container .pub-item")];
     const publicationFilters=[...document.querySelectorAll(".publication-filter")];
     const publicationEmpty=document.getElementById("publication-empty-state");
@@ -363,9 +404,9 @@ header nav .dropdown-menu-item:hover>.dropdown-wrapper,header nav .dropdown-menu
             // Only intercept and execute click mechanics on mobile breakpoints
             if (window.innerWidth <= 768) {
                 event.preventDefault(); // Stop the "#" href anchor action from reloading/jumping
-                
+
                 const moreMenuContainer = document.getElementById('moreMenu');
-                
+
                 // Toggle the open class engine framework configuration
                 moreMenuContainer.classList.toggle('mobile-open');
             }
@@ -383,5 +424,7 @@ header nav .dropdown-menu-item:hover>.dropdown-wrapper,header nav .dropdown-menu
 </script>
 <script>
 (()=>{const menu=document.getElementById('moreMenu');if(!menu)return;const trigger=menu.querySelector('.dropdown-trigger');const setOpen=open=>{menu.classList.toggle('mobile-open',open);trigger.setAttribute('aria-expanded',String(open));};trigger.addEventListener('click',event=>{event.preventDefault();setOpen(!menu.classList.contains('mobile-open'));});document.addEventListener('click',event=>{if(!menu.contains(event.target))setOpen(false);});document.addEventListener('keydown',event=>{if(event.key==='Escape')setOpen(false);});})();
-</script></body>
+</script>
+
+</body>
 </html>

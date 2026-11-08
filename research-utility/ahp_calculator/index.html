@@ -14,6 +14,7 @@
         .inconsistent { color: red; font-weight: bold; }
         #chart { width: 100%; height: 400px; margin-top: 30px; }
     </style>
+<meta name="page-last-updated" content="2026-11-09T00:05:38+06:00">
 </head>
 <body>
     <h1>AHP Calculation Tool</h1>
@@ -25,11 +26,14 @@
     <div id="status" class="status"></div>
     <div id="chart"></div>
 
-    <footer>
-        <p>&copy; Shacin Saha 2026</p>
-    </footer>
+        <p class="page-last-updated" style="max-width:1120px;margin:2.8em auto 14px;padding:0 20px;text-align:left;color:#78848a;font:400 .78rem/1.5 Arial,sans-serif">Last Updated: <time></time></p>
+    <script>
+    (()=>{const meta=document.querySelector('meta[name="page-last-updated"]');const p=document.querySelector('.page-last-updated');const time=p&&p.querySelector('time');if(!meta||!time)return;const date=new Date(meta.content);time.dateTime=meta.content;const timeText=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Dhaka',hour:'numeric',minute:'2-digit',hour12:true}).format(date);const dateText=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Dhaka',day:'numeric',month:'long'}).format(date);time.textContent=timeText+', '+dateText+' (BST)'})();
+    </script>
+<footer><p class="copyright-notice" style="margin:6px 0 0;font-size:.78rem;line-height:1.5">© 2026 Shacin Saha. Original website text and figures may not be reused without permission. Third-party and co-authored materials remain subject to their respective rights.</p></footer>
 
     <script src="script.js"></script>
+
 </body>
 </html>
 

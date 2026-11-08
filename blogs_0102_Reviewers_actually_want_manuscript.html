@@ -15,7 +15,7 @@
             line-height: 1.7;
             padding-top: 70px;
         }
-        
+
         /* Navigation Bar */
         header {
             display: flex;
@@ -36,7 +36,7 @@
 
         /* Blog Layout Grid container */
         .post-layout-wrapper { max-width: 850px; margin: 40px auto; padding: 0 20px; }
-        
+
         /* Breadcrumb Navigation links */
         .back-to-blog { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; color: #1a6b8c; font-weight: 600; font-size: 0.95rem; margin-bottom: 25px; transition: color 0.2s; }
         .back-to-blog:hover { color: #114b63; text-decoration: underline; }
@@ -45,14 +45,14 @@
         .post-header { margin-bottom: 35px; }
         .post-title { font-size: 2.2rem; line-height: 1.3; color: #1a6b8c; font-weight: 700; margin-bottom: 15px; }
         .post-meta { font-size: 0.9rem; color: #7f8c8d; font-weight: 500; display: flex; gap: 20px; }
-        
+
         /* Hero Cover Image design */
         .post-hero-img { width: 100%; height: 380px; object-fit: cover; border-radius: 6px; border: 1px solid #e0e0e0; margin-bottom: 35px; }
 
         /* Deep Content Styling */
         .post-content p { margin-bottom: 22px; text-align: justify; font-size: 1.05rem; color: #34495e; }
         .post-content h3 { font-size: 1.4rem; color: #1a6b8c; font-weight: 700; margin-top: 35px; margin-bottom: 15px; border-left: 4px solid #1a6b8c; padding-left: 12px; }
-        
+
         /* Reviewer Question Callouts (Blockquotes) */
         .question-box { background-color: #f4f9fc; border-left: 4px solid #3498db; padding: 15px 20px; margin: 25px 0; border-radius: 0 4px 4px 0; font-style: italic; color: #2c3e50; }
         .question-box strong { color: #1a6b8c; font-style: normal; }
@@ -61,7 +61,7 @@
         .instruction-list { list-style: none; margin: 20px 0 25px 15px; }
         .instruction-list li { position: relative; padding-left: 25px; margin-bottom: 12px; font-size: 1.02rem; }
         .instruction-list li::before { content: "\f00c"; font-family: "Font Awesome 5 Free"; font-weight: 900; position: absolute; left: 0; top: 2px; color: #27ae60; font-size: 0.9rem; }
-        
+
         .secret-box { background: #fafafa; border: 1px dashed #1a6b8c; padding: 20px; border-radius: 6px; margin-top: 40px; }
         .secret-box h4 { color: #1a6b8c; font-size: 1.15rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
 
@@ -103,6 +103,7 @@ header nav .dropdown-wrapper li{width:100%;list-style:none}
 header nav .dropdown-wrapper li a{display:block;padding:10px 16px;white-space:nowrap;text-decoration:none}
 header nav .dropdown-menu-item:hover>.dropdown-wrapper,header nav .dropdown-menu-item:focus-within>.dropdown-wrapper,header nav .dropdown-menu-item.mobile-open>.dropdown-wrapper{display:flex;opacity:1;visibility:visible;pointer-events:auto;transform:none}
 @media(max-width:768px){header nav .dropdown-wrapper{position:static;min-width:0;width:100%;margin:6px 0 0;padding:5px 0 5px 14px;border:0;border-left:2px solid #d9e7ec;border-radius:0;box-shadow:none;background:#f8fbfc;transform:none}header nav .dropdown-menu-item:hover>.dropdown-wrapper{display:none}header nav .dropdown-menu-item.mobile-open>.dropdown-wrapper{display:flex}header nav .dropdown-wrapper li a{white-space:normal;padding:10px 12px}}header nav>ul>li>a.active,header nav>ul>li>a[aria-current="page"]{color:#1a6b8c!important;font-weight:700}\n</style>
+<meta name="page-last-updated" content="2026-11-09T00:05:38+06:00">
 </head>
 <body>
 
@@ -121,14 +122,14 @@ header nav .dropdown-menu-item:hover>.dropdown-wrapper,header nav .dropdown-menu
 <li><a href="blog.html" class="active" aria-current="page">Blogs</a></li>
 <li><a href="volunteering.html">Volunteering Activities</a></li>
 <li><a href="education.html">Education</a></li>
-<li class="dropdown-menu-item" id="moreMenu"><a href="#" class="dropdown-trigger" aria-haspopup="true" aria-expanded="false">More <i class="fas fa-caret-down" aria-hidden="true"></i></a><ul class="dropdown-wrapper"><li><a href="contacts.html">Contacts</a></li><li><a href="technical_skills.html">Data and Tools</a></li></ul></li>
+<li class="dropdown-menu-item" id="moreMenu"><a href="#" class="dropdown-trigger" aria-haspopup="true" aria-expanded="false">More <i class="fas fa-caret-down" aria-hidden="true"></i></a><ul class="dropdown-wrapper"><li><a href="contacts.html">Contacts</a></li><li><a href="data-tools.html">Datasets &amp; Tools</a></li></ul></li>
 </ul>
         </nav>
     </header>
 
     <main class="post-layout-wrapper">
         <a href="blog.html" class="back-to-blog"><i class="fas fa-arrow-left"></i> Back to Blogs</a>
-        
+
         <article>
             <div class="post-header">
                 <h1 class="post-title">The Things Reviewers Actually Want in Your Manuscript</h1>
@@ -143,23 +144,23 @@ header nav .dropdown-menu-item:hover>.dropdown-wrapper,header nav .dropdown-menu
 
             <div class="post-content">
                 <p>Imagine a reviewer sitting down with your manuscript. They are tired, they are auditing your work in their spare time, and they are navigating a hyper-competitive submission queue. Subconsciously or consciously, they are looking for a reason to say "no."</p>
-                
+
                 <p>If you want them to say "yes," your paper cannot just be a dry repository of data. It needs to give them exactly what they are looking for. Pulling from top journal editors, writing guidelines, and seasoned researchers, here is the ultimate checklist of what reviewers actually want to see when they open your file.</p>
 
                 <h3>1. A Clear "Nugget" (The Key Insight)</h3>
                 <p>Reviewers do not care how many hours you spent coding or how much raw data you collected. As the saying goes: <em>Conferences and journals do not accept results; they accept papers.</em> What they want is your nugget—the core, shiny piece of conceptual gold.</p>
-                
+
                 <div class="question-box">
                     <strong>The Reviewer’s Question:</strong> "What is the unique conceptual insight here that changes how we view this problem?"
                 </div>
-                
+
                 <ul class="instruction-list">
                     <li><strong>How to give it to them:</strong> Do not bury your primary revelation deep in the text. Explicitly state your core testable hypothesis and your key insight early on. If your nugget shows that combining two separate, difficult problems actually makes the overall solution easier, make that your headline.</li>
                 </ul>
 
                 <h3>2. A Compelling Story (Goal &rarr; Problem &rarr; Solution)</h3>
                 <p>Science is a human endeavor, and humans are hardwired for narrative. Reviewers do not want a boring lab report; they want a structured journey.</p>
-                
+
                 <ul class="instruction-list">
                     <li><strong>The Goal:</strong> Make the reviewer want the outcome by explaining why this research matters to the broader scientific community.</li>
                     <li><strong>The Problem:</strong> Build the "drama." What barrier or limitation in previous literature has stopped everyone else from achieving this goal?</li>
@@ -169,7 +170,7 @@ header nav .dropdown-menu-item:hover>.dropdown-wrapper,header nav .dropdown-menu
 
                 <h3>3. An Ironclad Introduction (First Impressions Rule)</h3>
                 <p>A reviewer usually makes up their mind about the fate of your paper within the first two pages. If they are confused, frustrated, or bored by the time they finish reading your Introduction, it is almost impossible to win them back later.</p>
-                
+
                 <ul class="instruction-list">
                     <li><strong>The Gap Analysis:</strong> Your introduction must explicitly point out the exact "knowledge gap" in the current literature.</li>
                     <li><strong>Context without Bloat:</strong> Give them the exact amount of background required to understand your specific study area or variables—no more, no less. (In Earth Sciences, this means an immediate, high-quality location map and stratigraphic framework!).</li>
@@ -177,7 +178,7 @@ header nav .dropdown-menu-item:hover>.dropdown-wrapper,header nav .dropdown-menu
 
                 <h3>4. The "Golden Rule" of Data: Absolute Separation</h3>
                 <p>One of the fastest ways to get a paper rejected by an editor or reviewer is blurring the lines between what you observed and what you think it means.</p>
-                
+
                 <ul class="instruction-list">
                     <li><strong>Facts First:</strong> Keep your Results completely objective. Disclose the facts, tables, and geochemical or statistical trends without any bias or commentary.</li>
                     <li><strong>Interpretation Second:</strong> Save the interpretation, conceptual modeling, and comparisons to alternative explanations entirely for the Discussion section. Interweaving the two in your results section is fatal.</li>
@@ -185,7 +186,7 @@ header nav .dropdown-menu-item:hover>.dropdown-wrapper,header nav .dropdown-menu
 
                 <h3>5. Visual Efficiency over Word Walls</h3>
                 <p>Reviewers are visual creatures. Complex visual data shouldn't be trapped inside dense walls of text.</p>
-                
+
                 <ul class="instruction-list">
                     <li><strong>Self-Sufficient Visuals:</strong> Figures, tables, maps, and flowcharts must have independent captions and legends. A reviewer should be able to look at a figure, read its caption, and completely understand what it means without having to hunt through the body paragraphs.</li>
                     <li><strong>No Redundancy:</strong> Do not duplicate data. If it’s clearly displayed in a precise table, do not map it out line-by-line in your text. Use the text to discuss the significance of the table, not repeat its numbers.</li>
@@ -193,7 +194,7 @@ header nav .dropdown-menu-item:hover>.dropdown-wrapper,header nav .dropdown-menu
 
                 <h3>6. Perfect Execution of the Basics</h3>
                 <p>If you cannot bother to follow basic formatting rules, a reviewer will assume you were sloppy with your science, too.</p>
-                
+
                 <ul class="instruction-list">
                     <li><strong>Follow the Guidelines Dynamically:</strong> Match the target journal’s house formatting, sentence casing, and reference styleflawlessly.</li>
                     <li><strong>Clarity and Simplicity:</strong> Write in short sentences and paragraphs. Avoid "vague and misty" concepts or hyper-inflated vocabulary designed to sound smart. Choose simple, essential, active words.</li>
@@ -207,9 +208,11 @@ header nav .dropdown-menu-item:hover>.dropdown-wrapper,header nav .dropdown-menu
         </article>
     </main>
 
-    <footer>
-        <p>&copy; Shacin Saha 2026</p>
-    </footer>
+        <p class="page-last-updated" style="max-width:1120px;margin:2.8em auto 14px;padding:0 20px;text-align:left;color:#78848a;font:400 .78rem/1.5 Arial,sans-serif">Last Updated: <time></time></p>
+    <script>
+    (()=>{const meta=document.querySelector('meta[name="page-last-updated"]');const p=document.querySelector('.page-last-updated');const time=p&&p.querySelector('time');if(!meta||!time)return;const date=new Date(meta.content);time.dateTime=meta.content;const timeText=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Dhaka',hour:'numeric',minute:'2-digit',hour12:true}).format(date);const dateText=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Dhaka',day:'numeric',month:'long'}).format(date);time.textContent=timeText+', '+dateText+' (BST)'})();
+    </script>
+<footer><p class="copyright-notice" style="margin:6px 0 0;font-size:.78rem;line-height:1.5">© 2026 Shacin Saha. Original website text and figures may not be reused without permission. Third-party and co-authored materials remain subject to their respective rights.</p></footer>
 
     <script>
         function toggleMobileMenu(event) {
@@ -231,5 +234,7 @@ header nav .dropdown-menu-item:hover>.dropdown-wrapper,header nav .dropdown-menu
     </script>
 <script>
 (()=>{const menu=document.getElementById('moreMenu');if(!menu)return;const trigger=menu.querySelector('.dropdown-trigger');const setOpen=open=>{menu.classList.toggle('mobile-open',open);trigger.setAttribute('aria-expanded',String(open));};trigger.addEventListener('click',event=>{event.preventDefault();setOpen(!menu.classList.contains('mobile-open'));});document.addEventListener('click',event=>{if(!menu.contains(event.target))setOpen(false);});document.addEventListener('keydown',event=>{if(event.key==='Escape')setOpen(false);});})();
-</script></body>
+</script>
+
+</body>
 </html>

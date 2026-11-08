@@ -45,7 +45,7 @@
     footer{padding:24px;text-align:center;border-top:1px solid var(--line);background:#fafafa;color:var(--muted)}
     @media(max-width:850px){header{position:relative;flex-direction:column;align-items:flex-start;padding:12px 4%}body{padding-top:0}.filters{top:0}}
     @media(max-width:600px){nav ul{gap:5px 12px}.title-strip{font-size:1.55rem}.filters{justify-content:flex-start}.certificate-info{padding:17px}.meta{gap:12px}.issued{white-space:normal}.certificate-info h2{font-size:1.15rem}}
-  
+
   /* Shared navigation dropdown behavior */
 header nav .dropdown-menu-item{position:relative}
 header nav .dropdown-wrapper{display:none;position:absolute;top:100%;left:0;min-width:210px;flex-direction:column;gap:0;padding:8px 0;margin:0;list-style:none;background:#fff;border:1px solid #e1e7ea;border-radius:8px;box-shadow:0 10px 24px #162b3820;z-index:3000}
@@ -53,6 +53,7 @@ header nav .dropdown-wrapper li{width:100%;list-style:none}
 header nav .dropdown-wrapper li a{display:block;padding:10px 16px;white-space:nowrap;text-decoration:none}
 header nav .dropdown-menu-item:hover>.dropdown-wrapper,header nav .dropdown-menu-item:focus-within>.dropdown-wrapper,header nav .dropdown-menu-item.mobile-open>.dropdown-wrapper{display:flex;opacity:1;visibility:visible;pointer-events:auto;transform:none}
 @media(max-width:768px){header nav .dropdown-wrapper{position:static;min-width:0;width:100%;margin:6px 0 0;padding:5px 0 5px 14px;border:0;border-left:2px solid #d9e7ec;border-radius:0;box-shadow:none;background:#f8fbfc;transform:none}header nav .dropdown-menu-item:hover>.dropdown-wrapper{display:none}header nav .dropdown-menu-item.mobile-open>.dropdown-wrapper{display:flex}header nav .dropdown-wrapper li a{white-space:normal;padding:10px 12px}}header nav>ul>li>a.active,header nav>ul>li>a[aria-current="page"]{color:#1a6b8c!important;font-weight:700}\n</style>
+<meta name="page-last-updated" content="2026-11-09T00:05:38+06:00">
 </head>
 <body>
   <header>
@@ -66,7 +67,7 @@ header nav .dropdown-menu-item:hover>.dropdown-wrapper,header nav .dropdown-menu
 <li><a href="blog.html">Blogs</a></li>
 <li><a href="volunteering.html">Volunteering Activities</a></li>
 <li><a href="education.html">Education</a></li>
-<li class="dropdown-menu-item" id="moreMenu"><a href="#" class="dropdown-trigger" aria-haspopup="true" aria-expanded="false">More <i class="fas fa-caret-down" aria-hidden="true"></i></a><ul class="dropdown-wrapper"><li><a href="contacts.html">Contacts</a></li><li><a href="technical_skills.html">Data and Tools</a></li></ul></li>
+<li class="dropdown-menu-item" id="moreMenu"><a href="#" class="dropdown-trigger" aria-haspopup="true" aria-expanded="false">More <i class="fas fa-caret-down" aria-hidden="true"></i></a><ul class="dropdown-wrapper"><li><a href="contacts.html">Contacts</a></li><li><a href="data-tools.html">Datasets &amp; Tools</a></li></ul></li>
 </ul></nav>
   </header>
   <div class="title-strip">Certificates</div>
@@ -105,7 +106,11 @@ header nav .dropdown-menu-item:hover>.dropdown-wrapper,header nav .dropdown-menu
     <button class="image-dialog-close" type="button" aria-label="Close full-size certificate"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
     <img id="certificate-dialog-image" src="" alt="Full-size certificate">
   </dialog>
-  <dialog class="image-dialog" id="database-qr-dialog" aria-label="Database certificate verification QR code"><button class="image-dialog-close" type="button" aria-label="Close verification QR code"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button><img src="certificates-assets/database-training-qr.webp" alt="QR code to verify the database training certificate"></dialog>  <footer><p>&copy; Shacin Saha 2026</p></footer>
+  <dialog class="image-dialog" id="database-qr-dialog" aria-label="Database certificate verification QR code"><button class="image-dialog-close" type="button" aria-label="Close verification QR code"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button><img src="certificates-assets/database-training-qr.webp" alt="QR code to verify the database training certificate"></dialog>      <p class="page-last-updated" style="max-width:1120px;margin:2.8em auto 14px;padding:0 20px;text-align:left;color:#78848a;font:400 .78rem/1.5 Arial,sans-serif">Last Updated: <time></time></p>
+    <script>
+    (()=>{const meta=document.querySelector('meta[name="page-last-updated"]');const p=document.querySelector('.page-last-updated');const time=p&&p.querySelector('time');if(!meta||!time)return;const date=new Date(meta.content);time.dateTime=meta.content;const timeText=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Dhaka',hour:'numeric',minute:'2-digit',hour12:true}).format(date);const dateText=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Dhaka',day:'numeric',month:'long'}).format(date);time.textContent=timeText+', '+dateText+' (BST)'})();
+    </script>
+<footer><p class="copyright-notice" style="margin:6px 0 0;font-size:.78rem;line-height:1.5">© 2026 Shacin Saha. Original website text and figures may not be reused without permission. Third-party and co-authored materials remain subject to their respective rights.</p></footer>
   <script>
     const cards = [...document.querySelectorAll('.certificate-card')];
     const filters = [...document.querySelectorAll('.filter')];
@@ -146,5 +151,7 @@ header nav .dropdown-menu-item:hover>.dropdown-wrapper,header nav .dropdown-menu
   </script>
 <script>
 (()=>{const menu=document.getElementById('moreMenu');if(!menu)return;const trigger=menu.querySelector('.dropdown-trigger');const setOpen=open=>{menu.classList.toggle('mobile-open',open);trigger.setAttribute('aria-expanded',String(open));};trigger.addEventListener('click',event=>{event.preventDefault();setOpen(!menu.classList.contains('mobile-open'));});document.addEventListener('click',event=>{if(!menu.contains(event.target))setOpen(false);});document.addEventListener('keydown',event=>{if(event.key==='Escape')setOpen(false);});})();
-</script></body>
+</script>
+
+</body>
 </html>

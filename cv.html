@@ -53,6 +53,7 @@
     @media(max-width:650px){body{padding:0;background:#fff}.cv-page{min-height:0;padding:28px 22px 32px;margin:0 auto 12px;box-shadow:none;border-bottom:1px solid #ddd;font-size:10pt}.cv-name{font-size:21pt}.cv-contact{margin-left:4%}.removed-links-space{height:34px}.cv-page-two{padding-top:34px}.publication-head{padding-right:10px}.references{gap:16px}.signature{width:180px}}
     @media print{html,body{background:#fff;padding:0}.cv-document{width:100%;margin:0}.cv-page{width:210mm;height:297mm;min-height:297mm;margin:0;padding:13mm 13mm 12mm;box-shadow:none;break-after:page;page-break-after:always;font-size:10.35pt}.cv-page:last-child{break-after:auto;page-break-after:auto}.cv-page-two{padding-top:19mm}.removed-links-space{height:14mm}}
   </style>
+<meta name="page-last-updated" content="2026-11-09T00:05:38+06:00">
 </head>
 <body>
   <main class="cv-document" aria-label="Curriculum Vitae">
@@ -149,5 +150,10 @@
       <div class="signature"><img src="images/cv/signature.png" alt="Shacin Chandra Saha handwritten signature"><div class="signature-label">Signature</div></div>
     </article>
   </main>
+
+    <p class="page-last-updated" style="max-width:1120px;margin:2.8em auto 14px;padding:0 20px;text-align:left;color:#78848a;font:400 .78rem/1.5 Arial,sans-serif">Last Updated: <time></time></p>
+    <script>
+    (()=>{const meta=document.querySelector('meta[name="page-last-updated"]');const p=document.querySelector('.page-last-updated');const time=p&&p.querySelector('time');if(!meta||!time)return;const date=new Date(meta.content);time.dateTime=meta.content;const timeText=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Dhaka',hour:'numeric',minute:'2-digit',hour12:true}).format(date);const dateText=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Dhaka',day:'numeric',month:'long'}).format(date);time.textContent=timeText+', '+dateText+' (BST)'})();
+    </script>
 </body>
 </html>

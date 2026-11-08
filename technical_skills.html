@@ -15,7 +15,7 @@
             line-height: 1.6;
             padding-top: 70px; /* Space for fixed nav */
         }
-        
+
         /* Navigation Bar */
         header {
             display: flex;
@@ -54,14 +54,14 @@
         .skills-wrapper { padding: 0 20px; background-color: #ffffff; }
         .skills-container { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 60px; }
         .skill-row { display: flex; flex-direction: row; align-items: center; gap: 50px; padding-bottom: 5px; }
-        
+
         /* Skills Grid Layout Modifications for Alternating look */
         .skill-row:nth-child(even) { flex-direction: row-reverse; }
 
         /* Left/Right Column: Image Area */
         .skill-media { flex: 0 0 35%; max-width: 350px; display: flex; justify-content: center; }
         .skill-image { width: 100%; max-width: 280px; height: auto; display: block; object-fit: contain; }
-        
+
         /* Right/Left Column: Text Content Area */
         .skill-content { flex: 1; }
         .skill-title { font-size: 2.2rem; font-weight: bold; color: #1a6b8c; margin-bottom: 20px; }
@@ -192,6 +192,7 @@ header nav .dropdown-wrapper li{width:100%;list-style:none}
 header nav .dropdown-wrapper li a{display:block;padding:10px 16px;white-space:nowrap;text-decoration:none}
 header nav .dropdown-menu-item:hover>.dropdown-wrapper,header nav .dropdown-menu-item:focus-within>.dropdown-wrapper,header nav .dropdown-menu-item.mobile-open>.dropdown-wrapper{display:flex;opacity:1;visibility:visible;pointer-events:auto;transform:none}
 @media(max-width:768px){header nav .dropdown-wrapper{position:static;min-width:0;width:100%;margin:6px 0 0;padding:5px 0 5px 14px;border:0;border-left:2px solid #d9e7ec;border-radius:0;box-shadow:none;background:#f8fbfc;transform:none}header nav .dropdown-menu-item:hover>.dropdown-wrapper{display:none}header nav .dropdown-menu-item.mobile-open>.dropdown-wrapper{display:flex}header nav .dropdown-wrapper li a{white-space:normal;padding:10px 12px}}header nav>ul>li>a.active,header nav>ul>li>a[aria-current="page"]{color:#1a6b8c!important;font-weight:700}\n</style>
+<meta name="page-last-updated" content="2026-11-09T00:07:25+06:00">
 </head>
 <body>
 
@@ -210,16 +211,16 @@ header nav .dropdown-menu-item:hover>.dropdown-wrapper,header nav .dropdown-menu
 <li><a href="blog.html">Blogs</a></li>
 <li><a href="volunteering.html">Volunteering Activities</a></li>
 <li><a href="education.html">Education</a></li>
-<li class="dropdown-menu-item" id="moreMenu"><a href="#" class="dropdown-trigger" aria-haspopup="true" aria-expanded="false">More <i class="fas fa-caret-down" aria-hidden="true"></i></a><ul class="dropdown-wrapper"><li><a href="contacts.html">Contacts</a></li><li><a href="technical_skills.html" class="active" aria-current="page">Data and Tools</a></li></ul></li>
+<li class="dropdown-menu-item" id="moreMenu"><a href="#" class="dropdown-trigger" aria-haspopup="true" aria-expanded="false">More <i class="fas fa-caret-down" aria-hidden="true"></i></a><ul class="dropdown-wrapper"><li><a href="contacts.html">Contacts</a></li><li><a href="data-tools.html">Datasets &amp; Tools</a></li></ul></li>
 </ul>
         </nav>
     </header>
 
     <div class="section-strip">Technical Skills</div>
-    
+
     <div class="skills-wrapper">
         <div class="skills-container">
-            
+
             <div class="skill-row">
                 <div class="skill-media">
                     <img src="images/GEE.png" alt="Google Earth Engine" class="skill-image">
@@ -327,17 +328,19 @@ header nav .dropdown-menu-item:hover>.dropdown-wrapper,header nav .dropdown-menu
         </div>
     </div>
 
-    <footer>
-        <p>&copy; Shacin Saha 2026</p>
-    </footer>
+        <p class="page-last-updated" style="max-width:1120px;margin:2.8em auto 14px;padding:0 20px;text-align:left;color:#78848a;font:400 .78rem/1.5 Arial,sans-serif">Last Updated: <time></time></p>
+    <script>
+    (()=>{const meta=document.querySelector('meta[name="page-last-updated"]');const p=document.querySelector('.page-last-updated');const time=p&&p.querySelector('time');if(!meta||!time)return;const date=new Date(meta.content);time.dateTime=meta.content;const timeText=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Dhaka',hour:'numeric',minute:'2-digit',hour12:true}).format(date);const dateText=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Dhaka',day:'numeric',month:'long'}).format(date);time.textContent=timeText+', '+dateText+' (BST)'})();
+    </script>
+<footer><p class="copyright-notice" style="margin:6px 0 0;font-size:.78rem;line-height:1.5">© 2026 Shacin Saha. Original website text and figures may not be reused without permission. Third-party and co-authored materials remain subject to their respective rights.</p></footer>
 <script>
     function toggleMobileMenu(event) {
             // Only intercept and execute click mechanics on mobile breakpoints
             if (window.innerWidth <= 768) {
                 event.preventDefault(); // Stop the "#" href anchor action from reloading/jumping
-                
+
                 const moreMenuContainer = document.getElementById('moreMenu');
-                
+
                 // Toggle the open class engine framework configuration
                 moreMenuContainer.classList.toggle('mobile-open');
             }
@@ -355,5 +358,7 @@ header nav .dropdown-menu-item:hover>.dropdown-wrapper,header nav .dropdown-menu
 </script>
 <script>
 (()=>{const menu=document.getElementById('moreMenu');if(!menu)return;const trigger=menu.querySelector('.dropdown-trigger');const setOpen=open=>{menu.classList.toggle('mobile-open',open);trigger.setAttribute('aria-expanded',String(open));};trigger.addEventListener('click',event=>{event.preventDefault();setOpen(!menu.classList.contains('mobile-open'));});document.addEventListener('click',event=>{if(!menu.contains(event.target))setOpen(false);});document.addEventListener('keydown',event=>{if(event.key==='Escape')setOpen(false);});})();
-</script></body>
+</script>
+
+</body>
 </html>
